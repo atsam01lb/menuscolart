@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>أبو حمزة | Abou Hamze Restaurant — منيو</title>
-<meta name="description" content="منيو مطعم أبو حمزة — الميناء، الكورنيش البحري، جانب مطعم النخيل. لحمة راس، مقادم، قباوات، كروش، فوارغ ومأكولات تقليدية.">
+<title>أبو حمزة | Abou Hamze Restaurant | منيو</title>
+<meta name="description" content="منيو مطعم أبو حمزة، الميناء، الكورنيش البحري، جانب مطعم النخيل. لحمة راس، مقادم، قباوات، كروش، فوارغ ومأكولات تقليدية.">
 <link rel="icon" type="image/png" href="assets/logo.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,9 +22,9 @@
       <img src="assets/logo.png" alt="أبو حمزة">
     </a>
     <nav class="topbar__nav" aria-label="أقسام المنيو">
-      <a href="#appetizers">مقبلات وسلطات</a>
       <a href="#inhouse">طلبات داخل المحل</a>
       <a href="#takeaway">طلبات خارج المحل</a>
+      <a href="#appetizers">مقبلات وسلطات</a>
       <a href="#drinks">مشروبات</a>
     </nav>
   </div>
@@ -38,7 +38,7 @@
     <div class="hero__inner">
       <img class="hero__logo" src="assets/logo.png" alt="أبو حمزة">
       <h1 class="hero__title">مطعم أبو حمزة</h1>
-      <p class="hero__subtitle">نكهة أصيلة من قلب الميناء — لحمة راس، مقادم، قباوات وكروش على الطريقة التقليدية</p>
+      <p class="hero__subtitle">نكهة أصيلة من قلب الميناء، لحمة راس، مقادم، قباوات وكروش على الطريقة التقليدية</p>
       <div class="hero__meta">
         <span><i class="fa-solid fa-location-dot"></i> الميناء، الكورنيش البحري، جانب مطعم النخيل</span>
         <span dir="ltr"><i class="fa-solid fa-phone"></i> 70 540 090 / 03 540 090</span>
@@ -49,37 +49,22 @@
     </div>
     <div class="hero__gallery" aria-hidden="true">
       <img src="assets/food1.jpg" alt="">
+      <img src="assets/food4.jpg" alt="">
       <img src="assets/food2.jpg" alt="">
-      <img src="assets/food3.jpg" alt="">
     </div>
   </section>
 
-  <!-- ===== APPETIZERS + SALADS ===== -->
-  <section class="menu-section" id="appetizers">
+  <!-- ===== 1. IN-HOUSE ORDERS ===== -->
+  <section class="menu-section" id="inhouse">
     <div class="menu-section__pattern" aria-hidden="true"></div>
     <div class="menu-section__inner">
-      <div class="menu-photo">
-        <img src="assets/food1.jpg" alt="مقبلات أبو حمزة">
+      <div class="menu-photo-row">
+        <div class="menu-photo"><img src="assets/food1.jpg" alt="طلبات داخل المحل"></div>
+        <div class="menu-photo"><img src="assets/food2.jpg" alt="طلبات داخل المحل"></div>
+        <div class="menu-photo"><img src="assets/food3.jpg" alt="طلبات داخل المحل"></div>
       </div>
+      <h2 class="menu-block__title">طلبات داخل المحل</h2>
       <div class="menu-block">
-        <h2 class="menu-block__title">مقبلات <span>+</span> سلطات</h2>
-        <ul class="menu-list">
-          <li><span class="item-name">حمص مع لحمة</span><span class="item-dots"></span><span class="item-price">600,000 ل.ل</span></li>
-          <li><span class="item-name">بطاطا</span><span class="item-dots"></span><span class="item-price">400,000 ل.ل</span></li>
-          <li><span class="item-name">فتوش</span><span class="item-dots"></span><span class="item-price">500,000 ل.ل</span></li>
-          <li><span class="item-name">تبولة</span><span class="item-dots"></span><span class="item-price">500,000 ل.ل</span></li>
-          <li><span class="item-name">سلطة</span><span class="item-dots"></span><span class="item-price">500,000 ل.ل</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== IN-HOUSE ORDERS ===== -->
-  <section class="menu-section menu-section--alt" id="inhouse">
-    <div class="menu-section__pattern" aria-hidden="true"></div>
-    <div class="menu-section__inner menu-section__inner--reverse">
-      <div class="menu-block">
-        <h2 class="menu-block__title">طلبات داخل المحل</h2>
         <ul class="menu-list">
           <li><span class="item-name">لحمة راس</span><span class="item-dots"></span><span class="item-price">400,000 ل.ل</span></li>
           <li><span class="item-name">مقادم</span><span class="item-dots"></span><span class="item-price">600,000 ل.ل</span></li>
@@ -101,21 +86,20 @@
           <li><span class="item-name">بيض غنم</span><span class="item-dots"></span><span class="item-price">600,000 ل.ل</span></li>
         </ul>
       </div>
-      <div class="menu-photo">
-        <img src="assets/food2.jpg" alt="طلبات داخل المحل">
-      </div>
     </div>
   </section>
 
-  <!-- ===== TAKEAWAY ORDERS ===== -->
-  <section class="menu-section" id="takeaway">
+  <!-- ===== 2. TAKEAWAY ORDERS ===== -->
+  <section class="menu-section menu-section--alt" id="takeaway">
     <div class="menu-section__pattern" aria-hidden="true"></div>
     <div class="menu-section__inner">
-      <div class="menu-photo">
-        <img src="assets/food3.jpg" alt="طلبات خارج المحل">
+      <div class="menu-photo-row">
+        <div class="menu-photo"><img src="assets/food4.jpg" alt="طلبات خارج المحل"></div>
+        <div class="menu-photo"><img src="assets/food5.jpg" alt="طلبات خارج المحل"></div>
+        <div class="menu-photo"><img src="assets/food6.jpg" alt="طلبات خارج المحل"></div>
       </div>
+      <h2 class="menu-block__title">طلبات خارج المحل</h2>
       <div class="menu-block">
-        <h2 class="menu-block__title">طلبات خارج المحل</h2>
         <ul class="menu-list">
           <li><span class="item-name">فوارغ 1 كيلو</span><span class="item-dots"></span><span class="item-price">1,500,000 ل.ل</span></li>
           <li><span class="item-name">قباوات (قطعة)</span><span class="item-dots"></span><span class="item-price">400,000 ل.ل</span></li>
@@ -129,12 +113,39 @@
     </div>
   </section>
 
-  <!-- ===== DRINKS ===== -->
+  <!-- ===== 3. APPETIZERS + SALADS ===== -->
+  <section class="menu-section" id="appetizers">
+    <div class="menu-section__pattern" aria-hidden="true"></div>
+    <div class="menu-section__inner">
+      <div class="menu-photo-row">
+        <div class="menu-photo"><img src="assets/food7.jpg" alt="مقبلات وسلطات"></div>
+        <div class="menu-photo"><img src="assets/food8.jpg" alt="مقبلات وسلطات"></div>
+        <div class="menu-photo"><img src="assets/food9.jpg" alt="مقبلات وسلطات"></div>
+      </div>
+      <h2 class="menu-block__title">مقبلات <span>+</span> سلطات</h2>
+      <div class="menu-block">
+        <ul class="menu-list">
+          <li><span class="item-name">حمص مع لحمة</span><span class="item-dots"></span><span class="item-price">600,000 ل.ل</span></li>
+          <li><span class="item-name">بطاطا</span><span class="item-dots"></span><span class="item-price">400,000 ل.ل</span></li>
+          <li><span class="item-name">فتوش</span><span class="item-dots"></span><span class="item-price">500,000 ل.ل</span></li>
+          <li><span class="item-name">تبولة</span><span class="item-dots"></span><span class="item-price">500,000 ل.ل</span></li>
+          <li><span class="item-name">سلطة</span><span class="item-dots"></span><span class="item-price">500,000 ل.ل</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. DRINKS ===== -->
   <section class="menu-section menu-section--alt" id="drinks">
     <div class="menu-section__pattern" aria-hidden="true"></div>
-    <div class="menu-section__inner menu-section__inner--center">
+    <div class="menu-section__inner">
+      <div class="menu-photo-row">
+        <div class="menu-photo"><img src="assets/food10.jpg" alt="مشروبات"></div>
+        <div class="menu-photo"><img src="assets/food11.jpg" alt="مشروبات"></div>
+        <div class="menu-photo"><img src="assets/food12.jpg" alt="مشروبات"></div>
+      </div>
+      <h2 class="menu-block__title">مشروبات</h2>
       <div class="menu-block">
-        <h2 class="menu-block__title">مشروبات</h2>
         <ul class="menu-list">
           <li><span class="item-name">مرطبات</span><span class="item-dots"></span><span class="item-price">100,000 ل.ل</span></li>
           <li><span class="item-name">مياه كبير</span><span class="item-dots"></span><span class="item-price">100,000 ل.ل</span></li>

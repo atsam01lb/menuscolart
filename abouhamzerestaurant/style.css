@@ -1,11 +1,11 @@
 /* ===========================================
-   ABOU HAMZE RESTAURANT — منيو
+   ABOU HAMZE RESTAURANT (منيو)
    Palette sampled from the restaurant's own menu artwork
 =========================================== */
 :root {
-  --maroon:       #651011;
-  --maroon-dark:  #430a0b;
-  --maroon-alt:   #560d0e;
+  --maroon:       #520205;
+  --maroon-dark:  #350103;
+  --maroon-alt:   #440204;
   --maroon-line:  rgba(230, 187, 31, .16);
   --gold:         #e6bb1f;
   --gold-light:   #f3d766;
@@ -36,9 +36,9 @@ ul { list-style: none; }
 .footer__pattern {
   position: absolute;
   inset: 0;
-  background: url('assets/pattern-maroon.png');
-  background-size: 340px 340px;
-  opacity: .55;
+  background: url('assets/pattern-maroon.jpg');
+  background-size: 300px 300px;
+  opacity: .6;
   pointer-events: none;
   z-index: 0;
 }
@@ -50,7 +50,7 @@ ul { list-style: none; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(67, 10, 11, .92);
+  background: rgba(53, 1, 3, .92);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--maroon-line);
@@ -170,38 +170,33 @@ ul { list-style: none; }
 .menu-section__inner {
   position: relative;
   z-index: 1;
-  max-width: 1000px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 40px;
-  align-items: start;
-}
-.menu-section__inner--reverse { grid-template-columns: 1fr 220px; }
-.menu-section__inner--reverse .menu-photo { order: 2; }
-.menu-section__inner--center {
-  grid-template-columns: 1fr;
   max-width: 640px;
-}
-@media (max-width: 720px) {
-  .menu-section__inner,
-  .menu-section__inner--reverse {
-    grid-template-columns: 1fr;
-  }
-  .menu-section__inner--reverse .menu-photo { order: 0; }
+  margin: 0 auto;
 }
 
+/* three circular photos side by side, above each section */
+.menu-photo-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 26px;
+}
 .menu-photo {
   position: relative;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   overflow: hidden;
-  border: 4px solid var(--gold);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, .35);
-  max-width: 220px;
-  margin: 0 auto;
+  border: 3px solid var(--gold);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .35);
+  width: 104px;
+  flex: 0 0 auto;
 }
 .menu-photo img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 480px) {
+  .menu-photo-row { gap: 12px; }
+  .menu-photo { width: 84px; }
+}
 
 .menu-block__title {
   font-weight: 900;
