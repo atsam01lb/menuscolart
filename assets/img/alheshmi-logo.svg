@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#642878"/>
+      <stop offset="100%" stop-color="#c81478"/>
+    </linearGradient>
+  </defs>
+  <circle cx="120.0" cy="120.0" r="116.0" fill="url(#g)"/>
+  <text x="50%" y="53%" text-anchor="middle" dominant-baseline="middle"
+        font-family="Lato, Arial, sans-serif" font-weight="900" font-style="italic"
+        font-size="81.60000000000001" fill="#ffffff">AH</text>
+</svg>

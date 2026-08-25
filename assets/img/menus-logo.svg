@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 96" width="360" height="96">
+  <defs>
+    <linearGradient id="wg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#642878"/>
+      <stop offset="100%" stop-color="#c81478"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="92" height="92" rx="24" fill="url(#wg)"/>
+  <text x="48" y="58" text-anchor="middle" dominant-baseline="middle"
+        font-family="Lato, Arial, sans-serif" font-weight="900" font-style="italic"
+        font-size="42" fill="#ffffff">M</text>
+  <text x="108" y="44" font-family="Lato, Arial, sans-serif" font-weight="900"
+        font-size="30" letter-spacing="-1" fill="#1a1424">MENUS</text>
+  <text x="108" y="72" font-family="Lato, Arial, sans-serif" font-weight="500"
+        font-style="italic" font-size="17" fill="#642878">by Colart</text>
+</svg>
