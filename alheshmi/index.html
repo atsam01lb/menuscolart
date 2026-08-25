@@ -1,31 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Al Heshmi — Menu | Menus by Colart</title>
-<meta name="description" content="Digital menu for Al Heshmi, built by Colart Digital Marketing Agency.">
-<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,500;1,700;1,900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="../assets/css/style_6.css">
-<link rel="stylesheet" href="../assets/css/menus.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الحشمي كوفي | قائمة المشروبات والحلويات</title>
+  <meta name="description" content="قائمة الحشمي كوفي: قهوة، مشروبات باردة، عصائر، حلويات، آيس كريم، وسناكات." />
+  <meta name="theme-color" content="#080808" />
+  <link rel="icon" href="assets/logo.png" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="pending-page">
-  <div class="pending-card">
-    <div class="pending-logo">
-      <img src="../assets/img/alheshmi-logo.svg" alt="Al Heshmi logo">
+  <header class="topbar" id="topbar">
+    <a href="#home" class="brand">
+      <img src="assets/logo.png" alt="الحشمي كوفي" />
+    </a>
+    <button class="menu-toggle" id="menuToggle">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">الرئيسية</a>
+      <a href="#about">عن الحشمي</a>
+      <a href="#menu">القائمة</a>
+      <a href="#contact">تواصل معنا</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-shade"></div>
+      <div class="hero-content reveal">
+        <img class="hero-logo" src="assets/logo.png" alt="الحشمي كوفي" />
+        <p class="eyebrow">قهوة • مشروبات • حلويات • أجواء راقية</p>
+        <h1>أهلاً بكم في الحشمي كوفي</h1>
+        <p class="hero-text">تجربة فريدة تجمع بين النكهة الفاخرة، الجودة، والضيافة الراقية.</p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#menu">عرض القائمة</a>
+          <a class="secondary-btn" href="https://wa.me/96181964307" target="_blank">اطلب عبر واتساب</a>
+        </div>
+      </div>
+    </section>
+    <section class="about" id="about">
+      <div class="section-heading reveal">
+        <span>AL HESHMI</span>
+        <h2>نكهة راقية بتفاصيل ذهبية</h2>
+        <p>قائمة عربية فاخرة مصممة لتجربة مريحة وسريعة على الهاتف، مثالية لقائمة QR داخل الكوفي.</p>
+      </div>
+    </section>
+    <section class="menu-section" id="menu">
+      <div class="section-heading reveal">
+        <span>MENU</span>
+        <h2>قائمة الحشمي</h2>
+        <p>اختر القسم واستمتع بأشهى المشروبات والحلويات.</p>
+      </div>
+      <div class="category-tabs" id="categoryTabs"></div>
+      <div class="menu-container" id="menuContainer"></div>
+    </section>
+    <section class="contact" id="contact">
+      <div class="section-heading reveal">
+        <span>CONTACT</span>
+        <h2>تواصل معنا</h2>
+        <p>تابعونا على مواقع التواصل أو تواصلوا معنا مباشرة عبر واتساب.</p>
+      </div>
+      <div class="contact-grid reveal">
+        <a href="https://wa.me/96181964307" target="_blank">واتساب</a>
+        <a href="https://www.instagram.com/alheshmi.coffee" target="_blank">إنستغرام</a>
+        <a href="https://www.facebook.com/alheshmi.coffee" target="_blank">فيسبوك</a>
+        <a href="https://www.tiktok.com/@alheshmi.coffee" target="_blank">تيك توك</a>
+      </div>
+    </section>
+  </main>
+  <a class="whatsapp-float" href="https://wa.me/96181964307" target="_blank">واتساب</a>
+  <footer>
+    <p>© الحشمي كوفي - جميع الحقوق محفوظة</p>
+    <div class="footer-credit">
+      Website Structured By
+      <a href="https://www.colartdigitalmarketingagency.com" target="_blank">
+        Colart Digital Marketing Agency
+      </a>
     </div>
-    <h1 class="pending-title">Al Heshmi</h1>
-    <p class="pending-text">
-      This menu page is reserved at <strong>menus.colartdigitalmarketingagency.com/alheshmi/</strong> and is
-      ready to receive Al Heshmi's menu build. Drop the finished code into this folder to go live.
-    </p>
-    <a href="/" class="pending-back"><i class="fa-solid fa-arrow-left"></i> Back to all menus</a>
-  </div>
-</div>
+  </footer>
+  <script src="script.js"></script>
 </body>
 </html>
