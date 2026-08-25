@@ -1,35 +1,182 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abou Hamze Restaurant — Coming Soon | Menus by Colart</title>
-<meta name="description" content="Abou Hamze Restaurant's digital menu is coming soon, built by Colart Digital Marketing Agency.">
-<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+<title>أبو حمزة | Abou Hamze Restaurant — منيو</title>
+<meta name="description" content="منيو مطعم أبو حمزة — الميناء، الكورنيش البحري، جانب مطعم النخيل. لحمة راس، مقادم، قباوات، كروش، فوارغ ومأكولات تقليدية.">
+<link rel="icon" type="image/png" href="assets/logo.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="../assets/css/style_6.css">
-<!-- TODO: once Abou Hamze Restaurant sends their own style.css, link it here INSTEAD of/alongside menus.css
-     so this page (and their future full menu) matches their own brand. -->
-<link rel="stylesheet" href="../assets/css/menus.css">
+
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="coming-soon-page" style="--cs-accent:#4a1d59; --cs-accent-2:#c81478;">
-  <div class="coming-soon-card reveal">
-    <div class="coming-soon-logo">
-      <img src="../assets/img/abouhamze-logo.svg" alt="Abou Hamze Restaurant logo">
-    </div>
-    <span class="coming-soon-eyebrow">Digital Menu</span>
-    <h1 class="coming-soon-title">Abou Hamze Restaurant is coming soon</h1>
-    <p class="coming-soon-text">
-      We're building Abou Hamze Restaurant's digital menu. Check back shortly — this page will go live at
-      menus.colartdigitalmarketingagency.com/abouhamzerestaurant/.
-    </p>
-    <a href="/" class="coming-soon-back"><i class="fa-solid fa-arrow-left"></i> Back to all menus</a>
-    <p class="coming-soon-powered">Powered by <a href="https://colartdigitalmarketingagency.com">Colart Digital Marketing Agency</a></p>
+
+<header class="topbar" id="topbar">
+  <div class="topbar__inner">
+    <a href="#top" class="topbar__brand">
+      <img src="assets/logo.png" alt="أبو حمزة">
+    </a>
+    <nav class="topbar__nav" aria-label="أقسام المنيو">
+      <a href="#appetizers">مقبلات وسلطات</a>
+      <a href="#inhouse">طلبات داخل المحل</a>
+      <a href="#takeaway">طلبات خارج المحل</a>
+      <a href="#drinks">مشروبات</a>
+    </nav>
   </div>
-</div>
+</header>
+
+<main id="top">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero__pattern" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <img class="hero__logo" src="assets/logo.png" alt="أبو حمزة">
+      <h1 class="hero__title">مطعم أبو حمزة</h1>
+      <p class="hero__subtitle">نكهة أصيلة من قلب الميناء — لحمة راس، مقادم، قباوات وكروش على الطريقة التقليدية</p>
+      <div class="hero__meta">
+        <span><i class="fa-solid fa-location-dot"></i> الميناء، الكورنيش البحري، جانب مطعم النخيل</span>
+        <span dir="ltr"><i class="fa-solid fa-phone"></i> 70 540 090 / 03 540 090</span>
+      </div>
+      <a class="hero__cta" href="https://wa.me/96170540090" target="_blank" rel="noopener">
+        <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
+      </a>
+    </div>
+    <div class="hero__gallery" aria-hidden="true">
+      <img src="assets/food1.jpg" alt="">
+      <img src="assets/food2.jpg" alt="">
+      <img src="assets/food3.jpg" alt="">
+    </div>
+  </section>
+
+  <!-- ===== APPETIZERS + SALADS ===== -->
+  <section class="menu-section" id="appetizers">
+    <div class="menu-section__pattern" aria-hidden="true"></div>
+    <div class="menu-section__inner">
+      <div class="menu-photo">
+        <img src="assets/food1.jpg" alt="مقبلات أبو حمزة">
+      </div>
+      <div class="menu-block">
+        <h2 class="menu-block__title">مقبلات <span>+</span> سلطات</h2>
+        <ul class="menu-list">
+          <li><span class="item-name">حمص مع لحمة</span><span class="item-dots"></span><span class="item-price">600,000 ل.ل</span></li>
+          <li><span class="item-name">بطاطا</span><span class="item-dots"></span><span class="item-price">400,000 ل.ل</span></li>
+          <li><span class="item-name">فتوش</span><span class="item-dots"></span><span class="item-price">500,000 ل.ل</span></li>
+          <li><span class="item-name">تبولة</span><span class="item-dots"></span><span class="item-price">500,000 ل.ل</span></li>
+          <li><span class="item-name">سلطة</span><span class="item-dots"></span><span class="item-price">500,000 ل.ل</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== IN-HOUSE ORDERS ===== -->
+  <section class="menu-section menu-section--alt" id="inhouse">
+    <div class="menu-section__pattern" aria-hidden="true"></div>
+    <div class="menu-section__inner menu-section__inner--reverse">
+      <div class="menu-block">
+        <h2 class="menu-block__title">طلبات داخل المحل</h2>
+        <ul class="menu-list">
+          <li><span class="item-name">لحمة راس</span><span class="item-dots"></span><span class="item-price">400,000 ل.ل</span></li>
+          <li><span class="item-name">مقادم</span><span class="item-dots"></span><span class="item-price">600,000 ل.ل</span></li>
+          <li><span class="item-name">قباوات</span><span class="item-dots"></span><span class="item-price">400,000 ل.ل</span></li>
+          <li><span class="item-name">كروش</span><span class="item-dots"></span><span class="item-price">400,000 ل.ل</span></li>
+          <li><span class="item-name">فوارغ</span><span class="item-dots"></span><span class="item-price">500,000 ل.ل</span></li>
+          <li><span class="item-name">كروش بزيت و توم</span><span class="item-dots"></span><span class="item-price">500,000 ل.ل</span></li>
+          <li><span class="item-name">لسانات</span><span class="item-dots"></span><span class="item-price">400,000 ل.ل</span></li>
+          <li><span class="item-name">فتة راس</span><span class="item-dots"></span><span class="item-price">600,000 ل.ل</span></li>
+          <li><span class="item-name">قباوات مقلية</span><span class="item-dots"></span><span class="item-price">500,000 ل.ل</span></li>
+          <li><span class="item-name">فوارغ مقلية</span><span class="item-dots"></span><span class="item-price">700,000 ل.ل</span></li>
+          <li><span class="item-name">فتة لسانات</span><span class="item-dots"></span><span class="item-price">600,000 ل.ل</span></li>
+          <li><span class="item-name">منسف لحمة مع لبن</span><span class="item-dots"></span><span class="item-price">800,000 ل.ل</span></li>
+          <li><span class="item-name">نخاع مقلي</span><span class="item-dots"></span><span class="item-price">700,000 ل.ل</span></li>
+          <li><span class="item-name">نخاعات لبن</span><span class="item-dots"></span><span class="item-price">900,000 ل.ل</span></li>
+          <li><span class="item-name">راس نيفا</span><span class="item-dots"></span><span class="item-price">1,200,000 ل.ل</span></li>
+          <li><span class="item-name">فتة مقادم</span><span class="item-dots"></span><span class="item-price">700,000 ل.ل</span></li>
+          <li><span class="item-name">بيض عجل</span><span class="item-dots"></span><span class="item-price">600,000 ل.ل</span></li>
+          <li><span class="item-name">بيض غنم</span><span class="item-dots"></span><span class="item-price">600,000 ل.ل</span></li>
+        </ul>
+      </div>
+      <div class="menu-photo">
+        <img src="assets/food2.jpg" alt="طلبات داخل المحل">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TAKEAWAY ORDERS ===== -->
+  <section class="menu-section" id="takeaway">
+    <div class="menu-section__pattern" aria-hidden="true"></div>
+    <div class="menu-section__inner">
+      <div class="menu-photo">
+        <img src="assets/food3.jpg" alt="طلبات خارج المحل">
+      </div>
+      <div class="menu-block">
+        <h2 class="menu-block__title">طلبات خارج المحل</h2>
+        <ul class="menu-list">
+          <li><span class="item-name">فوارغ 1 كيلو</span><span class="item-dots"></span><span class="item-price">1,500,000 ل.ل</span></li>
+          <li><span class="item-name">قباوات (قطعة)</span><span class="item-dots"></span><span class="item-price">400,000 ل.ل</span></li>
+          <li><span class="item-name">مقادم (قطعة)</span><span class="item-dots"></span><span class="item-price">200,000 ل.ل</span></li>
+          <li><span class="item-name">راس نيفا (قطعة)</span><span class="item-dots"></span><span class="item-price">1,200,000 ل.ل</span></li>
+          <li><span class="item-name">نخاعات (قطعة)</span><span class="item-dots"></span><span class="item-price">300,000 ل.ل</span></li>
+          <li><span class="item-name">لسانات (قطعة)</span><span class="item-dots"></span><span class="item-price">300,000 ل.ل</span></li>
+          <li><span class="item-name">قباوات مقلية (قطعة)</span><span class="item-dots"></span><span class="item-price">500,000 ل.ل</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DRINKS ===== -->
+  <section class="menu-section menu-section--alt" id="drinks">
+    <div class="menu-section__pattern" aria-hidden="true"></div>
+    <div class="menu-section__inner menu-section__inner--center">
+      <div class="menu-block">
+        <h2 class="menu-block__title">مشروبات</h2>
+        <ul class="menu-list">
+          <li><span class="item-name">مرطبات</span><span class="item-dots"></span><span class="item-price">100,000 ل.ل</span></li>
+          <li><span class="item-name">مياه كبير</span><span class="item-dots"></span><span class="item-price">100,000 ل.ل</span></li>
+          <li><span class="item-name">مياه صغير</span><span class="item-dots"></span><span class="item-price">50,000 ل.ل</span></li>
+          <li><span class="item-name">لبن</span><span class="item-dots"></span><span class="item-price">200,000 ل.ل</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__pattern" aria-hidden="true"></div>
+  <div class="footer__inner">
+    <img class="footer__logo" src="assets/logo.png" alt="أبو حمزة">
+    <p class="footer__address"><i class="fa-solid fa-location-dot"></i> الميناء الكورنيش البحري، جانب مطعم النخيل</p>
+    <p class="footer__phone" dir="ltr"><i class="fa-solid fa-phone"></i> 70 540 090 / 03 540 090</p>
+    <div class="footer__social">
+      <a href="https://facebook.com/abou.hamze.restaurant" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://instagram.com/abou.hamze.restaurant" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://tiktok.com/@abou.hamze.restaurant" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+    </div>
+    <p class="footer__copy">© <span id="year"></span> مطعم أبو حمزة. جميع الحقوق محفوظة.</p>
+    <div class="footer__credits">
+      <span class="footer__credit">
+        <span class="footer__credit-label">Structured by</span>
+        <a href="https://www.colartdigitalmarketingagency.com" target="_blank" rel="noopener">Colart Digital Marketing Agency</a>
+      </span>
+      <span class="footer__sep" aria-hidden="true">·</span>
+      <span class="footer__credit">
+        <span class="footer__credit-label">Hosted by</span>
+        <a href="https://menus.colartdigitalmarketingagency.com" target="_blank" rel="noopener">Menus by Colart</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<a class="fab-whatsapp" href="https://wa.me/96170540090" target="_blank" rel="noopener" aria-label="واتساب">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<script src="script.js"></script>
 </body>
 </html>
