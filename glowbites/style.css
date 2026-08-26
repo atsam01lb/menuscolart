@@ -275,12 +275,12 @@ h1, h2, h3, h4 { font-family: var(--font-display); }
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: 18px;
-  padding: 18px 18px 16px;
+  padding: 0;
+  overflow: hidden;
   box-shadow: var(--shadow-soft);
   transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
   display: flex;
   flex-direction: column;
-  gap: 12px;
 }
 .item-card:hover {
   transform: translateY(-4px);
@@ -288,7 +288,22 @@ h1, h2, h3, h4 { font-family: var(--font-display); }
   border-color: rgba(203, 119, 41, .35);
 }
 
-.item-card__top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.item-card__photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: var(--soft-beige);
+  overflow: hidden;
+}
+.item-card__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s ease;
+}
+.item-card:hover .item-card__photo img { transform: scale(1.05); }
+
+.item-card__top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; padding: 14px 18px 0; }
 .item-card__name {
   font-size: 15.5px;
   font-weight: 700;
@@ -306,7 +321,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); }
   white-space: nowrap;
 }
 
-.item-card__bottom { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.item-card__bottom { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 18px 0; }
 .item-card__price { font-size: 15px; font-weight: 800; color: var(--glow-orange); }
 .item-card__price--tbd { color: rgba(74, 40, 24, .5); font-size: 13.5px; font-weight: 700; font-style: italic; }
 
@@ -350,6 +365,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); }
   color: var(--white);
   font-size: 13px;
   font-weight: 700;
+  margin: 12px 18px 16px;
   transition: background-color .25s ease, transform .2s ease;
 }
 .add-btn:hover { background: var(--glow-orange); transform: translateY(-1px); }
@@ -586,18 +602,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); }
   margin-top: 30px;
 }
 .footer__inner { max-width: 480px; margin: 0 auto; }
-.footer__logo { width: 130px; margin: 0 auto 16px; }
-.footer__back {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--cocoa-brown);
-  margin-bottom: 16px;
-  transition: color .2s ease;
-}
-.footer__back:hover { color: var(--glow-orange); }
+.footer__logo { width: 130px; margin: 0 auto 20px; }
 .footer__copy {
   font-size: 13px;
   color: rgba(74, 40, 24, .6);
