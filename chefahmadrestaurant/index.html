@@ -1,35 +1,218 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chef Ahmad Restaurant — Coming Soon | Menus by Colart</title>
-<meta name="description" content="Chef Ahmad Restaurant's digital menu is coming soon, built by Colart Digital Marketing Agency.">
-<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+<title>Chef Ahmad Restaurant | مطعم شيف أحمد</title>
+<meta name="description" content="منيو مطعم شيف أحمد - حمص، فول، فتة، صفائح وكعك، مقبلات. الميناء، حي الرملة، بجانب فلافل المنارة.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="../assets/css/style_6.css">
-<!-- TODO: once Chef Ahmad Restaurant sends their own style.css, link it here INSTEAD of/alongside menus.css
-     so this page (and their future full menu) matches their own brand. -->
-<link rel="stylesheet" href="../assets/css/menus.css">
+
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="coming-soon-page" style="--cs-accent:#c81478; --cs-accent-2:#642878;">
-  <div class="coming-soon-card reveal">
-    <div class="coming-soon-logo">
-      <img src="../assets/img/chefahmad-logo.svg" alt="Chef Ahmad Restaurant logo">
-    </div>
-    <span class="coming-soon-eyebrow">Digital Menu</span>
-    <h1 class="coming-soon-title">Chef Ahmad Restaurant is coming soon</h1>
-    <p class="coming-soon-text">
-      We're building Chef Ahmad Restaurant's digital menu. Check back shortly — this page will go live at
-      menus.colartdigitalmarketingagency.com/chefahmadrestaurant/.
-    </p>
-    <a href="/" class="coming-soon-back"><i class="fa-solid fa-arrow-left"></i> Back to all menus</a>
-    <p class="coming-soon-powered">Powered by <a href="https://colartdigitalmarketingagency.com">Colart Digital Marketing Agency</a></p>
+
+<div class="topbar">
+  <div class="topbar__inner">
+    <a class="topbar__brand" href="#top">
+      <img src="assets/logo.png" alt="Chef Ahmad Restaurant">
+    </a>
+    <nav class="topbar__nav">
+      <a href="#hommos">حمص</a>
+      <a href="#foul">فول</a>
+      <a href="#fatteh">فتة</a>
+      <a href="#sfayeh">صفائح + كعك</a>
+      <a href="#appetizers">مقبلات</a>
+    </nav>
   </div>
 </div>
+
+<header class="hero" id="top">
+  <div class="hero__pattern"></div>
+  <div class="hero__inner">
+    <img class="hero__logo" src="assets/logo.png" alt="Chef Ahmad Restaurant">
+    <h1 class="hero__title">مطعم شيف أحمد</h1>
+    <p class="hero__subtitle">حمص، فول، فتة، صفائح وكعك ومقبلات طازجة يوميًا، داخل المحل أو خارج المحل.</p>
+    <div class="hero__meta">
+      <span><i class="fa-solid fa-location-dot"></i> الميناء، حي الرملة، بجانب فلافل المنارة</span>
+      <span><i class="fa-solid fa-phone"></i> 79 39 66 81</span>
+    </div>
+    <a class="hero__cta" href="tel:+96179396681">
+      <i class="fa-solid fa-phone"></i> اتصل للطلب
+    </a>
+    <div class="hero__pricing-note">
+      <span class="pricing-pill"><i class="fa-solid fa-store"></i> داخل المحل</span>
+      <span class="pricing-pill"><i class="fa-solid fa-bag-shopping"></i> خارج المحل</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="menu-section" id="hommos">
+    <div class="menu-section__pattern"></div>
+    <div class="menu-section__inner">
+      <h2 class="menu-block__title">حمص</h2>
+      <div class="menu-cols-label"><span>خارج المحل</span><span>داخل المحل</span></div>
+      <ul class="menu-list">
+        <li>
+          <span class="item-name">حمص مدقوق بطحينة</span>
+          <span class="item-dots"></span>
+          <span class="price-pair"><span class="price-out">250,000</span><span class="price-in">200,000</span></span>
+        </li>
+        <li>
+          <span class="item-name">حمص حب بطحينة</span>
+          <span class="item-dots"></span>
+          <span class="price-pair"><span class="price-out">250,000</span><span class="price-in">200,000</span></span>
+        </li>
+        <li>
+          <span class="item-name">حمص حب بحامض</span>
+          <span class="item-dots"></span>
+          <span class="price-pair"><span class="price-out">250,000</span><span class="price-in">200,000</span></span>
+        </li>
+        <li>
+          <span class="item-name">حمص مع لحمة</span>
+          <span class="item-dots"></span>
+          <span class="price-pair"><span class="price-out">400,000</span><span class="price-in">350,000</span></span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="menu-section menu-section--alt" id="foul">
+    <div class="menu-section__pattern"></div>
+    <div class="menu-section__inner">
+      <h2 class="menu-block__title">فول</h2>
+      <div class="menu-cols-label"><span>خارج المحل</span><span>داخل المحل</span></div>
+      <ul class="menu-list">
+        <li>
+          <span class="item-name">فول</span>
+          <span class="item-dots"></span>
+          <span class="price-pair"><span class="price-out">250,000</span><span class="price-in">200,000</span></span>
+        </li>
+        <li>
+          <span class="item-name">فول بطحينة</span>
+          <span class="item-dots"></span>
+          <span class="price-pair"><span class="price-out">250,000</span><span class="price-in">200,000</span></span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="menu-section" id="fatteh">
+    <div class="menu-section__pattern"></div>
+    <div class="menu-section__inner">
+      <h2 class="menu-block__title">فتة</h2>
+      <div class="menu-cols-label"><span>خارج المحل</span><span>داخل المحل</span></div>
+      <ul class="menu-list">
+        <li>
+          <span class="item-name">فتة</span>
+          <span class="item-dots"></span>
+          <span class="price-pair"><span class="price-out">300,000</span><span class="price-in">250,000</span></span>
+        </li>
+        <li>
+          <span class="item-name">ماليزية</span>
+          <span class="item-dots"></span>
+          <span class="price-pair"><span class="price-out">300,000</span><span class="price-in">250,000</span></span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="menu-section menu-section--alt" id="sfayeh">
+    <div class="menu-section__pattern"></div>
+    <div class="menu-section__inner">
+      <h2 class="menu-block__title">صفائح + كعك</h2>
+      <div class="menu-cols-label"><span>خارج المحل</span><span>داخل المحل</span></div>
+      <ul class="menu-list">
+        <li>
+          <span class="item-name">صفيحة لحمة</span>
+          <span class="item-dots"></span>
+          <span class="price-pair"><span class="price-out">150,000</span><span class="price-in">100,000</span></span>
+        </li>
+        <li>
+          <span class="item-name">صفيحة كفتة</span>
+          <span class="item-dots"></span>
+          <span class="price-pair"><span class="price-out">150,000</span><span class="price-in">100,000</span></span>
+        </li>
+        <li>
+          <span class="item-name">كعكة جبنة عكاوي</span>
+          <span class="item-dots"></span>
+          <span class="price-pair"><span class="price-out">150,000</span><span class="price-in">100,000</span></span>
+        </li>
+        <li>
+          <span class="item-name">كعكة عكاوي + موزاريلا</span>
+          <span class="item-dots"></span>
+          <span class="price-pair"><span class="price-out">200,000</span><span class="price-in">150,000</span></span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="menu-section" id="appetizers">
+    <div class="menu-section__pattern"></div>
+    <div class="menu-section__inner">
+      <h2 class="menu-block__title">مقبلات</h2>
+      <div class="menu-cols-label"><span>خارج المحل</span><span>داخل المحل</span></div>
+      <ul class="menu-list">
+        <li>
+          <span class="item-name">كبة مقلية دزينة</span>
+          <span class="item-dots"></span>
+          <span class="price-pair"><span class="price-out">720,000</span><span class="price-in">720,000</span></span>
+        </li>
+        <li>
+          <span class="item-name">رقاقات جبنة دزينة</span>
+          <span class="item-dots"></span>
+          <span class="price-pair"><span class="price-out">360,000</span><span class="price-in">360,000</span></span>
+        </li>
+        <li>
+          <span class="item-name">ورق صيامي دزينة</span>
+          <span class="item-dots"></span>
+          <span class="price-pair"><span class="price-out">300,000</span><span class="price-in">300,000</span></span>
+        </li>
+        <li>
+          <span class="item-name">حمص شمندر نصف كيلو</span>
+          <span class="item-dots"></span>
+          <span class="price-pair"><span class="price-out">300,000</span><span class="price-in">300,000</span></span>
+        </li>
+        <li>
+          <span class="item-name">متبل نصف كيلو</span>
+          <span class="item-dots"></span>
+          <span class="price-pair"><span class="price-out">300,000</span><span class="price-in">300,000</span></span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__pattern"></div>
+  <div class="footer__inner">
+    <img class="footer__logo" src="assets/logo.png" alt="Chef Ahmad Restaurant">
+    <p class="footer__address"><i class="fa-solid fa-location-dot"></i> الميناء، حي الرملة، بجانب فلافل المنارة</p>
+    <p class="footer__phone"><i class="fa-solid fa-phone"></i> 79 39 66 81</p>
+    <div class="footer__social">
+      <a href="https://instagram.com/chef.ahmad.restaurant" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://tiktok.com/@chef.ahmad.restaurant" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="tel:+96179396681" aria-label="اتصال"><i class="fa-solid fa-phone"></i></a>
+    </div>
+    <p class="footer__copy">&copy; <span id="year"></span> Chef Ahmad Restaurant. All rights reserved.</p>
+    <div class="footer__credits">
+      <span class="footer__credit"><span class="footer__credit-label">Structured By:</span> <a href="https://colartdigitalmarketingagency.com" target="_blank" rel="noopener">Colart Digital Marketing Agency</a></span>
+      <span class="footer__sep">/</span>
+      <span class="footer__credit"><span class="footer__credit-label">Hosted By:</span> <a href="https://menus.colartdigitalmarketingagency.com" target="_blank" rel="noopener">Menus by Colart</a></span>
+    </div>
+  </div>
+</footer>
+
+<a class="fab-call" href="tel:+96179396681" aria-label="اتصل للطلب">
+  <i class="fa-solid fa-phone"></i>
+</a>
+
+<script src="script.js"></script>
 </body>
 </html>
