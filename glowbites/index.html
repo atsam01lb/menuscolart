@@ -3,33 +3,457 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Glow Bites — Coming Soon | Menus by Colart</title>
-<meta name="description" content="Glow Bites's digital menu is coming soon, built by Colart Digital Marketing Agency.">
-<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+<title>Glow Bites | Order Online</title>
+<meta name="description" content="Order Glow Bites healthy treats, chocolates, cakes and gift boxes online. Build your basket and check out instantly on WhatsApp.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="../assets/css/style_6.css">
-<!-- TODO: once Glow Bites sends their own style.css, link it here INSTEAD of/alongside menus.css
-     so this page (and their future full menu) matches their own brand. -->
-<link rel="stylesheet" href="../assets/css/menus.css">
+
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="coming-soon-page" style="--cs-accent:#64a08c; --cs-accent-2:#50a0b4;">
-  <div class="coming-soon-card reveal">
-    <div class="coming-soon-logo">
-      <img src="../assets/img/glowbites-logo.svg" alt="Glow Bites logo">
-    </div>
-    <span class="coming-soon-eyebrow">Digital Menu</span>
-    <h1 class="coming-soon-title">Glow Bites is coming soon</h1>
-    <p class="coming-soon-text">
-      We're building Glow Bites's digital menu. Check back shortly — this page will go live at
-      menus.colartdigitalmarketingagency.com/glowbites/.
-    </p>
-    <a href="/" class="coming-soon-back"><i class="fa-solid fa-arrow-left"></i> Back to all menus</a>
-    <p class="coming-soon-powered">Powered by <a href="https://colartdigitalmarketingagency.com">Colart Digital Marketing Agency</a></p>
+
+<div class="topbar">
+  <div class="topbar__inner">
+    <a class="topbar__brand" href="#top">
+      <img src="assets/logo-header.png" alt="Glow Bites">
+    </a>
+    <nav class="topbar__nav" aria-label="Menu categories">
+      <a href="#healthy">Healthy Collection</a>
+      <a href="#chocolate">Chocolate &amp; Sweet</a>
+      <a href="#cakes">Cakes &amp; Bakes</a>
+      <a href="#glow-treats">Glow Treats</a>
+      <a href="#gift">Gift Boxes</a>
+    </nav>
+    <button class="basket-btn" id="basketToggle" aria-label="Open basket">
+      <i class="fa-solid fa-basket-shopping"></i>
+      <span class="basket-btn__count" id="basketCount">0</span>
+    </button>
   </div>
 </div>
+
+<header class="hero" id="top">
+  <div class="hero__pattern"></div>
+  <div class="hero__inner">
+    <img class="hero__logo" src="assets/logo-hero.png" alt="Glow Bites — Healthy Energy, Sweetly Made">
+    <span class="hero__eyebrow"><i class="fa-solid fa-leaf"></i> Order Online</span>
+    <h1 class="hero__title">Your Basket, <span class="accent">Your Glow</span></h1>
+    <p class="hero__subtitle">
+      Pick your favorites, add them to your basket, and check out straight to WhatsApp.
+      Fresh healthy bites, chocolates, cakes and gift boxes made with love.
+    </p>
+    <a href="#menu" class="hero__cta">
+      Browse the Menu
+      <i class="fa-solid fa-arrow-down"></i>
+    </a>
+  </div>
+</header>
+
+<!-- Category quick-nav (scrollable pill row) -->
+<nav class="cat-pills" aria-label="Jump to category">
+  <a href="#healthy" class="cat-pill"><i class="fa-solid fa-leaf"></i> Healthy Collection</a>
+  <a href="#chocolate" class="cat-pill"><i class="fa-solid fa-cookie-bite"></i> Chocolate &amp; Sweet</a>
+  <a href="#cakes" class="cat-pill"><i class="fa-solid fa-cake-candles"></i> Cakes &amp; Bakes</a>
+  <a href="#glow-treats" class="cat-pill"><i class="fa-solid fa-wand-magic-sparkles"></i> Glow Treats</a>
+  <a href="#gift" class="cat-pill"><i class="fa-solid fa-gift"></i> Gift Boxes</a>
+</nav>
+
+<main id="menu">
+
+  <!-- ===== HEALTHY COLLECTION ===== -->
+  <section class="menu-category" id="healthy">
+    <div class="menu-category__inner anim-block">
+      <div class="menu-category__head">
+        <span class="menu-category__icon"><i class="fa-solid fa-leaf"></i></span>
+        <div>
+          <h2>Healthy Collection</h2>
+          <p>Guilt-free bites made with wholesome ingredients.</p>
+        </div>
+      </div>
+
+      <h3 class="menu-subhead anim-item">Healthy Bliss Bites</h3>
+      <div class="item-grid">
+        <article class="item-card anim-item" data-id="date-bite" data-name="Date Bite" data-variant="1 pc" data-price="40000">
+          <div class="item-card__top">
+            <h4 class="item-card__name">Date Bite</h4>
+            <span class="item-card__variant">1 pc</span>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price">40,000 L.L</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="Decrease quantity">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> Add to Basket</button>
+        </article>
+      </div>
+
+      <h3 class="menu-subhead anim-item">Healthy Cookies</h3>
+      <div class="item-grid">
+        <article class="item-card item-card--tbd anim-item" data-id="healthy-cookies" data-name="Healthy Cookies" data-variant="" data-price="">
+          <div class="item-card__top">
+            <h4 class="item-card__name">Healthy Cookies</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price item-card__price--tbd">Price on request</span>
+          </div>
+          <button class="add-btn add-btn--disabled" disabled><i class="fa-solid fa-message"></i> Ask on WhatsApp</button>
+        </article>
+      </div>
+
+      <h3 class="menu-subhead anim-item">Healthy Maamoul</h3>
+      <div class="item-grid">
+        <article class="item-card item-card--tbd anim-item" data-id="healthy-maamoul" data-name="Healthy Maamoul" data-variant="" data-price="">
+          <div class="item-card__top">
+            <h4 class="item-card__name">Healthy Maamoul</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price item-card__price--tbd">Price on request</span>
+          </div>
+          <button class="add-btn add-btn--disabled" disabled><i class="fa-solid fa-message"></i> Ask on WhatsApp</button>
+        </article>
+      </div>
+
+      <h3 class="menu-subhead anim-item">Healthy Balls &amp; Bites</h3>
+      <div class="item-grid">
+        <article class="item-card anim-item" data-id="carrot-power-balls" data-name="Carrot Power Balls" data-variant="" data-price="60000">
+          <div class="item-card__top">
+            <h4 class="item-card__name">Carrot Power Balls</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price">60,000 L.L</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="Decrease quantity">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> Add to Basket</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="choco-nuts" data-name="Choco Nuts" data-variant="1 pc" data-price="120000">
+          <div class="item-card__top">
+            <h4 class="item-card__name">Choco Nuts</h4>
+            <span class="item-card__variant">1 pc</span>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price">120,000 L.L</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="Decrease quantity">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> Add to Basket</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="choco-cup" data-name="Choco Cup" data-variant="1 pc" data-price="210000">
+          <div class="item-card__top">
+            <h4 class="item-card__name">Choco Cup</h4>
+            <span class="item-card__variant">1 pc</span>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price">210,000 L.L</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="Decrease quantity">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> Add to Basket</button>
+        </article>
+      </div>
+
+      <h3 class="menu-subhead anim-item">Granola &amp; Biscuits</h3>
+      <div class="item-grid">
+        <article class="item-card anim-item" data-id="granola" data-name="Granola" data-variant="200g" data-price="250000">
+          <div class="item-card__top">
+            <h4 class="item-card__name">Granola</h4>
+            <span class="item-card__variant">200g</span>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price">250,000 L.L</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="Decrease quantity">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> Add to Basket</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="oat-biscuit-box-granola" data-name="Oat Biscuit Box" data-variant="" data-price="500000">
+          <div class="item-card__top">
+            <h4 class="item-card__name">Oat Biscuit Box</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price">500,000 L.L</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="Decrease quantity">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> Add to Basket</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CHOCOLATE & SWEET TREATS ===== -->
+  <section class="menu-category" id="chocolate">
+    <div class="menu-category__inner anim-block">
+      <div class="menu-category__head">
+        <span class="menu-category__icon"><i class="fa-solid fa-cookie-bite"></i></span>
+        <div>
+          <h2>Chocolate &amp; Sweet Treats</h2>
+          <p>Rich, indulgent favorites for your sweet tooth.</p>
+        </div>
+      </div>
+      <div class="item-grid">
+        <article class="item-card anim-item" data-id="chocolate-bar" data-name="Chocolate Bar" data-variant="" data-price="110000">
+          <div class="item-card__top">
+            <h4 class="item-card__name">Chocolate Bar</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price">110,000 L.L</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="Decrease quantity">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> Add to Basket</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="amer-din-roll" data-name="Amer Din Roll" data-variant="1 pc" data-price="90000">
+          <div class="item-card__top">
+            <h4 class="item-card__name">Amer Din Roll</h4>
+            <span class="item-card__variant">1 pc</span>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price">90,000 L.L</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="Decrease quantity">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> Add to Basket</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CAKES & BAKES ===== -->
+  <section class="menu-category" id="cakes">
+    <div class="menu-category__inner anim-block">
+      <div class="menu-category__head">
+        <span class="menu-category__icon"><i class="fa-solid fa-cake-candles"></i></span>
+        <div>
+          <h2>Cakes &amp; Bakes</h2>
+          <p>Freshly baked, made to share.</p>
+        </div>
+      </div>
+      <div class="item-grid">
+        <article class="item-card anim-item" data-id="brownie-cake" data-name="Brownie Cake" data-variant="" data-price="800000">
+          <div class="item-card__top">
+            <h4 class="item-card__name">Brownie Cake</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price">800,000 L.L</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="Decrease quantity">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> Add to Basket</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GLOW TREATS ===== -->
+  <section class="menu-category" id="glow-treats">
+    <div class="menu-category__inner anim-block">
+      <div class="menu-category__head">
+        <span class="menu-category__icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+        <div>
+          <h2>Glow Treats</h2>
+          <p>Bite-sized favorites, perfect for sharing.</p>
+        </div>
+      </div>
+      <div class="item-grid">
+        <article class="item-card anim-item" data-id="wafer-nutella-balls" data-name="Wafer Nutella Balls" data-variant="1 pc" data-price="50000">
+          <div class="item-card__top">
+            <h4 class="item-card__name">Wafer Nutella Balls</h4>
+            <span class="item-card__variant">1 pc</span>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price">50,000 L.L</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="Decrease quantity">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> Add to Basket</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="tiramisu-balls" data-name="Tiramisu Balls" data-variant="1 pc" data-price="50000">
+          <div class="item-card__top">
+            <h4 class="item-card__name">Tiramisu Balls</h4>
+            <span class="item-card__variant">1 pc</span>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price">50,000 L.L</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="Decrease quantity">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> Add to Basket</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="brownies-balls" data-name="Brownies Balls" data-variant="1 pc" data-price="60000">
+          <div class="item-card__top">
+            <h4 class="item-card__name">Brownies Balls</h4>
+            <span class="item-card__variant">1 pc</span>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price">60,000 L.L</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="Decrease quantity">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> Add to Basket</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="coconut-balls" data-name="Coconut Balls" data-variant="1 pc" data-price="35000">
+          <div class="item-card__top">
+            <h4 class="item-card__name">Coconut Balls</h4>
+            <span class="item-card__variant">1 pc</span>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price">35,000 L.L</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="Decrease quantity">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> Add to Basket</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GIFT & SHARING BOXES ===== -->
+  <section class="menu-category" id="gift">
+    <div class="menu-category__inner anim-block">
+      <div class="menu-category__head">
+        <span class="menu-category__icon"><i class="fa-solid fa-gift"></i></span>
+        <div>
+          <h2>Gift &amp; Sharing Boxes</h2>
+          <p>Ready-made boxes for gifting or sharing.</p>
+        </div>
+      </div>
+      <div class="item-grid">
+        <article class="item-card anim-item" data-id="ferrero-rocher-box" data-name="Ferrero Rocher Box" data-variant="" data-price="720000">
+          <div class="item-card__top">
+            <h4 class="item-card__name">Ferrero Rocher Box</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price">720,000 L.L</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="Decrease quantity">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> Add to Basket</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="oat-biscuit-box-gift" data-name="Oat Biscuit Box" data-variant="" data-price="500000">
+          <div class="item-card__top">
+            <h4 class="item-card__name">Oat Biscuit Box</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price">500,000 L.L</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="Decrease quantity">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> Add to Basket</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <img class="footer__logo" src="assets/logo-header.png" alt="Glow Bites">
+    <a href="/" class="footer__back"><i class="fa-solid fa-arrow-left"></i> Back to all menus</a>
+    <p class="footer__copy">&copy; <span id="year"></span> Glow Bites. All rights reserved.</p>
+    <div class="footer__credits">
+      <span class="footer__credit"><span class="footer__credit-label">Structured By:</span> <a href="https://colartdigitalmarketingagency.com" target="_blank" rel="noopener">Colart Digital Marketing Agency</a></span>
+      <span class="footer__sep">/</span>
+      <span class="footer__credit"><span class="footer__credit-label">Hosted By:</span> <a href="https://menus.colartdigitalmarketingagency.com" target="_blank" rel="noopener">Menus by Colart</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== BASKET DRAWER ===== -->
+<div class="basket-overlay" id="basketOverlay"></div>
+<aside class="basket-drawer" id="basketDrawer" aria-label="Your basket">
+  <div class="basket-drawer__head">
+    <h2><i class="fa-solid fa-basket-shopping"></i> Your Basket</h2>
+    <button class="basket-drawer__close" id="basketClose" aria-label="Close basket">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+
+  <div class="basket-drawer__body" id="basketBody">
+    <div class="basket-empty" id="basketEmpty">
+      <i class="fa-solid fa-basket-shopping"></i>
+      <p>Your basket is empty.</p>
+      <span>Add a few treats to get started.</span>
+    </div>
+    <ul class="basket-lines" id="basketLines"></ul>
+  </div>
+
+  <div class="basket-drawer__foot" id="basketFoot">
+    <div class="basket-subtotal">
+      <span>Subtotal</span>
+      <span id="basketSubtotal">0 L.L</span>
+    </div>
+    <button class="checkout-btn" id="checkoutBtn">
+      <i class="fa-brands fa-whatsapp"></i> Checkout on WhatsApp
+    </button>
+    <button class="clear-btn" id="clearBtn">Clear Basket</button>
+  </div>
+</aside>
+
+<!-- Floating basket button (mobile-friendly quick access) -->
+<button class="basket-fab" id="basketFab" aria-label="Open basket">
+  <i class="fa-solid fa-basket-shopping"></i>
+  <span class="basket-fab__count" id="basketFabCount">0</span>
+</button>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
 </body>
 </html>
