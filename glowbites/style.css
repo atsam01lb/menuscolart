@@ -58,17 +58,27 @@ h1, h2, h3, h4 { font-family: var(--font-display); }
   gap: 16px;
 }
 .topbar__brand img { height: 44px; width: auto; }
-.topbar__nav {
-  display: flex;
+
+.topbar__right { display: flex; align-items: center; gap: 16px; }
+
+.topbar__social { display: flex; align-items: center; gap: 8px; }
+.topbar__social a {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: inline-flex;
   align-items: center;
-  gap: 22px;
-  font-size: 13.5px;
-  font-weight: 700;
+  justify-content: center;
+  background: var(--soft-beige);
+  border: 1px solid var(--border);
   color: var(--cocoa-brown);
+  font-size: 13.5px;
+  transition: background-color .2s ease, color .2s ease, transform .2s ease;
 }
-.topbar__nav a { opacity: .78; transition: opacity .2s ease, color .2s ease; }
-.topbar__nav a:hover { opacity: 1; color: var(--glow-orange); }
-@media (max-width: 880px) { .topbar__nav { display: none; } }
+.topbar__social a:hover { background: var(--glow-orange); color: var(--white); transform: translateY(-2px); }
+@media (max-width: 420px) {
+  .topbar__social { display: none; }
+}
 
 .basket-btn {
   position: relative;
@@ -251,6 +261,19 @@ h1, h2, h3, h4 { font-family: var(--font-display); }
   font-size: 13.5px;
   color: rgba(74, 40, 24, .62);
 }
+.menu-category__badge {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 8px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  color: var(--glow-orange);
+  background: rgba(203, 119, 41, .12);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
 
 .menu-subhead {
   font-size: 15px;
@@ -324,6 +347,37 @@ h1, h2, h3, h4 { font-family: var(--font-display); }
   white-space: nowrap;
 }
 
+.item-card__note {
+  font-size: 12.5px;
+  color: rgba(74, 40, 24, .62);
+  padding: 8px 18px 0;
+  line-height: 1.45;
+}
+
+.item-card__options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 18px 0;
+}
+.option-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--cocoa-brown);
+  cursor: pointer;
+}
+.option-row input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--glow-orange);
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+.option-row em { font-style: normal; color: var(--olive-green); font-weight: 700; }
+
 .item-card__bottom { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 18px 0; }
 .item-card__price { font-size: 15px; font-weight: 800; color: var(--glow-orange); }
 .item-card__price--tbd { color: rgba(74, 40, 24, .5); font-size: 13.5px; font-weight: 700; font-style: italic; }
@@ -380,7 +434,99 @@ h1, h2, h3, h4 { font-family: var(--font-display); }
 }
 .add-btn--disabled:hover { background: var(--soft-beige); transform: none; }
 
+.add-btn--ask { background: #25D366; }
+.add-btn--ask:hover { background: #1fb955; }
+.add-btn--ask:disabled {
+  background: var(--soft-beige);
+  color: rgba(74, 40, 24, .45);
+  cursor: default;
+}
+.add-btn--ask:disabled:hover { background: var(--soft-beige); transform: none; }
+
 .item-card--tbd { background: var(--soft-beige); }
+
+/* ---- special cards: Balls Box checklist + Choco Cup custom CTA ---- */
+.item-card--special {
+  border-color: rgba(203, 119, 41, .3);
+  background: linear-gradient(180deg, var(--white) 0%, var(--soft-beige) 100%);
+  grid-column: span 2;
+}
+@media (max-width: 560px) { .item-card--special { grid-column: span 1; } }
+
+.checklist-counter {
+  display: inline-block;
+  font-weight: 800;
+  color: var(--glow-orange);
+  font-style: normal;
+}
+
+.checklist {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 8px;
+  padding: 10px 18px 0;
+}
+.checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--cocoa-brown);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: border-color .2s ease, background-color .2s ease;
+}
+.checklist-item:has(input:checked) {
+  border-color: var(--glow-orange);
+  background: rgba(203, 119, 41, .1);
+}
+.checklist-item input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--glow-orange);
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+.checklist-item input:disabled { cursor: not-allowed; }
+.checklist-item:has(input:disabled) { opacity: .5; }
+
+.custom-cta-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 0;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  max-width: 640px;
+}
+.custom-cta-card__photo {
+  flex: 0 0 200px;
+  aspect-ratio: 1 / 1;
+  background: var(--soft-beige);
+}
+.custom-cta-card__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.custom-cta-card__body {
+  flex: 1 1 260px;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+.custom-cta-card__body h3 { font-size: 17px; font-weight: 800; color: var(--dark-cocoa); }
+.custom-cta-card__body p { font-size: 13.5px; color: rgba(74, 40, 24, .65); margin-bottom: 4px; }
+.custom-cta-card__body .add-btn { margin: 0; align-self: flex-start; padding: 11px 20px; }
+@media (max-width: 480px) {
+  .custom-cta-card { flex-direction: column; }
+  .custom-cta-card__photo { flex: 0 0 auto; aspect-ratio: 16 / 9; }
+}
 
 /* ===========================================
    BASKET DRAWER
@@ -486,6 +632,62 @@ h1, h2, h3, h4 { font-family: var(--font-display); }
   padding: 18px 22px 22px;
   background: var(--soft-beige);
 }
+
+.order-type { margin-bottom: 16px; }
+.order-type__label {
+  display: block;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--cocoa-brown);
+  margin-bottom: 8px;
+}
+.order-type__choices { display: flex; gap: 8px; }
+.order-type__choice {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--cocoa-brown);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  transition: border-color .2s ease, background-color .2s ease, color .2s ease;
+}
+.order-type__choice input { position: absolute; opacity: 0; pointer-events: none; }
+.order-type__choice:has(input:checked) {
+  border-color: var(--glow-orange);
+  background: var(--glow-orange);
+  color: var(--white);
+}
+.delivery-address { margin-top: 10px; }
+.delivery-address label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--cocoa-brown);
+  margin-bottom: 6px;
+}
+.delivery-address textarea {
+  width: 100%;
+  resize: vertical;
+  font-family: inherit;
+  font-size: 13.5px;
+  color: var(--dark-cocoa);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.delivery-address textarea:focus { outline: 2px solid var(--glow-orange); outline-offset: 1px; }
+.delivery-address.has-error textarea { outline: 2px solid #c0392b; outline-offset: 1px; }
+
 .basket-subtotal {
   display: flex;
   align-items: center;
@@ -605,7 +807,22 @@ h1, h2, h3, h4 { font-family: var(--font-display); }
   margin-top: 30px;
 }
 .footer__inner { max-width: 480px; margin: 0 auto; }
-.footer__logo { width: 130px; margin: 0 auto 20px; }
+.footer__logo { width: 130px; margin: 0 auto 18px; }
+.footer__social { display: flex; justify-content: center; gap: 10px; margin-bottom: 18px; }
+.footer__social a {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  border: 1px solid var(--border);
+  color: var(--cocoa-brown);
+  font-size: 14.5px;
+  transition: background-color .2s ease, color .2s ease, transform .2s ease;
+}
+.footer__social a:hover { background: var(--glow-orange); color: var(--white); transform: translateY(-2px); }
 .footer__copy {
   font-size: 13px;
   color: rgba(74, 40, 24, .6);

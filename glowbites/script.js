@@ -57,6 +57,7 @@ if ('IntersectionObserver' in window) {
 ========================================================= */
 const WHATSAPP_NUMBER = '96179328109';
 const CART_STORAGE_KEY = 'glowbites_cart_v1';
+const ORDER_INFO_STORAGE_KEY = 'glowbites_order_info_v1';
 
 function loadCart() {
   try {
@@ -73,6 +74,28 @@ function saveCart(cart) {
   } catch (e) {
     /* storage unavailable — cart just won't persist across reloads */
   }
+}
+
+function loadOrderInfo() {
+  try {
+    const raw = localStorage.getItem(ORDER_INFO_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : { type: 'pickup', address: '' };
+  } catch (e) {
+    return { type: 'pickup', address: '' };
+  }
+}
+
+function saveOrderInfo(info) {
+  try {
+    localStorage.setItem(ORDER_INFO_STORAGE_KEY, JSON.stringify(info));
+  } catch (e) {
+    /* storage unavailable */
+  }
+}
+
+function openWhatsApp(message) {
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  window.open(url, '_blank', 'noopener');
 }
 
 let cart = loadCart();
@@ -204,9 +227,51 @@ clearBtn.addEventListener('click', () => {
   showToast('Basket cleared');
 });
 
+/* --- Order type: Pickup / Delivery --- */
+const orderTypePickup = document.getElementById('orderTypePickup');
+const orderTypeDelivery = document.getElementById('orderTypeDelivery');
+const deliveryAddressWrap = document.getElementById('deliveryAddressWrap');
+const deliveryAddressInput = document.getElementById('deliveryAddress');
+
+const savedOrderInfo = loadOrderInfo();
+if (savedOrderInfo.type === 'delivery') {
+  orderTypeDelivery.checked = true;
+} else {
+  orderTypePickup.checked = true;
+}
+deliveryAddressInput.value = savedOrderInfo.address || '';
+
+function updateOrderTypeUI() {
+  deliveryAddressWrap.hidden = !orderTypeDelivery.checked;
+}
+updateOrderTypeUI();
+
+orderTypePickup.addEventListener('change', () => {
+  updateOrderTypeUI();
+  saveOrderInfo({ type: 'pickup', address: deliveryAddressInput.value.trim() });
+});
+orderTypeDelivery.addEventListener('change', () => {
+  updateOrderTypeUI();
+  saveOrderInfo({ type: 'delivery', address: deliveryAddressInput.value.trim() });
+});
+deliveryAddressInput.addEventListener('input', () => {
+  deliveryAddressWrap.classList.remove('has-error');
+  saveOrderInfo({ type: orderTypeDelivery.checked ? 'delivery' : 'pickup', address: deliveryAddressInput.value.trim() });
+});
+
 checkoutBtn.addEventListener('click', () => {
   const ids = Object.keys(cart);
   if (!ids.length) return;
+
+  const isDelivery = orderTypeDelivery.checked;
+  const address = deliveryAddressInput.value.trim();
+  if (isDelivery && !address) {
+    deliveryAddressWrap.classList.add('has-error');
+    deliveryAddressInput.focus();
+    showToast('Please add your delivery address');
+    return;
+  }
+  deliveryAddressWrap.classList.remove('has-error');
 
   let message = 'Hi Glow Bites! I would like to order:\n\n';
   ids.forEach((id, i) => {
@@ -215,40 +280,55 @@ checkoutBtn.addEventListener('click', () => {
     message += `${i + 1}. ${line.name}${variantText} x${line.qty} = ${formatPrice(line.price * line.qty)}\n`;
   });
   message += `\nTotal: ${formatPrice(cartTotal())}`;
+  message += `\n\nOrder Type: ${isDelivery ? 'Delivery' : 'Pickup'}`;
+  if (isDelivery) message += `\nDelivery Address: ${address}`;
 
-  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-  window.open(url, '_blank', 'noopener');
+  openWhatsApp(message);
 });
 
 /* =========================================================
-   ITEM CARDS — quantity stepper + add to basket
+   ITEM CARDS — quantity stepper, add-ons, add to basket / ask
 ========================================================= */
 document.querySelectorAll('.item-card').forEach(card => {
   const id = card.getAttribute('data-id');
   const name = card.getAttribute('data-name');
-  const variant = card.getAttribute('data-variant') || '';
+  const baseVariant = card.getAttribute('data-variant') || '';
   const priceAttr = card.getAttribute('data-price');
   const price = priceAttr ? parseFloat(priceAttr) : null;
+  const minQty = parseInt(card.getAttribute('data-min-qty'), 10) || 1;
 
   const qtyValueEl = card.querySelector('.qty-value');
   const addBtn = card.querySelector('[data-action="add"]');
-  let qty = 1;
+  const askBtn = card.querySelector('[data-action="ask"]');
+  const optionChecks = Array.from(card.querySelectorAll('.option-check'));
+  let qty = minQty;
+
+  function checkedOptions() {
+    return optionChecks.filter(cb => cb.checked);
+  }
 
   card.querySelectorAll('[data-action="minus"], [data-action="plus"]').forEach(btn => {
     btn.addEventListener('click', () => {
       const action = btn.getAttribute('data-action');
       if (action === 'plus') qty += 1;
-      if (action === 'minus') qty = Math.max(1, qty - 1);
+      if (action === 'minus') qty = Math.max(minQty, qty - 1);
       qtyValueEl.textContent = qty;
     });
   });
 
   if (addBtn && price !== null) {
     addBtn.addEventListener('click', () => {
-      if (cart[id]) {
-        cart[id].qty += qty;
+      const opts = checkedOptions();
+      const optsLabel = opts.map(cb => cb.dataset.optionLabel).join(' + ');
+      const optsPrice = opts.reduce((sum, cb) => sum + parseFloat(cb.dataset.optionPrice), 0);
+      const unitPrice = price + optsPrice;
+      const displayVariant = [baseVariant, optsLabel].filter(Boolean).join(' + ');
+      const cartKey = optsLabel ? `${id}::${optsLabel}` : id;
+
+      if (cart[cartKey]) {
+        cart[cartKey].qty += qty;
       } else {
-        cart[id] = { name, variant, price, qty };
+        cart[cartKey] = { name, variant: displayVariant, price: unitPrice, qty };
       }
       renderBasketDrawer();
       showToast(`${name} added to basket`);
@@ -261,10 +341,65 @@ document.querySelectorAll('.item-card').forEach(card => {
         addBtn.innerHTML = original;
       }, 1100);
 
-      qty = 1;
+      qty = minQty;
       qtyValueEl.textContent = qty;
     });
   }
+
+  if (askBtn) {
+    askBtn.addEventListener('click', () => {
+      const opts = checkedOptions().map(cb => cb.dataset.optionLabel);
+      let msg = `Hi Glow Bites! I'd like to ask about pricing for ${name}`;
+      if (baseVariant) msg += ` (${baseVariant})`;
+      if (opts.length) msg += ` with ${opts.join(' + ')}`;
+      if (minQty > 1) msg += ` — minimum order ${minQty} pcs`;
+      msg += '.';
+      openWhatsApp(msg);
+    });
+  }
 });
+
+/* =========================================================
+   BALLS BOX — flavor checklist (up to 4 flavors, 3 pcs each)
+========================================================= */
+(function () {
+  const checklist = document.getElementById('ballsBoxChecklist');
+  if (!checklist) return;
+
+  const MAX_FLAVORS = 4;
+  const flavorChecks = Array.from(checklist.querySelectorAll('.ballsbox-flavor'));
+  const counterEl = document.getElementById('ballsBoxCounter');
+  const askBtn = document.getElementById('ballsBoxAskBtn');
+
+  function update() {
+    const checked = flavorChecks.filter(cb => cb.checked);
+    counterEl.textContent = `${checked.length}/${MAX_FLAVORS} selected`;
+    flavorChecks.forEach(cb => {
+      if (!cb.checked) cb.disabled = checked.length >= MAX_FLAVORS;
+    });
+    askBtn.disabled = checked.length === 0;
+  }
+
+  flavorChecks.forEach(cb => cb.addEventListener('change', update));
+  update();
+
+  askBtn.addEventListener('click', () => {
+    const flavors = flavorChecks.filter(cb => cb.checked).map(cb => cb.value);
+    if (!flavors.length) return;
+    const msg = `Hi Glow Bites! I'd like to order a Balls Box (12 pcs) with these flavors (3 pcs each): ${flavors.join(', ')}.`;
+    openWhatsApp(msg);
+  });
+})();
+
+/* =========================================================
+   CHOCO CUP — custom order CTA
+========================================================= */
+(function () {
+  const btn = document.getElementById('chocoCupAskBtn');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    openWhatsApp("Hi Glow Bites! I'd like to customize my own Choco Cup. Can you help me build it?");
+  });
+})();
 
 renderBasketDrawer();
