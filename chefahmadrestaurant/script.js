@@ -23,3 +23,29 @@ if ('IntersectionObserver' in window && sections.length) {
 
   sections.forEach(s => observer.observe(s));
 }
+
+// Scroll-in reveal for each menu block (photo + list) and a gentle
+// price-row stagger inside it. Progressive enhancement: the hidden/
+// offset styles in style.css only apply once ".js-anim" is on <body>,
+// so content stays fully visible if JS doesn't run at all.
+if ('IntersectionObserver' in window) {
+  document.body.classList.add('js-anim');
+
+  const blocks = document.querySelectorAll('.anim-block');
+  blocks.forEach(block => {
+    block.querySelectorAll('.anim-item').forEach((item, i) => {
+      item.style.setProperty('--anim-delay', (i * 70) + 'ms');
+    });
+  });
+
+  const revealObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+  blocks.forEach(block => revealObserver.observe(block));
+}
