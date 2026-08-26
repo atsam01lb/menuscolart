@@ -361,15 +361,20 @@ document.querySelectorAll('.item-card').forEach(card => {
 
 /* =========================================================
    BALLS BOX — flavor checklist (up to 4 flavors, 3 pcs each)
+   Priced item: adds to the basket like any other card, with
+   the chosen flavors carried as the line's variant text.
 ========================================================= */
 (function () {
+  const card = document.getElementById('ballsBoxCard');
   const checklist = document.getElementById('ballsBoxChecklist');
-  if (!checklist) return;
+  if (!card || !checklist) return;
 
+  const BALLS_BOX_PRICE = 100000;
   const MAX_FLAVORS = 4;
   const flavorChecks = Array.from(checklist.querySelectorAll('.ballsbox-flavor'));
   const counterEl = document.getElementById('ballsBoxCounter');
-  const askBtn = document.getElementById('ballsBoxAskBtn');
+  const addBtn = document.getElementById('ballsBoxAddBtn');
+  const qtyValueEl = card.querySelector('.qty-value');
 
   function update() {
     const checked = flavorChecks.filter(cb => cb.checked);
@@ -377,17 +382,37 @@ document.querySelectorAll('.item-card').forEach(card => {
     flavorChecks.forEach(cb => {
       if (!cb.checked) cb.disabled = checked.length >= MAX_FLAVORS;
     });
-    askBtn.disabled = checked.length === 0;
+    addBtn.disabled = checked.length === 0;
   }
 
   flavorChecks.forEach(cb => cb.addEventListener('change', update));
   update();
 
-  askBtn.addEventListener('click', () => {
+  addBtn.addEventListener('click', () => {
     const flavors = flavorChecks.filter(cb => cb.checked).map(cb => cb.value);
     if (!flavors.length) return;
-    const msg = `Hi Glow Bites! I'd like to order a Balls Box (12 pcs) with these flavors (3 pcs each): ${flavors.join(', ')}.`;
-    openWhatsApp(msg);
+
+    const qty = parseInt(qtyValueEl.textContent, 10) || 1;
+    const flavorsLabel = flavors.join(', ');
+    const cartKey = `balls-box::${flavorsLabel}`;
+
+    if (cart[cartKey]) {
+      cart[cartKey].qty += qty;
+    } else {
+      cart[cartKey] = { name: 'Balls Box (12 pcs)', variant: flavorsLabel, price: BALLS_BOX_PRICE, qty };
+    }
+    renderBasketDrawer();
+    showToast('Balls Box added to basket');
+
+    addBtn.classList.add('is-added');
+    const original = addBtn.innerHTML;
+    addBtn.innerHTML = '<i class="fa-solid fa-check"></i> Added';
+    setTimeout(() => {
+      addBtn.classList.remove('is-added');
+      addBtn.innerHTML = original;
+    }, 1100);
+
+    qtyValueEl.textContent = '1';
   });
 })();
 
