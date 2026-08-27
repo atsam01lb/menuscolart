@@ -167,8 +167,31 @@ h1, h2, h3, h4 { font-family: var(--font-display); }
 .hero__subtitle {
   font-size: 15.5px;
   color: rgba(74, 40, 24, .72);
+  margin-bottom: 22px;
+}
+.hero__social {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
   margin-bottom: 26px;
 }
+.hero__social a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  border: 1px solid var(--border);
+  color: var(--cocoa-brown);
+  font-size: 16px;
+  box-shadow: var(--shadow-soft);
+  transition: background-color .2s ease, color .2s ease, transform .2s ease;
+}
+.hero__social a:hover { background: var(--glow-orange); color: var(--white); transform: translateY(-2px); }
 .hero__cta {
   display: inline-flex;
   align-items: center;
@@ -794,6 +817,89 @@ h1, h2, h3, h4 { font-family: var(--font-display); }
 }
 .toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
 .toast i { color: var(--olive-yellow); }
+
+/* ===========================================
+   THANK YOU / CONFIRM MODAL
+=========================================== */
+.thankyou-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(74, 40, 24, .45);
+  backdrop-filter: blur(3px);
+  z-index: 500;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+}
+.thankyou-overlay.is-open { opacity: 1; pointer-events: auto; }
+
+.thankyou-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(.94);
+  width: min(380px, 90vw);
+  background: var(--warm-cream);
+  border-radius: 22px;
+  padding: 36px 28px 26px;
+  text-align: center;
+  z-index: 501;
+  box-shadow: var(--shadow-lift);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease, transform .3s cubic-bezier(.22, .8, .28, 1);
+}
+.thankyou-modal.is-open { opacity: 1; pointer-events: auto; transform: translate(-50%, -50%) scale(1); }
+
+.thankyou-modal__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cocoa-brown);
+  font-size: 14px;
+  transition: background-color .2s ease;
+}
+.thankyou-modal__close:hover { background: var(--soft-beige); }
+
+.thankyou-modal__icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: rgba(203, 119, 41, .12);
+  color: var(--glow-orange);
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.thankyou-modal h2 {
+  font-size: 21px;
+  font-weight: 800;
+  color: var(--dark-cocoa);
+  margin-bottom: 8px;
+}
+.thankyou-modal p {
+  font-size: 13.5px;
+  color: rgba(74, 40, 24, .68);
+  line-height: 1.5;
+  margin-bottom: 22px;
+}
+.thankyou-modal .checkout-btn { margin-bottom: 10px; }
+.thankyou-modal__cancel {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: rgba(74, 40, 24, .55);
+  padding: 6px;
+  transition: color .2s ease;
+}
+.thankyou-modal__cancel:hover { color: var(--glow-orange); }
 
 /* ===========================================
    FOOTER

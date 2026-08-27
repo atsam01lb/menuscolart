@@ -283,7 +283,46 @@ checkoutBtn.addEventListener('click', () => {
   message += `\n\nOrder Type: ${isDelivery ? 'Delivery' : 'Pickup'}`;
   if (isDelivery) message += `\nDelivery Address: ${address}`;
 
-  openWhatsApp(message);
+  pendingCheckoutMessage = message;
+  openThankYou();
+});
+
+/* --- Thank You / confirm modal — shown before the WhatsApp redirect.
+   The cart only clears once the customer actually proceeds to WhatsApp;
+   closing/canceling this modal leaves the basket untouched. --- */
+const thankyouOverlay = document.getElementById('thankyouOverlay');
+const thankyouModal = document.getElementById('thankyouModal');
+const thankyouClose = document.getElementById('thankyouClose');
+const thankyouCancel = document.getElementById('thankyouCancel');
+const proceedWhatsAppBtn = document.getElementById('proceedWhatsAppBtn');
+let pendingCheckoutMessage = null;
+
+function openThankYou() {
+  thankyouOverlay.classList.add('is-open');
+  thankyouModal.classList.add('is-open');
+}
+function closeThankYou() {
+  thankyouOverlay.classList.remove('is-open');
+  thankyouModal.classList.remove('is-open');
+}
+
+thankyouOverlay.addEventListener('click', closeThankYou);
+thankyouClose.addEventListener('click', closeThankYou);
+thankyouCancel.addEventListener('click', closeThankYou);
+
+proceedWhatsAppBtn.addEventListener('click', () => {
+  if (pendingCheckoutMessage) {
+    openWhatsApp(pendingCheckoutMessage);
+    pendingCheckoutMessage = null;
+
+    /* Order actually sent — clear the basket so a returning visitor
+       starts fresh. If they never reach this point, the cart (saved
+       in localStorage) stays exactly as they left it. */
+    cart = {};
+    renderBasketDrawer();
+  }
+  closeThankYou();
+  closeBasket();
 });
 
 /* =========================================================

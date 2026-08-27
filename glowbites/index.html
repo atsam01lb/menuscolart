@@ -45,6 +45,12 @@
       Pick your favorites, add them to your basket, and check out straight to WhatsApp.
       Fresh healthy bites, balls, desserts, cakes and gift boxes made with love.
     </p>
+    <div class="hero__social">
+      <a href="https://facebook.com/glow.bites5" target="_blank" rel="noopener" aria-label="Glow Bites on Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://instagram.com/glow.bites5" target="_blank" rel="noopener" aria-label="Glow Bites on Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@glow.bites5" target="_blank" rel="noopener" aria-label="Glow Bites on TikTok"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="https://wa.me/96179328109" target="_blank" rel="noopener" aria-label="Glow Bites on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
     <a href="#menu" class="hero__cta">
       Browse the Menu
       <i class="fa-solid fa-arrow-down"></i>
@@ -1783,6 +1789,21 @@
   <i class="fa-solid fa-basket-shopping"></i>
   <span class="basket-fab__count" id="basketFabCount">0</span>
 </button>
+
+<!-- ===== THANK YOU / CONFIRM MODAL (shown before the WhatsApp redirect) ===== -->
+<div class="thankyou-overlay" id="thankyouOverlay"></div>
+<div class="thankyou-modal" id="thankyouModal" role="dialog" aria-label="Order confirmation">
+  <button class="thankyou-modal__close" id="thankyouClose" aria-label="Close">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+  <div class="thankyou-modal__icon"><i class="fa-solid fa-heart"></i></div>
+  <h2>Thank You!</h2>
+  <p>Your order is ready to send. Tap below to confirm it on WhatsApp and we will get back to you shortly.</p>
+  <button class="checkout-btn" id="proceedWhatsAppBtn">
+    <i class="fa-brands fa-whatsapp"></i> Proceed to WhatsApp
+  </button>
+  <button class="thankyou-modal__cancel" id="thankyouCancel">Continue Shopping</button>
+</div>
 
 <div class="toast" id="toast"></div>
 
