@@ -68,28 +68,26 @@ body.jf-body {
   font-size: 17px;
   letter-spacing: .16em;
 }
-.jf-back-link {
+
+/* ---- Language switcher ---- */
+.jf-langswitch {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 13px;
+  font-weight: 600;
   letter-spacing: .04em;
+}
+.jf-langswitch a {
   color: var(--jf-stone);
-  padding: 8px 16px;
-  border-radius: 999px;
-  border: 1px solid var(--jf-line);
-  transition: background .3s, color .3s, border-color .3s;
+  transition: color .3s;
 }
-.jf-back-link i { font-size: 10px; }
-.jf-back-link:hover {
-  background: var(--jf-ink);
-  color: var(--jf-white);
-  border-color: var(--jf-ink);
+.jf-langswitch a:hover { color: var(--jf-ink); }
+.jf-langswitch .jf-lang-current {
+  color: var(--jf-ink);
 }
-@media (max-width: 560px) {
-  .jf-back-link span { display: none; }
-  .jf-back-link { padding: 9px; }
+.jf-langswitch .jf-lang-sep {
+  color: var(--jf-pale);
 }
 
 /* ---- Hero (signature marble ground) ---- */
@@ -122,6 +120,14 @@ body.jf-body {
   line-height: 1.1;
   margin: 0 0 18px;
   letter-spacing: .04em;
+}
+.jf-hero-location {
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--jf-stone);
+  margin: 0 0 22px;
 }
 .jf-hero-text {
   max-width: 480px;
@@ -202,6 +208,67 @@ body.jf-body {
   color: var(--jf-stone);
   letter-spacing: .04em;
 }
+.jf-section-intro {
+  max-width: 560px;
+  margin: 14px auto 0;
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: var(--jf-stone);
+  font-style: italic;
+}
+
+/* ---- Featured offer box ---- */
+.jf-feature {
+  margin: 0 0 40px;
+  padding: 26px 28px;
+  background: var(--jf-ink);
+  border-radius: 4px;
+  text-align: center;
+}
+.jf-feature-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--jf-pale);
+  margin-bottom: 10px;
+}
+.jf-feature-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.jf-feature-name {
+  font-family: 'GFS Didot', serif;
+  font-size: 22px;
+  color: var(--jf-white);
+}
+.jf-feature-price {
+  font-family: 'GFS Didot', serif;
+  font-size: 26px;
+  color: var(--jf-white);
+}
+.jf-feature-note {
+  margin: 10px 0 0;
+  font-size: 12px;
+  font-style: italic;
+  color: var(--jf-pale);
+}
+
+/* ---- Two-column groups (laser price grid) ---- */
+.jf-cols {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+@media (min-width: 640px) {
+  .jf-cols {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 56px;
+  }
+}
 
 .jf-group { margin-bottom: 44px; }
 .jf-group-title {
@@ -216,14 +283,17 @@ body.jf-body {
   border-bottom: 1px solid var(--jf-line);
 }
 
+.jf-item {
+  padding: 14px 0;
+  border-bottom: 1px dotted var(--jf-line);
+}
+.jf-item:last-child { border-bottom: none; }
+
 .jf-row {
   display: flex;
   align-items: baseline;
   gap: 10px;
-  padding: 12px 0;
-  border-bottom: 1px dotted var(--jf-line);
 }
-.jf-row:last-child { border-bottom: none; }
 .jf-row-name {
   font-size: 15px;
   font-weight: 400;
@@ -240,6 +310,13 @@ body.jf-body {
   font-size: 16px;
   color: var(--jf-ink);
   white-space: nowrap;
+}
+.jf-row-desc {
+  margin: 6px 0 0;
+  font-size: 12.5px;
+  line-height: 1.65;
+  font-style: italic;
+  color: var(--jf-stone);
 }
 
 .jf-note {
