@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أبو حمزة - توصيل | اطلب أونلاين</title>
+<meta name="description" content="اطلب من مطعم أبو حمزة أونلاين للتوصيل: لحمة راس، مقادم، قباوات، كروش، فوارغ ومأكولات تقليدية. أضف طلبك إلى السلة وأتمم الطلب مباشرة عبر واتساب.">
+<link rel="icon" type="image/png" href="assets/logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar__inner">
+    <a class="topbar__brand" href="#top">
+      <img src="assets/logo.png" alt="أبو حمزة">
+    </a>
+    <div class="topbar__right">
+      <div class="topbar__social">
+        <a href="https://facebook.com/abou.hamze.restaurant" target="_blank" rel="noopener" aria-label="أبو حمزة على فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://instagram.com/abou.hamze.restaurant" target="_blank" rel="noopener" aria-label="أبو حمزة على إنستغرام"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://tiktok.com/@abou.hamze.restaurant" target="_blank" rel="noopener" aria-label="أبو حمزة على تيك توك"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://wa.me/96170540090" target="_blank" rel="noopener" aria-label="أبو حمزة على واتساب"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+      <button class="basket-btn" id="basketToggle" aria-label="افتح السلة">
+        <i class="fa-solid fa-basket-shopping"></i>
+        <span class="basket-btn__count" id="basketCount">0</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<header class="hero" id="top">
+  <div class="hero__pattern" aria-hidden="true"></div>
+  <div class="hero__inner">
+    <img class="hero__logo" src="assets/logo.png" alt="أبو حمزة">
+    <span class="hero__eyebrow"><i class="fa-solid fa-truck"></i> توصيل أونلاين</span>
+    <h1 class="hero__title">أبو حمزة <span class="accent">توصيل</span></h1>
+    <p class="hero__subtitle">
+      اختر أطباقك المفضلة، أضفها إلى السلة، وأتمم طلبك مباشرة عبر واتساب.
+      نفس نكهة أبو حمزة الأصيلة، توصّل لباب بيتك.
+    </p>
+    <div class="hero__social">
+      <a href="https://facebook.com/abou.hamze.restaurant" target="_blank" rel="noopener" aria-label="أبو حمزة على فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://instagram.com/abou.hamze.restaurant" target="_blank" rel="noopener" aria-label="أبو حمزة على إنستغرام"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://tiktok.com/@abou.hamze.restaurant" target="_blank" rel="noopener" aria-label="أبو حمزة على تيك توك"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="https://wa.me/96170540090" target="_blank" rel="noopener" aria-label="أبو حمزة على واتساب"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+    <a href="#menu" class="hero__cta">
+      تصفح المنيو
+      <i class="fa-solid fa-arrow-down"></i>
+    </a>
+  </div>
+</header>
+
+<!-- Category quick-nav (scrollable pill row) -->
+<nav class="cat-pills" aria-label="انتقل إلى القسم">
+  <a href="#inhouse" class="cat-pill"><i class="fa-solid fa-utensils"></i> طلبات داخل المحل</a>
+  <a href="#takeaway" class="cat-pill"><i class="fa-solid fa-box"></i> طلبات خارج المحل</a>
+  <a href="#appetizers" class="cat-pill"><i class="fa-solid fa-bowl-food"></i> مقبلات + سلطات</a>
+  <a href="#drinks" class="cat-pill"><i class="fa-solid fa-glass-water"></i> مشروبات</a>
+</nav>
+
+<main id="menu">
+
+  <section class="menu-category" id="inhouse">
+    <div class="menu-category__inner anim-block">
+      <div class="menu-category__head">
+        <span class="menu-category__icon"><i class="fa-solid fa-utensils"></i></span>
+        <div>
+          <h2>طلبات داخل المحل</h2>
+          <p>أطباقنا التقليدية، محضّرة طازجة وجاهزة للتوصيل</p>
+        </div>
+      </div>
+      <div class="item-grid">
+        <article class="item-card anim-item" data-id="inhouse-lahmet-ras" data-name="لحمة راس" data-price="500000">
+          <div class="item-card__photo"><img src="assets/items/inhouse-lahmet-ras.jpg" alt="لحمة راس" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">لحمة راس</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="500000">500,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="inhouse-maqadem" data-name="مقادم" data-price="600000">
+          <div class="item-card__photo"><img src="assets/items/inhouse-maqadem.jpg" alt="مقادم" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">مقادم</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="600000">600,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="inhouse-qabawat" data-name="قباوات" data-price="500000">
+          <div class="item-card__photo"><img src="assets/items/inhouse-qabawat.jpg" alt="قباوات" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">قباوات</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="500000">500,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="inhouse-qabawat-maqliyeh" data-name="قباوات مقلية" data-price="600000">
+          <div class="item-card__photo"><img src="assets/items/inhouse-qabawat-maqliyeh.jpg" alt="قباوات مقلية" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">قباوات مقلية</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="600000">600,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="inhouse-qabawat-maqliyeh-samneh" data-name="قباوات مقلية بالسمن الحموي" data-price="700000">
+          <div class="item-card__photo"><img src="assets/items/inhouse-qabawat-maqliyeh-samneh.jpg" alt="قباوات مقلية بالسمن الحموي" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">قباوات مقلية بالسمن الحموي</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="700000">700,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="inhouse-kroush" data-name="كروش" data-price="400000">
+          <div class="item-card__photo"><img src="assets/items/inhouse-kroush.jpg" alt="كروش" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">كروش</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="400000">400,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="inhouse-kroush-zeit-toum" data-name="كروش بزيت و توم" data-price="500000">
+          <div class="item-card__photo"><img src="assets/items/inhouse-kroush-zeit-toum.jpg" alt="كروش بزيت و توم" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">كروش بزيت و توم</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="500000">500,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="inhouse-kroush-lahme" data-name="كروش مع لحمة" data-price="700000">
+          <div class="item-card__photo"><img src="assets/items/inhouse-kroush-lahme.jpg" alt="كروش مع لحمة" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">كروش مع لحمة</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="700000">700,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="inhouse-fawareg" data-name="فوارغ" data-price="600000">
+          <div class="item-card__photo"><img src="assets/items/inhouse-fawareg.jpg" alt="فوارغ" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">فوارغ</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="600000">600,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="inhouse-fawareg-maqliyeh" data-name="فوارغ مقلية" data-price="700000">
+          <div class="item-card__photo"><img src="assets/items/inhouse-fawareg-maqliyeh.jpg" alt="فوارغ مقلية" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">فوارغ مقلية</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="700000">700,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="inhouse-fawareg-maqliyeh-samneh" data-name="فوارغ مقلية بالسمن الحموي" data-price="800000">
+          <div class="item-card__photo"><img src="assets/items/inhouse-fawareg-maqliyeh-samneh.jpg" alt="فوارغ مقلية بالسمن الحموي" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">فوارغ مقلية بالسمن الحموي</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="800000">800,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="inhouse-lisanat" data-name="لسانات" data-price="500000">
+          <div class="item-card__photo"><img src="assets/items/inhouse-lisanat.jpg" alt="لسانات" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">لسانات</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="500000">500,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="inhouse-fatet-ras" data-name="فتة راس" data-price="600000">
+          <div class="item-card__photo"><img src="assets/items/inhouse-fatet-ras.jpg" alt="فتة راس" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">فتة راس</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="600000">600,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="inhouse-fatet-qabawat" data-name="فتة قباوات" data-price="600000">
+          <div class="item-card__photo"><img src="assets/items/inhouse-fatet-qabawat.jpg" alt="فتة قباوات" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">فتة قباوات</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="600000">600,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="inhouse-fatet-lisanat" data-name="فتة لسانات" data-price="700000">
+          <div class="item-card__photo"><img src="assets/items/inhouse-fatet-lisanat.jpg" alt="فتة لسانات" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">فتة لسانات</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="700000">700,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="inhouse-fatet-fawareg" data-name="فتة فوارغ" data-price="700000">
+          <div class="item-card__photo"><img src="assets/items/inhouse-fatet-fawareg.jpg" alt="فتة فوارغ" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">فتة فوارغ</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="700000">700,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="inhouse-fatet-maqadem" data-name="فتة مقادم" data-price="800000">
+          <div class="item-card__photo"><img src="assets/items/inhouse-fatet-maqadem.jpg" alt="فتة مقادم" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">فتة مقادم</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="800000">800,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="inhouse-fatet-abouhamze" data-name="فتة أبو حمزة" data-price="900000">
+          <div class="item-card__photo"><img src="assets/items/inhouse-fatet-abouhamze.jpg" alt="فتة أبو حمزة" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">فتة أبو حمزة</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="900000">900,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="inhouse-mansaf-laban" data-name="منسف لحمة مع لبن" data-price="900000">
+          <div class="item-card__photo"><img src="assets/items/inhouse-mansaf-laban.jpg" alt="منسف لحمة مع لبن" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">منسف لحمة مع لبن</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="900000">900,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="inhouse-nikhaa-maqli-samneh" data-name="نخاع مقلي بالسمن الحموي" data-price="800000">
+          <div class="item-card__photo"><img src="assets/items/inhouse-nikhaa-maqli-samneh.jpg" alt="نخاع مقلي بالسمن الحموي" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">نخاع مقلي بالسمن الحموي</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="800000">800,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="inhouse-nikhaat-zeit-toum" data-name="نخاعات بزيت و توم" data-price="700000">
+          <div class="item-card__photo"><img src="assets/items/inhouse-nikhaat-zeit-toum.jpg" alt="نخاعات بزيت و توم" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">نخاعات بزيت و توم</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="700000">700,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="inhouse-crispy-nikhaat" data-name="كريسبي نخاعات" data-price="900000">
+          <div class="item-card__photo"><img src="assets/items/inhouse-crispy-nikhaat.jpg" alt="كريسبي نخاعات" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">كريسبي نخاعات</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="900000">900,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="inhouse-ras-nayfeh" data-name="راس نيفا" data-price="1200000">
+          <div class="item-card__photo"><img src="assets/items/inhouse-ras-nayfeh.jpg" alt="راس نيفا" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">راس نيفا</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="1200000">1,200,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="inhouse-ras-mfasfas" data-name="راس مفصفص" data-price="1400000">
+          <div class="item-card__photo"><img src="assets/items/inhouse-ras-mfasfas.jpg" alt="راس مفصفص" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">راس مفصفص</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="1400000">1,400,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="inhouse-sanasel" data-name="سناسل" data-price="900000">
+          <div class="item-card__photo"><img src="assets/items/inhouse-sanasel.jpg" alt="سناسل" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">سناسل</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="900000">900,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="inhouse-beid-ghanam" data-name="بيض غنم" data-price="1200000">
+          <div class="item-card__photo"><img src="assets/items/inhouse-beid-ghanam.jpg" alt="بيض غنم" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">بيض غنم</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="1200000">1,200,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-category" id="takeaway">
+    <div class="menu-category__inner anim-block">
+      <div class="menu-category__head">
+        <span class="menu-category__icon"><i class="fa-solid fa-box"></i></span>
+        <div>
+          <h2>طلبات خارج المحل</h2>
+          <p>بالقطعة، مجهّزة للتغليف والتوصيل</p>
+        </div>
+      </div>
+      <div class="item-grid">
+        <article class="item-card anim-item" data-id="takeaway-fawareg-kilo" data-name="فوارغ 1 كيلو" data-price="1600000">
+          <div class="item-card__photo"><img src="assets/items/takeaway-fawareg-kilo.jpg" alt="فوارغ 1 كيلو" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">فوارغ 1 كيلو</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="1600000">1,600,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="takeaway-qabawat-piece" data-name="قباوات (قطعة)" data-price="500000">
+          <div class="item-card__photo"><img src="assets/items/takeaway-qabawat-piece.jpg" alt="قباوات (قطعة)" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">قباوات (قطعة)</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="500000">500,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="takeaway-kroush-piece" data-name="كروش (قطعة)" data-price="400000">
+          <div class="item-card__photo"><img src="assets/items/takeaway-kroush-piece.jpg" alt="كروش (قطعة)" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">كروش (قطعة)</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="400000">400,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="takeaway-maqadem-piece" data-name="مقادم (قطعة)" data-price="200000">
+          <div class="item-card__photo"><img src="assets/items/takeaway-maqadem-piece.jpg" alt="مقادم (قطعة)" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">مقادم (قطعة)</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="200000">200,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="takeaway-ras-nayfeh-piece" data-name="راس نيفا (قطعة)" data-price="1200000">
+          <div class="item-card__photo"><img src="assets/items/takeaway-ras-nayfeh-piece.jpg" alt="راس نيفا (قطعة)" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">راس نيفا (قطعة)</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="1200000">1,200,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="takeaway-nikhaat-piece" data-name="نخاعات (قطعة)" data-price="300000">
+          <div class="item-card__photo"><img src="assets/items/takeaway-nikhaat-piece.jpg" alt="نخاعات (قطعة)" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">نخاعات (قطعة)</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="300000">300,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="takeaway-lisanat-piece" data-name="لسانات (قطعة)" data-price="300000">
+          <div class="item-card__photo"><img src="assets/items/takeaway-lisanat-piece.jpg" alt="لسانات (قطعة)" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">لسانات (قطعة)</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="300000">300,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="takeaway-qabawat-maqliyeh-piece" data-name="قباوات مقلية (قطعة)" data-price="600000">
+          <div class="item-card__photo"><img src="assets/items/takeaway-qabawat-maqliyeh-piece.jpg" alt="قباوات مقلية (قطعة)" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">قباوات مقلية (قطعة)</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="600000">600,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="takeaway-qabawat-maqliyeh-samneh-piece" data-name="قباوات مقلية بالسمن الحموي (قطعة)" data-price="700000">
+          <div class="item-card__photo"><img src="assets/items/takeaway-qabawat-maqliyeh-samneh-piece.jpg" alt="قباوات مقلية بالسمن الحموي (قطعة)" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">قباوات مقلية بالسمن الحموي (قطعة)</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="700000">700,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-category" id="appetizers">
+    <div class="menu-category__inner anim-block">
+      <div class="menu-category__head">
+        <span class="menu-category__icon"><i class="fa-solid fa-bowl-food"></i></span>
+        <div>
+          <h2>مقبلات + سلطات</h2>
+          <p>مقبلات وسلطات طازجة</p>
+        </div>
+      </div>
+      <div class="item-grid">
+        <article class="item-card anim-item" data-id="appetizers-sahn-hommos" data-name="صحن حمص" data-price="500000">
+          <div class="item-card__photo"><img src="assets/items/appetizers-sahn-hommos.jpg" alt="صحن حمص" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">صحن حمص</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="500000">500,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="appetizers-hommos-lahme" data-name="حمص مع لحمة" data-price="700000">
+          <div class="item-card__photo"><img src="assets/items/appetizers-hommos-lahme.jpg" alt="حمص مع لحمة" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">حمص مع لحمة</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="700000">700,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="appetizers-hommos-ras-asfour" data-name="حمص مع راس عصفور" data-price="800000">
+          <div class="item-card__photo"><img src="assets/items/appetizers-hommos-ras-asfour.jpg" alt="حمص مع راس عصفور" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">حمص مع راس عصفور</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="800000">800,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="appetizers-batata" data-name="بطاطا" data-price="500000">
+          <div class="item-card__photo"><img src="assets/items/appetizers-batata.jpg" alt="بطاطا" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">بطاطا</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="500000">500,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="appetizers-fattoush" data-name="فتوش" data-price="500000">
+          <div class="item-card__photo"><img src="assets/items/appetizers-fattoush.jpg" alt="فتوش" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">فتوش</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="500000">500,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="appetizers-tabbouleh" data-name="تبولة" data-price="500000">
+          <div class="item-card__photo"><img src="assets/items/appetizers-tabbouleh.jpg" alt="تبولة" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">تبولة</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="500000">500,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="appetizers-salata" data-name="سلطة" data-price="500000">
+          <div class="item-card__photo"><img src="assets/items/appetizers-salata.jpg" alt="سلطة" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">سلطة</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="500000">500,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="appetizers-kaset-laban" data-name="كاسة لبن" data-price="200000">
+          <div class="item-card__photo"><img src="assets/items/appetizers-kaset-laban.jpg" alt="كاسة لبن" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">كاسة لبن</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="200000">200,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-category" id="drinks">
+    <div class="menu-category__inner anim-block">
+      <div class="menu-category__head">
+        <span class="menu-category__icon"><i class="fa-solid fa-glass-water"></i></span>
+        <div>
+          <h2>مشروبات</h2>
+          <p>مشروبات باردة</p>
+        </div>
+      </div>
+      <div class="item-grid">
+        <article class="item-card anim-item" data-id="drinks-mrattabat" data-name="مرطبات" data-price="100000">
+          <div class="item-card__photo"><img src="assets/items/drinks-mrattabat.jpg" alt="مرطبات" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">مرطبات</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="100000">100,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="drinks-may-kbir" data-name="مياه كبير" data-price="100000">
+          <div class="item-card__photo"><img src="assets/items/drinks-may-kbir.jpg" alt="مياه كبير" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">مياه كبير</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="100000">100,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+
+        <article class="item-card anim-item" data-id="drinks-may-sghir" data-name="مياه صغير" data-price="50000">
+          <div class="item-card__photo"><img src="assets/items/drinks-may-sghir.jpg" alt="مياه صغير" loading="lazy"></div>
+          <div class="item-card__top">
+            <h4 class="item-card__name">مياه صغير</h4>
+          </div>
+          <div class="item-card__bottom">
+            <span class="item-card__price" data-base-price="50000">50,000 ل.ل</span>
+            <div class="qty-stepper">
+              <button class="qty-btn" data-action="minus" aria-label="إنقاص الكمية">&minus;</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn" data-action="plus" aria-label="زيادة الكمية">+</button>
+            </div>
+          </div>
+          <button class="add-btn" data-action="add"><i class="fa-solid fa-plus"></i> أضف إلى السلة</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__pattern" aria-hidden="true"></div>
+  <div class="footer__inner">
+    <img class="footer__logo" src="assets/logo.png" alt="أبو حمزة">
+    <p class="footer__address"><i class="fa-solid fa-location-dot"></i> الميناء الكورنيش البحري، جانب مطعم النخيل</p>
+    <p class="footer__phone" dir="ltr"><i class="fa-solid fa-phone"></i> 70 540 090 / 03 540 090</p>
+    <div class="footer__social">
+      <a href="https://facebook.com/abou.hamze.restaurant" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://instagram.com/abou.hamze.restaurant" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://tiktok.com/@abou.hamze.restaurant" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+    </div>
+    <p class="footer__copy">© <span id="year"></span> مطعم أبو حمزة. جميع الحقوق محفوظة.</p>
+    <div class="footer__credits">
+      <span class="footer__credit">
+        <span class="footer__credit-label">Structured by</span>
+        <a href="https://www.colartdigitalmarketingagency.com" target="_blank" rel="noopener">Colart Digital Marketing Agency</a>
+      </span>
+      <span class="footer__sep" aria-hidden="true">·</span>
+      <span class="footer__credit">
+        <span class="footer__credit-label">Hosted by</span>
+        <a href="https://menus.colartdigitalmarketingagency.com" target="_blank" rel="noopener">Menus by Colart</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== BASKET DRAWER ===== -->
+<div class="basket-overlay" id="basketOverlay"></div>
+<aside class="basket-drawer" id="basketDrawer" aria-label="سلتك">
+  <div class="basket-drawer__head">
+    <h2><i class="fa-solid fa-basket-shopping"></i> سلتك</h2>
+    <button class="basket-drawer__close" id="basketClose" aria-label="أغلق السلة">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+
+  <div class="basket-drawer__body" id="basketBody">
+    <div class="basket-empty" id="basketEmpty">
+      <i class="fa-solid fa-basket-shopping"></i>
+      <p>سلتك فارغة.</p>
+      <span>أضف بعض الأطباق للبدء.</span>
+    </div>
+    <ul class="basket-lines" id="basketLines"></ul>
+  </div>
+
+  <div class="basket-drawer__foot" id="basketFoot">
+    <div class="delivery-address" id="deliveryAddressWrap">
+      <label for="deliveryAddress">عنوان التوصيل</label>
+      <textarea id="deliveryAddress" rows="2" placeholder="المبنى، الشارع، المنطقة، المدينة..."></textarea>
+    </div>
+
+    <div class="basket-subtotal">
+      <span>المجموع</span>
+      <span id="basketSubtotal">0 ل.ل</span>
+    </div>
+    <button class="checkout-btn" id="checkoutBtn">
+      <i class="fa-brands fa-whatsapp"></i> إتمام الطلب عبر واتساب
+    </button>
+    <button class="clear-btn" id="clearBtn">إفراغ السلة</button>
+  </div>
+</aside>
+
+<!-- Floating basket button (mobile-friendly quick access) -->
+<button class="basket-fab" id="basketFab" aria-label="افتح السلة">
+  <i class="fa-solid fa-basket-shopping"></i>
+  <span class="basket-fab__count" id="basketFabCount">0</span>
+</button>
+
+<!-- ===== THANK YOU / CONFIRM MODAL (shown before the WhatsApp redirect) ===== -->
+<div class="thankyou-overlay" id="thankyouOverlay"></div>
+<div class="thankyou-modal" id="thankyouModal" role="dialog" aria-label="تأكيد الطلب">
+  <button class="thankyou-modal__close" id="thankyouClose" aria-label="أغلق">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+  <div class="thankyou-modal__icon"><i class="fa-solid fa-heart"></i></div>
+  <h2>شكراً لك!</h2>
+  <p>طلبك جاهز للإرسال. اضغط أدناه لتأكيده عبر واتساب وسنتواصل معك في أقرب وقت.</p>
+  <button class="checkout-btn" id="proceedWhatsAppBtn">
+    <i class="fa-brands fa-whatsapp"></i> المتابعة إلى واتساب
+  </button>
+  <button class="thankyou-modal__cancel" id="thankyouCancel">متابعة التسوق</button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<a class="fab-whatsapp" href="https://wa.me/96170540090" target="_blank" rel="noopener" aria-label="واتساب">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<script src="script.js"></script>
+</body>
+</html>
