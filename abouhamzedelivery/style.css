@@ -200,20 +200,69 @@ ul { list-style: none; }
 .hero__cta:hover { background: var(--gold-light); transform: translateY(-2px); }
 
 /* ===========================================
-   CATEGORY PILLS
+   STICKY TOOLBAR (search + category pills)
 =========================================== */
-.cat-pills {
+.menu-toolbar {
   position: sticky;
   top: 65px;
   z-index: 90;
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  padding: 12px 20px;
   background: rgba(53, 1, 3, .96);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--maroon-line);
+}
+
+.menu-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 20px 0;
+  padding: 0 16px;
+  height: 44px;
+  background: rgba(255, 255, 255, .07);
+  border: 1px solid var(--maroon-line);
+  border-radius: 999px;
+  transition: border-color .2s ease, background-color .2s ease;
+}
+.menu-search:focus-within {
+  border-color: var(--gold);
+  background: rgba(255, 255, 255, .1);
+}
+.menu-search__icon { color: var(--gold); font-size: 14px; flex: 0 0 auto; }
+.menu-search__input {
+  flex: 1;
+  min-width: 0;
+  background: none;
+  border: none;
+  outline: none;
+  color: #fff;
+  font: inherit;
+  font-size: 14.5px;
+  height: 100%;
+}
+.menu-search__input::placeholder { color: rgba(255, 255, 255, .5); }
+.menu-search__clear {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, .7);
+  font-size: 12px;
+  background: rgba(255, 255, 255, .08);
+  transition: background-color .2s ease, color .2s ease;
+}
+.menu-search__clear:hover { background: var(--gold); color: var(--maroon-dark); }
+
+/* ===========================================
+   CATEGORY PILLS
+=========================================== */
+.cat-pills {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 12px 20px;
   scrollbar-width: none;
 }
 .cat-pills::-webkit-scrollbar { display: none; }
@@ -347,6 +396,34 @@ ul { list-style: none; }
 
 .item-card__bottom { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 18px 0; }
 .item-card__price { font-size: 15px; font-weight: 800; color: var(--maroon); direction: ltr; }
+
+/* ===========================================
+   ITEM SEARCH — hide state + empty state
+=========================================== */
+.is-search-hidden { display: none !important; }
+.menu-category.is-search-empty { display: none; }
+
+.no-results {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 70px 20px;
+  text-align: center;
+  color: rgba(255, 255, 255, .72);
+}
+.no-results i { font-size: 30px; color: var(--maroon-line); margin-bottom: 14px; display: block; }
+.no-results p { font-size: 17px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+.no-results span { font-size: 14px; }
+.no-results button {
+  margin-top: 18px;
+  padding: 11px 24px;
+  border-radius: 999px;
+  background: var(--gold);
+  color: var(--maroon-dark);
+  font-weight: 800;
+  font-size: 14px;
+  transition: background-color .2s ease, transform .2s ease;
+}
+.no-results button:hover { background: var(--gold-light); transform: translateY(-2px); }
 
 .qty-stepper {
   display: inline-flex;

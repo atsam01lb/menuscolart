@@ -59,13 +59,22 @@
   </div>
 </header>
 
-<!-- Category quick-nav (scrollable pill row) -->
-<nav class="cat-pills" aria-label="انتقل إلى القسم">
-  <a href="#inhouse" class="cat-pill"><i class="fa-solid fa-utensils"></i> صحون </a>
-  <a href="#takeaway" class="cat-pill"><i class="fa-solid fa-box"></i> كيلو </a>
-  <a href="#appetizers" class="cat-pill"><i class="fa-solid fa-bowl-food"></i> مقبلات + سلطات</a>
-  <a href="#drinks" class="cat-pill"><i class="fa-solid fa-glass-water"></i> مشروبات</a>
-</nav>
+<!-- Sticky search + category quick-nav -->
+<div class="menu-toolbar" id="menuToolbar">
+  <div class="menu-search">
+    <i class="fa-solid fa-magnifying-glass menu-search__icon"></i>
+    <input type="text" id="itemSearch" class="menu-search__input" placeholder="ابحث عن صنف..." autocomplete="off">
+    <button type="button" id="itemSearchClear" class="menu-search__clear" aria-label="مسح البحث" hidden>
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+  <nav class="cat-pills" aria-label="انتقل إلى القسم">
+    <a href="#inhouse" class="cat-pill"><i class="fa-solid fa-utensils"></i> صحون </a>
+    <a href="#takeaway" class="cat-pill"><i class="fa-solid fa-box"></i> كيلو </a>
+    <a href="#appetizers" class="cat-pill"><i class="fa-solid fa-bowl-food"></i> مقبلات + سلطات</a>
+    <a href="#drinks" class="cat-pill"><i class="fa-solid fa-glass-water"></i> مشروبات</a>
+  </nav>
+</div>
 
 <main id="menu">
 
@@ -728,6 +737,13 @@
       </div>
     </div>
   </section>
+
+  <div class="no-results" id="noResults" hidden>
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <p>ما في أصناف مطابقة</p>
+    <span>جرّب اسم مختلف</span>
+    <button type="button" id="noResultsReset">إظهار كل الأصناف</button>
+  </div>
 
 </main>
 

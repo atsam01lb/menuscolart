@@ -66,6 +66,82 @@ if ('IntersectionObserver' in window) {
 })();
 
 /* =========================================================
+   ITEM SEARCH
+   Filters item-cards by their data-name across every category.
+   A category hides itself entirely once none of its items match,
+   and a single "no results" message shows if nothing on the whole
+   menu matches.
+========================================================= */
+(function () {
+  const input = document.getElementById('itemSearch');
+  const clearBtn = document.getElementById('itemSearchClear');
+  const noResults = document.getElementById('noResults');
+  const resetBtn = document.getElementById('noResultsReset');
+  if (!input || !noResults) return;
+
+  const categories = Array.from(document.querySelectorAll('.menu-category'));
+
+  // Light Arabic normalization so common keyboard/autocorrect variants
+  // (أ/إ/آ vs ا, ة vs ه, ى vs ي) and diacritics still match.
+  function normalize(str) {
+    return (str || '')
+      .toString()
+      .trim()
+      .toLowerCase()
+      .replace(/[أإآ]/g, 'ا')
+      .replace(/ى/g, 'ي')
+      .replace(/ة/g, 'ه')
+      .replace(/[ً-ْ]/g, '');
+  }
+
+  function applySearch() {
+    const q = normalize(input.value);
+    clearBtn.hidden = !q;
+
+    if (!q) {
+      categories.forEach(section => {
+        section.classList.remove('is-search-empty');
+        section.querySelectorAll('.item-card').forEach(card => {
+          card.classList.remove('is-search-hidden');
+        });
+      });
+      noResults.hidden = true;
+      return;
+    }
+
+    let totalVisible = 0;
+
+    categories.forEach(section => {
+      let visibleInSection = 0;
+      section.querySelectorAll('.item-card').forEach(card => {
+        const match = normalize(card.getAttribute('data-name')).includes(q);
+        card.classList.toggle('is-search-hidden', !match);
+        if (match) visibleInSection += 1;
+      });
+      section.classList.toggle('is-search-empty', visibleInSection === 0);
+      totalVisible += visibleInSection;
+    });
+
+    noResults.hidden = totalVisible !== 0;
+  }
+
+  input.addEventListener('input', applySearch);
+
+  clearBtn.addEventListener('click', () => {
+    input.value = '';
+    applySearch();
+    input.focus();
+  });
+
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      input.value = '';
+      applySearch();
+    });
+  }
+})();
+
+/* =========================================================
    BASKET / CART
 ========================================================= */
 const WHATSAPP_NUMBER = '96170540090';
