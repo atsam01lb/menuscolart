@@ -21,9 +21,22 @@ if ('IntersectionObserver' in window) {
         obs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+  }, { threshold: 0, rootMargin: '0px 0px -2% 0px' });
 
-  blocks.forEach(block => revealObserver.observe(block));
+  blocks.forEach(block => {
+    revealObserver.observe(block);
+    // Safety net: some of these blocks are tall enough (a whole menu
+    // category) that the observer's threshold may not fire until the
+    // user has scrolled most of the way through them. Anything already
+    // on screen (or just above it) at setup time gets revealed right
+    // away instead of waiting on a scroll event that may never cross
+    // the threshold.
+    const rect = block.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      block.classList.add('is-visible');
+      revealObserver.unobserve(block);
+    }
+  });
 }
 
 /* =========================================================
