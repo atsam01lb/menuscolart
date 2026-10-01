@@ -9,6 +9,15 @@
    been uploaded yet, the card automatically falls back to the
    generated monogram at assets/img/{slug}-mono.svg — drop the
    real file in with the same name and it swaps in on its own.
+
+   bg: the logo's own native background color (sampled from the
+   real artwork), used to fill the avatar circle behind the logo
+   so the circle reads as part of the logo itself rather than a
+   generic brand-palette swatch.
+
+   accent: brand-palette color used for the card's own UI accents
+   (hover ring, node dots, hero connector lines) — unrelated to
+   the logo artwork.
 =========================================================== */
 const MENUS_ITEMS = [
   {
@@ -17,7 +26,8 @@ const MENUS_ITEMS = [
     nameAr: "",
     category: "Restaurant",
     href: "/alheshmi/",
-    logo: "assets/img/alheshmi-logo.svg",
+    logo: "assets/img/alheshmi-logo.png",
+    bg: "#0e1010",
     accent: "#642878"
   },
   {
@@ -26,7 +36,8 @@ const MENUS_ITEMS = [
     nameAr: "نكهة خاصة",
     category: "Restaurant & Café",
     href: "/nakhakhasa/",
-    logo: "assets/img/nakhakhasa-logo.svg",
+    logo: "assets/img/nakhakhasa-logo.png",
+    bg: "#ffffff",
     accent: "#8cb43c"
   },
   {
@@ -36,6 +47,7 @@ const MENUS_ITEMS = [
     category: "Restaurant",
     href: "/chefahmadrestaurant/",
     logo: "assets/img/chefahmad-logo.png",
+    bg: "#f4f5f0",
     accent: "#c81478"
   },
   {
@@ -44,7 +56,8 @@ const MENUS_ITEMS = [
     nameAr: "",
     category: "Bakery & Desserts",
     href: "/glowbites/",
-    logo: "assets/img/glowbites-logo.svg",
+    logo: "assets/img/glowbites-logo.png",
+    bg: "#fffaf0",
     accent: "#dcdc3c"
   },
   {
@@ -54,6 +67,7 @@ const MENUS_ITEMS = [
     category: "Restaurant",
     href: "/abouhamzerestaurant/",
     logo: "assets/img/abouhamze-logo.png",
+    bg: "#650d0c",
     accent: "#50a0b4"
   },
   {
@@ -63,6 +77,7 @@ const MENUS_ITEMS = [
     category: "Delivery",
     href: "/abouhamzedelivery/",
     logo: "assets/img/abouhamze-logo.png",
+    bg: "#650d0c",
     accent: "#64a08c"
   },
   {
@@ -71,7 +86,8 @@ const MENUS_ITEMS = [
     nameAr: "",
     category: "Games & Recreation",
     href: "/fianchettochesscenter/",
-    logo: "assets/img/fianchetto-logo.svg",
+    logo: "assets/img/fianchetto-logo.png",
+    bg: "#ffffff",
     accent: "#4a1d59"
   }
 ];

@@ -31,8 +31,9 @@
   function cardHtml(item) {
     const hasAr = !!item.nameAr;
     const monoSrc = "assets/img/" + item.slug + "-mono.svg";
+    const logoBg = item.bg || item.accent;
     return (
-      '<a class="card" href="' + item.href + '" style="--accent:' + item.accent + '" data-slug="' + item.slug + '">' +
+      '<a class="card" href="' + item.href + '" style="--accent:' + item.accent + ';--logo-bg:' + logoBg + '" data-slug="' + item.slug + '">' +
       '<span class="card-node" aria-hidden="true"><i></i><i></i><i></i></span>' +
       '<span class="avatar">' +
       '<span class="avatar-in has-img">' +

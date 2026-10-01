@@ -23,10 +23,12 @@ files into the root of the existing `menuscolart-main` repo, alongside those fol
     │   ├── items.js         ← the restaurant list (edit this to add/remove a menu)
     │   └── menus.js          ← rendering logic (grid, search, chips, hero visual)
     └── img/
-        ├── menus-logo.svg    ← full-color M mark (header/hero)
-        ├── menus-mark.svg    ← single-color M mark (footer/favicon-sized use)
+        ├── menus-logo.svg       ← full-color M mark (header/hero)
+        ├── menus-mark.svg       ← single-color M mark (footer/favicon-sized use)
         ├── favicon.svg
-        └── {slug}-mono.svg   ← auto-generated placeholder avatar per restaurant
+        ├── hero-menu-scan.jpg   ← hero section background photo
+        ├── {slug}-logo.png      ← real client logo (shown in the avatar circle + hero visual)
+        └── {slug}-mono.svg      ← auto-generated placeholder avatar, used only if a real logo file is missing
 ```
 
 Your existing restaurant folders keep their own `index.html` / `style.css` / `script.js` exactly
@@ -54,12 +56,20 @@ from this array automatically.
 
 ## About the avatar photos
 
-Every card currently shows a generated placeholder (`{slug}-mono.svg` — a solid-color circle with
-initials) because the real logo files referenced in `items.js` (`alheshmi-logo.svg`,
-`chefahmad-logo.png`, etc.) weren't available when this was built. The moment you drop a real logo
-file into `assets/img/` under the exact filename already set in `items.js`, that card switches to
-the real logo automatically — no code change needed. The `onerror` fallback only kicks in when the
-real file is missing.
+Every card now shows its real client logo, cropped square from the files you sent and dropped into
+`assets/img/{slug}-logo.png`. The avatar circle's background is set per item (`bg` in `items.js`) to
+match that logo's own native background color — not a brand-palette color — so the circle reads as
+part of the logo itself (e.g. black for Al Heshmi, white for Nakha Khasa, maroon for Abou Hamze). If
+a logo file ever goes missing, the card falls back automatically to the generated monogram at
+`assets/img/{slug}-mono.svg` via the image's `onerror` handler — no code change needed, just drop a
+real file back in under the same name.
+
+## Hero background photo
+
+`assets/img/hero-menu-scan.jpg` is used as the hero section's background image (desktop/tablet only,
+≥760px) with a white-to-transparent gradient over it so the headline and search bar stay legible on
+the left. On narrower screens the photo is skipped in favor of the original plain `--bg-soft`
+background, to keep mobile loads light.
 
 ## Brand tokens
 
