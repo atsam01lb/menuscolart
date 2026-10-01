@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Not Found | Menus by Colart</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="assets/css/menus.css">
+<style>
+  .notfound{
+    min-height:78vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:40px var(--gutter);background:var(--bg-soft);
+  }
+  .notfound img{width:72px;height:auto;margin-bottom:26px;}
+  .notfound h1{font-size:clamp(48px,10vw,96px);font-weight:300;color:var(--purple-dk);line-height:1;margin-bottom:10px;}
+  .notfound h1 strong{font-weight:900;color:var(--purple);}
+  .notfound p{font-size:17px;color:var(--muted);max-width:420px;margin-bottom:28px;}
+  .notfound .btn{
+    display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:999px;
+    background:var(--purple);color:#fff;font-weight:700;font-size:15px;
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="logo" aria-label="Menus by Colart — home">
+    <img src="assets/img/menus-mark.svg" alt="">
+    <span class="logo-word">Menus <span>by Colart</span></span>
+  </a>
+</header>
+
+<main>
+  <section class="notfound">
+    <img src="assets/img/menus-mark.svg" alt="">
+    <h1>404. <strong>Not found.</strong></h1>
+    <p>That menu link doesn't exist or may have moved. Head back to the directory to browse every restaurant on Menus by Colart.</p>
+    <a class="btn" href="/"><i class="fa-solid fa-arrow-left"></i> Back to all menus</a>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="foot-brand">
+    <img src="assets/img/menus-mark.svg" alt="">
+    <span class="foot-brand-text">
+      <strong>Menus by Colart</strong>
+      Powered by <a href="https://colartdigitalmarketingagency.com" target="_blank" rel="noopener">Colart Digital Marketing Agency</a>
+    </span>
+  </div>
+  <div class="foot-copy">&copy; <span id="year"></span> Colart. We Create&hellip; You Grow!</div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

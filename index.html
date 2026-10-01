@@ -11,74 +11,17 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,700&family=Noto+Kufi+Arabic:wght@400;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<link rel="stylesheet" href="assets/css/style_6.css">
 <link rel="stylesheet" href="assets/css/menus.css">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is a digital menu?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "A digital menu is an online version of a restaurant's menu that guests open by scanning a QR code or tapping a link, instead of reading a printed card. It shows the same dishes, prices and categories, and can be updated instantly whenever something changes."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do digital menus help restaurants get found online?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Each restaurant on menus.colartdigitalmarketingagency.com gets its own dedicated, search-optimized page, so when someone searches for the restaurant name or its dishes, the menu itself can appear in the results, not just a social media profile."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can customers order directly from a digital menu?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "On some of the menus built by Colart, yes. Guests can add items to a basket, choose pickup or delivery, and send the full order straight to the restaurant on WhatsApp, without installing a separate ordering app."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do digital menus work without an app?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Every digital menu Colart builds runs directly in the guest's mobile browser after a QR scan or link tap. There is nothing to download and nothing to install."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much does a digital menu from Colart cost?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Pricing depends on the size of the menu and the features needed, such as WhatsApp ordering or multiple languages. Restaurants can reach out to Colart Digital Marketing Agency directly to get a quote for their own digital menu."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I get a digital menu for my restaurant?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Contact Colart Digital Marketing Agency by WhatsApp or email to share your current menu and branding. Colart designs, builds and hosts the digital menu, then hands you a link and QR code ready to place on your tables."
-      }
-    }
-  ]
-}
-</script>
 </head>
 <body>
 
-<header class="menus-header">
+<header class="site-header">
   <a href="/" class="logo" aria-label="Menus by Colart — home">
-    <img src="assets/img/menus-logo.svg" alt="Menus by Colart">
+    <img src="assets/img/menus-mark.svg" alt="">
+    <span class="logo-word">Menus <span>by Colart</span></span>
   </a>
   <a href="https://colartdigitalmarketingagency.com" class="back-link">
     <i class="fa-solid fa-arrow-left"></i>
@@ -88,303 +31,53 @@
 
 <main>
 
-  <!-- ===== INTRO / HERO — Menus From Colart ===== -->
-  <section class="menus-hero">
-    <div class="menus-hero-content reveal">
-      <span class="section-eyebrow-pill light"><i class="fa-solid fa-qrcode"></i>&nbsp; Digital Menus</span>
-      <h1 class="menus-hero-title">Menus From <span class="accent">Colart</span></h1>
-      <p class="menus-hero-text">
-        Every restaurant below has its digital menu designed, built and hosted by Colart Digital
-        Marketing Agency. Fast, mobile-friendly, and always up to date. No reprinting, no outdated
-        prices, just a link or a scan away.
-      </p>
-      <a href="https://colartdigitalmarketingagency.com" class="btn-pill-gradient">
-        Discover All Colart's Services
-        <i class="fa-solid fa-arrow-right"></i>
-      </a>
-      <div class="menus-hero-scroll">
-        Browse restaurants
-        <i class="fa-solid fa-chevron-down"></i>
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <span class="hero-eyebrow"><i class="fa-solid fa-qrcode"></i>&nbsp; Digital Menus</span>
+        <h1 class="hero-title">
+          <span>Every Menu.</span>
+          <span>One Scan Away.</span>
+          <strong>By Colart.</strong>
+        </h1>
+        <p class="hero-sub">Discover restaurant menus designed, built and hosted by Colart Digital Marketing Agency.</p>
+        <div class="search">
+          <i class="fa-solid fa-magnifying-glass icon-search"></i>
+          <input type="text" id="searchInput" placeholder="Search restaurants or categories" autocomplete="off">
+          <span class="kbd">/</span>
+        </div>
+        <p class="hero-count" id="heroCount"><strong>7</strong> menus in the Colart ecosystem</p>
       </div>
+      <div class="eco" id="eco" aria-hidden="true"></div>
     </div>
   </section>
 
-  <!-- ===== ABOUT / OUR APPROACH ===== -->
-  <section class="how-section" id="about">
-    <div class="container">
-      <div class="section-head">
-        <span class="section-eyebrow-pill">About These Menus</span>
-        <h2>Every Menu Is <span class="magenta">Built Around The Restaurant</span> That Owns It</h2>
-        <p>
-          None of the menus on this page are copies of one another. Each one is a custom project,
-          designed and built by Colart Digital Marketing Agency around that specific restaurant's
-          branding, colors, categories and the exact way that restaurant asked to serve its guests,
-          whether that is a simple browse-only menu or a full ordering experience with add-ons and
-          WhatsApp checkout.
-        </p>
+  <!-- ===== DIRECTORY ===== -->
+  <section class="directory" id="restaurants">
+    <div class="wrap">
+      <div class="dir-head">
+        <h2>Directory</h2>
+        <div class="filters" id="filters"></div>
       </div>
-
-      <div class="process-grid">
-        <article class="process-card">
-          <div class="process-num">01</div>
-          <div class="process-icon"><i class="fa-solid fa-comments"></i></div>
-          <h3>We Start With The Restaurant's Requests</h3>
-          <p>Every project begins with the restaurant's own menu, branding and the features they actually need, from simple listings to WhatsApp ordering and add-ons.</p>
-        </article>
-        <article class="process-card">
-          <div class="process-num">02</div>
-          <div class="process-icon"><i class="fa-solid fa-palette"></i></div>
-          <h3>We Design Around Their Brand</h3>
-          <p>Colors, logo, layout and tone are built to match the restaurant, not a shared template, so each menu looks and feels like it belongs to that business alone.</p>
-        </article>
-        <article class="process-card">
-          <div class="process-num">03</div>
-          <div class="process-icon"><i class="fa-solid fa-code"></i></div>
-          <h3>We Build The Exact Features Requested</h3>
-          <p>From simple browse-only menus to full ordering with quantities, add-ons and WhatsApp checkout, each site is coded around what that restaurant asked for.</p>
-        </article>
-        <article class="process-card">
-          <div class="process-num">04</div>
-          <div class="process-icon"><i class="fa-solid fa-rocket"></i></div>
-          <h3>We Launch, Host And Keep It Updated</h3>
-          <p>Once approved, Colart hosts the menu and hands over a link and QR code, staying on hand to update it whenever the restaurant's dishes or prices change.</p>
-        </article>
-      </div>
-
-      <div class="about-approach-cta">
-        <a href="#restaurants" class="btn-pill-gradient">
-          Browse The Menus We Made
-          <i class="fa-solid fa-arrow-right"></i>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== RESTAURANT DIRECTORY ===== -->
-  <section class="restaurants-section" id="restaurants">
-    <div class="container">
-      <div class="section-head">
-        <span class="section-eyebrow-pill">Our Restaurants</span>
-        <h2>Pick a restaurant, <span class="magenta">view its menu</span></h2>
-        <p>Tap any logo below to open that restaurant's digital menu.</p>
-      </div>
-
-      <div class="restaurant-grid">
-
-        <a class="restaurant-card reveal d1" href="/alheshmi/" aria-label="Al Heshmi — view menu">
-          <div class="restaurant-card-logo">
-            <img src="assets/img/alheshmi-logo.svg" alt="Al Heshmi logo">
-          </div>
-          <div class="restaurant-card-name">Al Heshmi</div>
-          <span class="restaurant-card-status live"><i class="fa-solid fa-circle"></i> View Menu</span>
-        </a>
-
-        <a class="restaurant-card reveal d2" href="/nakhakhasa/" aria-label="Nakha Khasa — view menu">
-          <div class="restaurant-card-logo">
-            <img src="assets/img/nakhakhasa-logo.svg" alt="Nakha Khasa logo">
-          </div>
-          <div class="restaurant-card-name">Nakha Khasa</div>
-          <span class="restaurant-card-status live"><i class="fa-solid fa-circle"></i> View Menu</span>
-        </a>
-
-        <a class="restaurant-card reveal d3" href="/chefahmadrestaurant/" aria-label="Chef Ahmad Restaurant — view menu">
-          <div class="restaurant-card-logo">
-            <img src="assets/img/chefahmad-logo.png" alt="Chef Ahmad Restaurant logo">
-          </div>
-          <div class="restaurant-card-name">Chef Ahmad Restaurant</div>
-          <span class="restaurant-card-status live"><i class="fa-solid fa-circle"></i> View Menu</span>
-        </a>
-
-        <a class="restaurant-card reveal d4" href="/glowbites/" aria-label="Glow Bites — view menu">
-          <div class="restaurant-card-logo">
-            <img src="assets/img/glowbites-logo.svg" alt="Glow Bites logo">
-          </div>
-          <div class="restaurant-card-name">Glow Bites</div>
-          <span class="restaurant-card-status live"><i class="fa-solid fa-circle"></i> View Menu</span>
-        </a>
-
-        <a class="restaurant-card reveal d5" href="/abouhamzerestaurant/" aria-label="Abou Hamze Restaurant — view menu">
-          <div class="restaurant-card-logo">
-            <img src="assets/img/abouhamze-logo.png" alt="Abou Hamze Restaurant logo">
-          </div>
-          <div class="restaurant-card-name">Abou Hamze Restaurant</div>
-          <span class="restaurant-card-status live"><i class="fa-solid fa-circle"></i> View Menu</span>
-        </a>
-
-        <a class="restaurant-card reveal d5" href="/abouhamzedelivery/" aria-label="Abou Hamze Delivery — order online">
-          <div class="restaurant-card-logo">
-            <img src="assets/img/abouhamze-logo.png" alt="Abou Hamze Delivery logo">
-          </div>
-          <div class="restaurant-card-name">Abou Hamze Delivery</div>
-          <span class="restaurant-card-status live"><i class="fa-solid fa-circle"></i> Order Online</span>
-        </a>
-
-        <a class="restaurant-card reveal d5" href="/fianchettochesscenter/" aria-label="Fianchetto Chess Center — view menu">
-          <div class="restaurant-card-logo">
-            <img src="assets/img/fianchetto-logo.svg" alt="Fianchetto Chess Center logo">
-          </div>
-          <div class="restaurant-card-name">Fianchetto Chess Center</div>
-          <span class="restaurant-card-status live"><i class="fa-solid fa-circle"></i> View Menu</span>
-        </a>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== ABOUT DIGITAL MENUS + CLIENT BENEFITS ===== -->
-  <section class="why-section" id="about-digital-menus">
-    <div class="container">
-      <div class="section-head">
-        <span class="section-eyebrow-pill">Digital Menus, Explained</span>
-        <h2>What Is A <span class="magenta">Digital Menu</span>, And Why Restaurants Use One</h2>
-        <p>
-          A digital menu is a mobile-friendly, QR-code-accessible version of a restaurant's menu, designed,
-          built and hosted by Colart Digital Marketing Agency. Guests scan a code or tap a link to browse
-          dishes, prices and photos instantly, and select menus, like Glow Bites, even let customers build
-          an order and check out straight to WhatsApp. Every menu on this page is a live example of what
-          Colart builds for restaurants across Lebanon, the GCC and beyond.
-        </p>
-      </div>
-
-      <div class="feat-grid">
-        <article class="feat-card">
-          <div class="feat-card-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
-          <h3>Always Up To Date</h3>
-          <p>Change a price, add a dish or mark something sold out in minutes. No reprinting, no waiting on a new batch of physical menus.</p>
-        </article>
-        <article class="feat-card">
-          <div class="feat-card-icon"><i class="fa-solid fa-qrcode"></i></div>
-          <h3>Instant QR Access</h3>
-          <p>Guests scan a code on the table and the menu opens immediately in their browser. No app to download, no account to create.</p>
-        </article>
-        <article class="feat-card">
-          <div class="feat-card-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
-          <h3>Built Mobile First</h3>
-          <p>Every menu is designed to load fast and look sharp on a phone, since that is where almost every guest is browsing from.</p>
-        </article>
-        <article class="feat-card">
-          <div class="feat-card-icon"><i class="fa-solid fa-basket-shopping"></i></div>
-          <h3>Order Straight To WhatsApp</h3>
-          <p>Select menus let customers add items to a basket and send the order directly on WhatsApp, no third-party ordering app needed.</p>
-        </article>
-        <article class="feat-card">
-          <div class="feat-card-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
-          <h3>Built To Be Found</h3>
-          <p>Each restaurant gets its own optimized page, so guests searching for the restaurant or its dishes online can find the menu directly.</p>
-        </article>
-        <article class="feat-card">
-          <div class="feat-card-icon"><i class="fa-solid fa-leaf"></i></div>
-          <h3>Lower Cost, Less Waste</h3>
-          <p>Cut recurring printing costs and paper waste while keeping a more professional, consistent presentation across every table.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FAQ (AEO) ===== -->
-  <section class="faq-section" id="digital-menu-faq">
-    <div class="container">
-      <div class="section-head">
-        <span class="section-eyebrow-pill">Common Questions</span>
-        <h2>Digital Menu <span class="magenta">Questions</span>, Answered</h2>
-        <p>Everything restaurant owners and guests usually ask about the digital menus Colart Digital Marketing Agency builds.</p>
-      </div>
-
-      <div class="faq-accordion">
-        <details class="faq-item">
-          <summary>What is a digital menu?</summary>
-          <p>A digital menu is an online version of a restaurant's menu that guests open by scanning a QR code or tapping a link, instead of reading a printed card. It shows the same dishes, prices and categories, and can be updated instantly whenever something changes.</p>
-        </details>
-        <details class="faq-item">
-          <summary>How do digital menus help restaurants get found online?</summary>
-          <p>Each restaurant on menus.colartdigitalmarketingagency.com gets its own dedicated, search-optimized page, so when someone searches for the restaurant name or its dishes, the menu itself can appear in the results, not just a social media profile.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Can customers order directly from a digital menu?</summary>
-          <p>On some of the menus built by Colart, yes. Guests can add items to a basket, choose pickup or delivery, and send the full order straight to the restaurant on WhatsApp, without installing a separate ordering app.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Do digital menus work without an app?</summary>
-          <p>Yes. Every digital menu Colart builds runs directly in the guest's mobile browser after a QR scan or link tap. There is nothing to download and nothing to install.</p>
-        </details>
-        <details class="faq-item">
-          <summary>How much does a digital menu from Colart cost?</summary>
-          <p>Pricing depends on the size of the menu and the features needed, such as WhatsApp ordering or multiple languages. Restaurants can reach out to Colart Digital Marketing Agency directly to get a quote for their own digital menu.</p>
-        </details>
-        <details class="faq-item">
-          <summary>How do I get a digital menu for my restaurant?</summary>
-          <p>Contact Colart Digital Marketing Agency by WhatsApp or email to share your current menu and branding. Colart designs, builds and hosts the digital menu, then hands you a link and QR code ready to place on your tables.</p>
-        </details>
-      </div>
+      <div class="grid" id="grid"></div>
     </div>
   </section>
 
 </main>
 
-<footer>
-  <div class="foot-top">
-    <div class="foot-brand">
-      <img src="assets/img/menus-logo.svg" alt="Menus by Colart" />
-      <div class="foot-tagline">Menus by Colart</div>
-      <p class="foot-desc">Digital menus designed, built and hosted by Colart Digital Marketing Agency: fast, mobile-friendly, and always up to date for every restaurant we work with.</p>
-    </div>
-    <div class="foot-col">
-      <h5>GET IN TOUCH</h5>
-      <a href="mailto:info@colartdigitalmarketingagency.com"><i class="fa-solid fa-envelope"></i> info@colartdigitalmarketingagency.com</a>
-      <a href="https://wa.me/96170649423" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> +961 70 64 94 23</a>
-      <a href="https://wa.me/96181042512" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> +961 81 04 25 12</a>
-      <p><i class="fa-solid fa-location-dot"></i> Lebanon &middot; GCC &middot; Beyond</p>
-    </div>
-    <div class="foot-col">
-      <h5>MORE FROM COLART</h5>
-      <a href="https://www.colartdigitalmarketingagency.com" target="_blank" rel="noopener">About Colart</a>
-      <a href="https://www.colartdigitalmarketingagency.com/services" target="_blank" rel="noopener">Colart's Services</a>
-      <a href="https://www.colartdigitalmarketingagency.com/our-work" target="_blank" rel="noopener">Colart's Portfolio</a>
-      <a href="https://requests.colartdigitalmarketingagency.com" target="_blank" rel="noopener">Karaoke Requests By Colart</a>
-    </div>
+<footer class="site-footer">
+  <div class="foot-brand">
+    <img src="assets/img/menus-mark.svg" alt="">
+    <span class="foot-brand-text">
+      <strong>Menus by Colart</strong>
+      Powered by <a href="https://colartdigitalmarketingagency.com" target="_blank" rel="noopener">Colart Digital Marketing Agency</a>
+    </span>
   </div>
-  <div class="foot-mid">
-    <div class="follow">
-      <h5>Follow Colart</h5>
-      <div class="social-icons">
-        <a href="https://facebook.com/colartdigitalmarketingagency" target="_blank" rel="noopener" aria-label="Facebook">
-          <i class="fa-brands fa-facebook-f"></i>
-        </a>
-        <a href="https://instagram.com/colartdigitalmarketingagency" target="_blank" rel="noopener" aria-label="Instagram">
-          <i class="fa-brands fa-instagram"></i>
-        </a>
-        <a href="https://threads.net/@colartdigitalmarketingagency" target="_blank" rel="noopener" aria-label="Threads">
-          <i class="fa-brands fa-threads"></i>
-        </a>
-        <a href="https://linkedin.com/company/colartdigitalmarketingagency" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <i class="fa-brands fa-linkedin-in"></i>
-        </a>
-        <a href="https://snapchat.com/add/colartlb" target="_blank" rel="noopener" aria-label="Snapchat">
-          <i class="fa-brands fa-snapchat"></i>
-        </a>
-        <a href="https://tiktok.com/@colartdigitalmarketing" target="_blank" rel="noopener" aria-label="TikTok">
-          <i class="fa-brands fa-tiktok"></i>
-        </a>
-        <a href="https://youtube.com/@colartdigitalmarketingagency" target="_blank" rel="noopener" aria-label="YouTube">
-          <i class="fa-brands fa-youtube"></i>
-        </a>
-        <a href="https://t.me/colartdigitalmarketingagency" target="_blank" rel="noopener" aria-label="Telegram">
-          <i class="fa-brands fa-telegram"></i>
-        </a>
-      </div>
-    </div>
-    <a href="https://whatsapp.com/channel/0029VbBE25m7j6g4kQvefg2K" target="_blank" rel="noopener" class="whatsapp-channel">
-      <i class="fa-brands fa-whatsapp"></i>
-      <span>WhatsApp Channel</span>
-    </a>
-  </div>
-  <div class="foot-bottom">
-    &copy; <span id="year"></span> Menus by Colart. All Rights Reserved. &middot; Structured &amp; Developed by Colart Digital Marketing Agency.
-  </div>
+  <div class="foot-copy">&copy; <span id="year"></span> Colart. We Create&hellip; You Grow!</div>
 </footer>
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+<script src="assets/js/items.js"></script>
+<script src="assets/js/menus.js"></script>
 </body>
 </html>
