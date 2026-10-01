@@ -156,8 +156,16 @@
     const markY = (H - markH) / 2;
     const anchor = { x: markX + 6, y: markY + markH * 0.56 };
 
-    const nodeCount = Math.min(MENUS_ITEMS.length, 6);
-    const items = MENUS_ITEMS.slice(0, nodeCount);
+    // dedupe by logo image first (e.g. Abou Hamze Restaurant/Delivery share one
+    // logo file) so the hero visual shows 6 distinct brand marks, not a repeat
+    const seenLogos = new Set();
+    const uniqueByLogo = MENUS_ITEMS.filter(function (item) {
+      if (seenLogos.has(item.logo)) return false;
+      seenLogos.add(item.logo);
+      return true;
+    });
+    const nodeCount = Math.min(uniqueByLogo.length, 6);
+    const items = uniqueByLogo.slice(0, nodeCount);
     const topPad = 50, botPad = 50;
     const step = (H - topPad - botPad) / (items.length - 1 || 1);
 
