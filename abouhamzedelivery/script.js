@@ -165,17 +165,21 @@ function saveCart(cart) {
   }
 }
 
-function loadAddress() {
+const ADDRESS_FIELDS = ['name', 'area', 'street', 'building', 'floor', 'notes'];
+
+function loadAddressFields() {
   try {
-    return localStorage.getItem(ADDRESS_STORAGE_KEY) || '';
+    const raw = localStorage.getItem(ADDRESS_STORAGE_KEY);
+    const parsed = raw ? JSON.parse(raw) : {};
+    return (parsed && typeof parsed === 'object') ? parsed : {};
   } catch (e) {
-    return '';
+    return {};
   }
 }
 
-function saveAddress(address) {
+function saveAddressFields(fields) {
   try {
-    localStorage.setItem(ADDRESS_STORAGE_KEY, address);
+    localStorage.setItem(ADDRESS_STORAGE_KEY, JSON.stringify(fields));
   } catch (e) {
     /* storage unavailable */
   }
@@ -315,27 +319,80 @@ clearBtn.addEventListener('click', () => {
 
 /* --- Delivery address (this menu is delivery-only, so it's always shown) --- */
 const deliveryAddressWrap = document.getElementById('deliveryAddressWrap');
-const deliveryAddressInput = document.getElementById('deliveryAddress');
+const addressInputs = {
+  name: document.getElementById('addrName'),
+  area: document.getElementById('addrArea'),
+  street: document.getElementById('addrStreet'),
+  building: document.getElementById('addrBuilding'),
+  floor: document.getElementById('addrFloor'),
+  notes: document.getElementById('addrNotes'),
+};
+const ADDRESS_LABELS = {
+  name: 'الإسم',
+  area: 'المنطقة',
+  street: 'الشارع',
+  building: 'البناية',
+  floor: 'الطابق',
+  notes: 'ملاحظات لعامل التوصيل',
+};
+const REQUIRED_ADDRESS_FIELDS = ['name', 'area', 'street', 'building', 'floor'];
 
-deliveryAddressInput.value = loadAddress();
+(function restoreAddressFields() {
+  const saved = loadAddressFields();
+  ADDRESS_FIELDS.forEach((key) => {
+    if (addressInputs[key] && saved[key]) addressInputs[key].value = saved[key];
+  });
+})();
 
-deliveryAddressInput.addEventListener('input', () => {
+function getAddressFieldWrap(key) {
+  const input = addressInputs[key];
+  return input ? input.closest('.delivery-field') : null;
+}
+
+function clearAddressFieldError(key) {
+  const wrap = getAddressFieldWrap(key);
+  if (wrap) wrap.classList.remove('has-error');
   deliveryAddressWrap.classList.remove('has-error');
-  saveAddress(deliveryAddressInput.value.trim());
+}
+
+ADDRESS_FIELDS.forEach((key) => {
+  const input = addressInputs[key];
+  if (!input) return;
+  input.addEventListener('input', () => {
+    clearAddressFieldError(key);
+    const fields = loadAddressFields();
+    fields[key] = input.value.trim();
+    saveAddressFields(fields);
+  });
 });
 
 checkoutBtn.addEventListener('click', () => {
   const ids = Object.keys(cart);
   if (!ids.length) return;
 
-  const address = deliveryAddressInput.value.trim();
-  if (!address) {
+  const values = {};
+  ADDRESS_FIELDS.forEach((key) => {
+    values[key] = addressInputs[key] ? addressInputs[key].value.trim() : '';
+  });
+
+  const missing = REQUIRED_ADDRESS_FIELDS.filter((key) => !values[key]);
+  if (missing.length) {
+    missing.forEach((key) => {
+      const wrap = getAddressFieldWrap(key);
+      if (wrap) wrap.classList.add('has-error');
+    });
     deliveryAddressWrap.classList.add('has-error');
-    deliveryAddressInput.focus();
-    showToast('الرجاء إضافة عنوان التوصيل');
+    const firstInput = addressInputs[missing[0]];
+    if (firstInput) firstInput.focus();
+    showToast('الرجاء تعبئة عنوان التوصيل كاملاً');
     return;
   }
   deliveryAddressWrap.classList.remove('has-error');
+  ADDRESS_FIELDS.forEach((key) => {
+    const wrap = getAddressFieldWrap(key);
+    if (wrap) wrap.classList.remove('has-error');
+  });
+  saveAddressFields(values);
 
   let message = 'مرحباً أبو حمزة! أرغب بطلب توصيل:\n\n';
   ids.forEach((id, i) => {
@@ -343,7 +400,16 @@ checkoutBtn.addEventListener('click', () => {
     message += `${i + 1}. ${line.name} x${line.qty} = ${formatPrice(line.price * line.qty)}\n`;
   });
   message += `\nالمجموع: ${formatPrice(cartTotal())}`;
-  message += `\n\nعنوان التوصيل: ${address}`;
+  message += '\nملاحظة: هذا السعر لا يشمل سعر خدمة التوصيل';
+  message += '\n\nعنوان التوصيل:';
+  message += `\n${ADDRESS_LABELS.name}: ${values.name}`;
+  message += `\n${ADDRESS_LABELS.area}: ${values.area}`;
+  message += `\n${ADDRESS_LABELS.street}: ${values.street}`;
+  message += `\n${ADDRESS_LABELS.building}: ${values.building}`;
+  message += `\n${ADDRESS_LABELS.floor}: ${values.floor}`;
+  if (values.notes) {
+    message += `\n${ADDRESS_LABELS.notes}: ${values.notes}`;
+  }
 
   pendingCheckoutMessage = message;
   openThankYou();

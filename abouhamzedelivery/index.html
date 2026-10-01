@@ -794,8 +794,33 @@
 
   <div class="basket-drawer__foot" id="basketFoot">
     <div class="delivery-address" id="deliveryAddressWrap">
-      <label for="deliveryAddress">عنوان التوصيل</label>
-      <textarea id="deliveryAddress" rows="2" placeholder="المبنى، الشارع، المنطقة، المدينة..."></textarea>
+      <span class="delivery-address__title">عنوان التوصيل</span>
+      <div class="delivery-address__grid">
+        <div class="delivery-field" data-field="name">
+          <label for="addrName">الإسم</label>
+          <input type="text" id="addrName" placeholder="الإسم الكامل">
+        </div>
+        <div class="delivery-field" data-field="area">
+          <label for="addrArea">المنطقة</label>
+          <input type="text" id="addrArea" placeholder="المنطقة">
+        </div>
+        <div class="delivery-field" data-field="street">
+          <label for="addrStreet">الشارع</label>
+          <input type="text" id="addrStreet" placeholder="الشارع">
+        </div>
+        <div class="delivery-field" data-field="building">
+          <label for="addrBuilding">البناية</label>
+          <input type="text" id="addrBuilding" placeholder="البناية">
+        </div>
+        <div class="delivery-field" data-field="floor">
+          <label for="addrFloor">الطابق</label>
+          <input type="text" id="addrFloor" placeholder="الطابق">
+        </div>
+        <div class="delivery-field delivery-field--notes" data-field="notes">
+          <label for="addrNotes">ملاحظات لعامل التوصيل <span class="delivery-field__optional">(اختياري)</span></label>
+          <textarea id="addrNotes" rows="2" placeholder="ملاحظات لعامل التوصيل..."></textarea>
+        </div>
+      </div>
     </div>
 
     <div class="basket-subtotal">
