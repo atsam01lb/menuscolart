@@ -99,5 +99,15 @@ const MENUS_ITEMS = [
     logo: "assets/img/kayan-logo.png",
     bg: "#ece0d4",
     accent: "#6f7a56"
+  },
+  {
+    slug: "leil",
+    name: "Leil Coffee",
+    nameAr: "",
+    category: "Café",
+    href: "/leil/",
+    logo: "assets/img/leil-logo.png",
+    bg: "#ffffff",
+    accent: "#c75f28"
   }
 ];
