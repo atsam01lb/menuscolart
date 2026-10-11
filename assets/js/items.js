@@ -89,5 +89,15 @@ const MENUS_ITEMS = [
     logo: "assets/img/fianchetto-logo.png",
     bg: "#ffffff",
     accent: "#4a1d59"
+  },
+  {
+    slug: "kayan",
+    name: "Kayan Coffee Shop",
+    nameAr: "كيان",
+    category: "Café",
+    href: "/kayan/",
+    logo: "assets/img/kayan-logo.png",
+    bg: "#ece0d4",
+    accent: "#6f7a56"
   }
 ];

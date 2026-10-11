@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kayan CoffeeShop | Menu</title>
+<meta name="description" content="The Kayan CoffeeShop menu: hot and cold drinks, frappe, smoothies, milkshakes, refreshers, beverages and argileh.">
+<meta name="theme-color" content="#272e1e">
+<link rel="icon" type="image/png" href="assets/kayan-logo-green.png">
+<script>document.documentElement.classList.add('js');</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- shared SVG symbols -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="sprig" viewBox="0 0 48 24">
+      <path class="sprig__stem" d="M2 14 C14 14 26 12 44 8" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      <ellipse class="sprig__leaf" style="--k:0" cx="12" cy="9.5" rx="5" ry="2.1" transform="rotate(-28 12 9.5)" fill="currentColor"/>
+      <ellipse class="sprig__leaf" style="--k:1" cx="18" cy="18" rx="5" ry="2.1" transform="rotate(28 18 18)" fill="currentColor"/>
+      <ellipse class="sprig__leaf" style="--k:2" cx="26" cy="7" rx="5" ry="2.1" transform="rotate(-28 26 7)" fill="currentColor"/>
+      <ellipse class="sprig__leaf" style="--k:3" cx="32" cy="15.5" rx="5" ry="2.1" transform="rotate(28 32 15.5)" fill="currentColor"/>
+      <ellipse class="sprig__leaf" style="--k:4" cx="42" cy="4.6" rx="4.4" ry="1.9" transform="rotate(-20 42 4.6)" fill="currentColor"/>
+    </symbol>
+    <symbol id="leaf" viewBox="0 0 24 48">
+      <path d="M12 1 C21 12 21 34 12 47 C3 34 3 12 12 1 Z" fill="currentColor"/>
+      <path d="M12 6 L12 44" stroke="rgba(255,255,255,.35)" stroke-width="1" fill="none"/>
+    </symbol>
+    <symbol id="corner" viewBox="0 0 28 28">
+      <path d="M0 0.5 H8 A10 10 0 0 1 18 10.5 V28" fill="none" stroke="currentColor" stroke-width="1"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ===== HERO ===== -->
+<header class="hero" id="top">
+  <div class="hero__bg" aria-hidden="true">
+    <div class="olive olive--l"><div class="olive__sway"><img src="assets/olive-left.webp" alt="" width="420" height="1871"></div></div>
+    <div class="olive olive--r"><div class="olive__sway"><img src="assets/olive-right.webp" alt="" width="316" height="603"></div></div>
+    <div class="leaves">
+      <svg class="leaf" style="--x:12%;--s:18px;--d:15s;--t:-2s;--r:24deg"><use href="#leaf"/></svg>
+      <svg class="leaf" style="--x:26%;--s:12px;--d:19s;--t:-9s;--r:-30deg"><use href="#leaf"/></svg>
+      <svg class="leaf" style="--x:38%;--s:20px;--d:17s;--t:-5s;--r:40deg"><use href="#leaf"/></svg>
+      <svg class="leaf" style="--x:52%;--s:11px;--d:21s;--t:-13s;--r:-18deg"><use href="#leaf"/></svg>
+      <svg class="leaf" style="--x:64%;--s:16px;--d:16s;--t:-7s;--r:32deg"><use href="#leaf"/></svg>
+      <svg class="leaf" style="--x:76%;--s:13px;--d:20s;--t:-11s;--r:-36deg"><use href="#leaf"/></svg>
+      <svg class="leaf" style="--x:88%;--s:19px;--d:18s;--t:-3s;--r:20deg"><use href="#leaf"/></svg>
+      <svg class="leaf" style="--x:46%;--s:10px;--d:23s;--t:-15s;--r:-44deg"><use href="#leaf"/></svg>
+    </div>
+  </div>
+
+  <div class="frame" aria-hidden="true">
+    <i class="frame__line frame__line--t"></i><i class="frame__line frame__line--r"></i>
+    <i class="frame__line frame__line--b"></i><i class="frame__line frame__line--l"></i>
+    <svg class="frame__corner frame__corner--tl"><use href="#corner"/></svg>
+    <svg class="frame__corner frame__corner--tr"><use href="#corner"/></svg>
+    <svg class="frame__corner frame__corner--br"><use href="#corner"/></svg>
+    <svg class="frame__corner frame__corner--bl"><use href="#corner"/></svg>
+  </div>
+
+  <div class="hero__inner">
+    <p class="hero__eyebrow">Menu</p>
+    <h1 class="hero__logo-wrap"><img class="hero__logo" src="assets/kayan-logo-green.png" alt="Kayan CoffeeShop" width="458" height="261"></h1>
+    <div class="ornament" aria-hidden="true"><span></span><i></i><span></span></div>
+    <p class="hero__tagline">Hot &amp; cold drinks &middot; Smoothies &middot; Milkshakes &middot; Argileh</p>
+    <a class="hero__cta" href="#hot">
+      <span>Explore the menu</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v15M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+  <span class="hero__scroll" aria-hidden="true"><i></i></span>
+</header>
+
+<!-- ===== STICKY CATEGORY BAR (single sticky element: no stacked offsets) ===== -->
+<div class="site-head" id="siteHead">
+  <div class="site-head__inner">
+    <a class="site-head__brand" href="#top" aria-label="Back to top"><img src="assets/kayan-logo-green.png" alt="Kayan" width="458" height="261"></a>
+    <nav class="tabs" id="tabs" aria-label="Menu categories">
+      <div class="tabs__track" id="tabsTrack">
+        <a class="tab" href="#hot" data-target="hot">Hot drinks</a><a class="tab" href="#cold" data-target="cold">Cold drinks</a><a class="tab" href="#frappe" data-target="frappe">Frappe</a><a class="tab" href="#smoothies" data-target="smoothies">Smoothies</a><a class="tab" href="#milkshakes" data-target="milkshakes">Milkshakes</a><a class="tab" href="#refreshers" data-target="refreshers">Refreshers</a><a class="tab" href="#beverages" data-target="beverages">Beverages</a><a class="tab" href="#argileh" data-target="argileh">Argileh</a>
+        <span class="tabs__ink" id="tabsInk" aria-hidden="true"></span>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="side-olive side-olive--l" aria-hidden="true"><div class="olive__sway"><img src="assets/olive-left.webp" alt=""></div></div>
+<div class="side-olive side-olive--r" aria-hidden="true"><div class="olive__sway"><img src="assets/olive-right.webp" alt=""></div></div>
+
+<!-- ===== MENU ===== -->
+<main class="menu" id="menu">
+    <section class="cat reveal" id="hot" data-label="Hot drinks">
+      <header class="cat__head">
+        <svg class="sprig" viewBox="0 0 48 24" aria-hidden="true"><use href="#sprig"/></svg>
+        <h2 class="cat__title">Hot drinks</h2>
+      </header>
+      <div class="cat__body cat__body--media">
+        <ul class="items"><li class="item" style="--i:0"><span class="item__name">Espresso</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">1.10<span class="cur">$</span></span></li><li class="item" style="--i:1"><span class="item__name">Double</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">2<span class="cur">$</span></span></li><li class="item" style="--i:2"><span class="item__name">Cappuccino</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">3<span class="cur">$</span></span></li><li class="item" style="--i:3"><span class="item__name">Cafe latte:</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">3.5<span class="cur">$</span></span><ul class="flavors"><li style="--j:0">Caramel</li><li style="--j:1">Vanilla</li><li style="--j:2">Sugar free</li></ul></li><li class="item" style="--i:4"><span class="item__name">Matcha</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">4<span class="cur">$</span></span></li><li class="item" style="--i:5"><span class="item__name">Cafe mocha</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">3.5<span class="cur">$</span></span></li><li class="item" style="--i:6"><span class="item__name">Spanish latte</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">3.5<span class="cur">$</span></span></li><li class="item" style="--i:7"><span class="item__name">Hot chocolate</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">3.5<span class="cur">$</span></span></li><li class="item" style="--i:8"><span class="item__name">Nescafé</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">2.5<span class="cur">$</span></span></li><li class="item" style="--i:9"><span class="item__name">Tea</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">1.5<span class="cur">$</span></span></li></ul>
+        <figure class="media media--cup" aria-hidden="true"><div class="media__frame"><img src="assets/cup.webp" alt="" width="900" height="528" loading="lazy"><div class="steam"><svg viewBox="0 0 40 120"><path d="M20 118 C6 96 34 82 20 60 C8 40 30 26 20 4"/></svg><svg viewBox="0 0 40 120"><path d="M20 118 C34 98 8 80 20 58 C32 38 10 24 20 4"/></svg><svg viewBox="0 0 40 120"><path d="M20 118 C10 98 30 80 20 60 C12 42 28 26 20 4"/></svg></div></div></figure>
+      </div>
+    </section>
+    <section class="cat reveal" id="cold" data-label="Cold drinks">
+      <header class="cat__head">
+        <svg class="sprig" viewBox="0 0 48 24" aria-hidden="true"><use href="#sprig"/></svg>
+        <h2 class="cat__title">Cold drinks</h2>
+      </header>
+      <div class="cat__body cat__body--media">
+        <ul class="items"><li class="item" style="--i:0"><span class="item__name">Iced matcha</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">4<span class="cur">$</span></span></li><li class="item" style="--i:1"><span class="item__name">Special latte</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">3.5<span class="cur">$</span></span></li><li class="item" style="--i:2"><span class="item__name">Iced latte: Caramel - vanilla</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">3.5<span class="cur">$</span></span></li><li class="item" style="--i:3"><span class="item__name">Spanish latte</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">4<span class="cur">$</span></span></li></ul>
+        <figure class="media media--latte" aria-hidden="true"><div class="media__frame"><img src="assets/latte.webp" alt="" width="900" height="848" loading="lazy"></div></figure>
+      </div>
+    </section>
+    <section class="cat reveal" id="frappe" data-label="Frappe">
+      <header class="cat__head">
+        <svg class="sprig" viewBox="0 0 48 24" aria-hidden="true"><use href="#sprig"/></svg>
+        <h2 class="cat__title">Frappe</h2>
+      </header>
+      <div class="cat__body">
+        <ul class="items"><li class="item" style="--i:0"><span class="item__name">Special frappe</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">4.5<span class="cur">$</span></span></li><li class="item" style="--i:1"><span class="item__name">Matcha frappe</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">4<span class="cur">$</span></span></li><li class="item" style="--i:2"><span class="item__name">Mocha frappe</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">4<span class="cur">$</span></span></li><li class="item" style="--i:3"><span class="item__name">Caramel frappe</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">4<span class="cur">$</span></span></li><li class="item" style="--i:4"><span class="item__name">Espresso frappe</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">4<span class="cur">$</span></span></li></ul>
+        
+      </div>
+    </section>
+    <section class="cat reveal" id="smoothies" data-label="Smoothies">
+      <header class="cat__head">
+        <svg class="sprig" viewBox="0 0 48 24" aria-hidden="true"><use href="#sprig"/></svg>
+        <h2 class="cat__title">Smoothies</h2>
+      </header>
+      <div class="cat__body">
+        <ul class="items"><li class="item" style="--i:0"><span class="item__name">Special Smoothie</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">4<span class="cur">$</span></span></li><li class="item" style="--i:1"><span class="item__name">Mango</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">4<span class="cur">$</span></span></li><li class="item" style="--i:2"><span class="item__name">Passion</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">4<span class="cur">$</span></span></li><li class="item" style="--i:3"><span class="item__name">Strawberry</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">4<span class="cur">$</span></span></li><li class="item" style="--i:4"><span class="item__name">Coconut</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">4<span class="cur">$</span></span></li><li class="item" style="--i:5"><span class="item__name">Peach</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">4<span class="cur">$</span></span></li></ul>
+        
+      </div>
+    </section>
+    <section class="cat reveal" id="milkshakes" data-label="Milkshakes">
+      <header class="cat__head">
+        <svg class="sprig" viewBox="0 0 48 24" aria-hidden="true"><use href="#sprig"/></svg>
+        <h2 class="cat__title">Milkshakes</h2>
+      </header>
+      <div class="cat__body">
+        <ul class="items"><li class="item" style="--i:0"><span class="item__name">Special shake</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">5<span class="cur">$</span></span></li><li class="item" style="--i:1"><span class="item__name">Cookie &amp; cream</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">5<span class="cur">$</span></span></li><li class="item" style="--i:2"><span class="item__name">Lotus</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">5<span class="cur">$</span></span></li><li class="item" style="--i:3"><span class="item__name">Nutella</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">5<span class="cur">$</span></span></li><li class="item" style="--i:4"><span class="item__name">Chocolate</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">4.5<span class="cur">$</span></span></li><li class="item" style="--i:5"><span class="item__name">Strawberry</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">4.5<span class="cur">$</span></span></li><li class="item" style="--i:6"><span class="item__name">Caramel</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">4.5<span class="cur">$</span></span></li></ul>
+        
+      </div>
+    </section>
+    <section class="cat reveal" id="refreshers" data-label="Refreshers">
+      <header class="cat__head">
+        <svg class="sprig" viewBox="0 0 48 24" aria-hidden="true"><use href="#sprig"/></svg>
+        <h2 class="cat__title">Refreshers</h2>
+      </header>
+      <div class="cat__body">
+        <ul class="items"><li class="item" style="--i:0"><span class="item__name">Peach Iced Tea</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">3.5<span class="cur">$</span></span></li><li class="item" style="--i:1"><span class="item__name">Iced Tea Lemon</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">3.5<span class="cur">$</span></span></li><li class="item" style="--i:2"><span class="item__name">Passion Mojito</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">3.5<span class="cur">$</span></span></li><li class="item" style="--i:3"><span class="item__name">Strawberry Mojito</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">3.5<span class="cur">$</span></span></li><li class="item" style="--i:4"><span class="item__name">Mango Mojito</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">3.5<span class="cur">$</span></span></li><li class="item" style="--i:5"><span class="item__name">Mix energy drinks</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">4<span class="cur">$</span></span></li><li class="item" style="--i:6"><span class="item__name">Mexican red bull</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">4.5<span class="cur">$</span></span></li><li class="item" style="--i:7"><span class="item__name">Orange</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">2.5<span class="cur">$</span></span></li><li class="item" style="--i:8"><span class="item__name">Carrot</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">2.5<span class="cur">$</span></span></li><li class="item" style="--i:9"><span class="item__name">Lemonade</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">2.5<span class="cur">$</span></span></li><li class="item" style="--i:10"><span class="item__name">Lemon mint</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">3<span class="cur">$</span></span></li></ul>
+        
+      </div>
+    </section>
+    <section class="cat reveal" id="beverages" data-label="Beverages">
+      <header class="cat__head">
+        <svg class="sprig" viewBox="0 0 48 24" aria-hidden="true"><use href="#sprig"/></svg>
+        <h2 class="cat__title">Beverages</h2>
+      </header>
+      <div class="cat__body">
+        <ul class="items"><li class="item" style="--i:0"><span class="item__name">Soft Drink</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">1.5<span class="cur">$</span></span></li><li class="item" style="--i:1"><span class="item__name">Red bull</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">3.5<span class="cur">$</span></span></li><li class="item" style="--i:2"><span class="item__name">XXL</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">2<span class="cur">$</span></span></li><li class="item" style="--i:3"><span class="item__name">Small water</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">0.5<span class="cur">$</span></span></li><li class="item" style="--i:4"><span class="item__name">Big water</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">1<span class="cur">$</span></span></li><li class="item" style="--i:5"><span class="item__name">Sparkling Water</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">3<span class="cur">$</span></span></li></ul>
+        
+      </div>
+    </section>
+    <section class="cat reveal" id="argileh" data-label="Argileh">
+      <header class="cat__head">
+        <svg class="sprig" viewBox="0 0 48 24" aria-hidden="true"><use href="#sprig"/></svg>
+        <h2 class="cat__title">Argileh</h2>
+      </header>
+      <div class="cat__body">
+        <ul class="items"><li class="item" style="--i:0"><span class="item__name">Tefehten</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">6<span class="cur">$</span></span></li><li class="item" style="--i:1"><span class="item__name">Tefehten idara</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">7<span class="cur">$</span></span></li><li class="item" style="--i:2"><span class="item__name">Eenab w naenae</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">6<span class="cur">$</span></span></li><li class="item" style="--i:3"><span class="item__name">Love</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">6<span class="cur">$</span></span></li><li class="item" style="--i:4"><span class="item__name">Hamod w naenae</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">6<span class="cur">$</span></span></li><li class="item" style="--i:5"><span class="item__name">Eelke w naenae</span><span class="item__dots" aria-hidden="true"></span><span class="item__price">6<span class="cur">$</span></span></li></ul>
+        
+      </div>
+    </section>
+  </main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer__inner">
+    <img class="footer__logo" src="assets/kayan-logo-cream.png" alt="Kayan CoffeeShop" width="458" height="261" loading="lazy">
+    <p class="footer__copy">&copy; <span id="year">2026</span> Kayan CoffeeShop. All rights reserved.</p>
+    <div class="footer__credits">
+      <span class="footer__credit">
+        <span class="footer__credit-label">Structured by</span>
+        <a href="https://www.colartdigitalmarketingagency.com" target="_blank" rel="noopener">Colart Digital Marketing Agency</a>
+      </span>
+      <span class="footer__sep" aria-hidden="true">&middot;</span>
+      <span class="footer__credit">
+        <span class="footer__credit-label">Hosted by</span>
+        <a href="https://menus.colartdigitalmarketingagency.com" target="_blank" rel="noopener">Menus by Colart</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
