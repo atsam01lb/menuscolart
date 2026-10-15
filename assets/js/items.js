@@ -109,5 +109,15 @@ const MENUS_ITEMS = [
     logo: "assets/img/leil-logo.png",
     bg: "#ffffff",
     accent: "#c75f28"
+  },
+  {
+    slug: "alnoor",
+    name: "Al Nour Restaurant",
+    nameAr: "مطعم النور",
+    category: "Restaurant",
+    href: "/alnoor/",
+    logo: "assets/img/alnoor-logo.png",
+    bg: "#000000",
+    accent: "#a51d21"
   }
 ];
