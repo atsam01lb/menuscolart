@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نكهة خاصة - توصيل | اطلب أونلاين</title>
+<meta name="description" content="اطلب من نكهة خاصة أونلاين للتوصيل: ترويقة لبنانية، مناقيش، كرواسان وكعك، سواريه وبيتزا. أضف طلبك إلى السلة وأتمم الطلب مباشرة عبر واتساب.">
+<meta name="theme-color" content="#faf6ef">
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Sticky header: brand, search, basket, category pills -->
+<header class="site-head" id="siteHead">
+  <div class="site-head__row">
+    <a class="brand" href="#top" aria-label="نكهة خاصة"><img src="assets/logo.svg" alt="نكهة خاصة"></a>
+    <div class="search">
+      <span class="search__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></span>
+      <input type="search" id="itemSearch" class="search__input" placeholder="ابحث عن صنف..." autocomplete="off" enterkeyhint="search">
+      <button type="button" id="itemSearchClear" class="search__clear" aria-label="مسح البحث" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <button type="button" class="basket-btn" id="basketToggle" aria-label="افتح السلة">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9h14l-1.4 9.2a2 2 0 01-2 1.8H8.4a2 2 0 01-2-1.8L5 9z"/><path d="M9 9l3-5 3 5"/></svg>
+      <span class="basket-btn__count" id="basketCount">0</span>
+    </button>
+  </div>
+  <nav class="cat-pills" id="catPills" aria-label="انتقل إلى القسم">
+    <div class="cat-pills__track" id="catPillsTrack"><a href="#breakfast" class="cat-pill" data-target="breakfast"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11h12v3a6 6 0 01-6 6h0a6 6 0 01-6-6v-3z"/><path d="M17 12.5h1.5a2.2 2.2 0 010 4.4H16.5"/><path d="M4 21h14"/><path d="M8 3c-1.2 1.4 1.2 2.2 0 3.6M12 3c-1.2 1.4 1.2 2.2 0 3.6"/></svg><span>ترويقة لبنانية</span></a><a href="#manakish" class="cat-pill" data-target="manakish"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="5"/><path d="M12 7.5v9M7.5 12h9"/></svg><span>مناقيش</span></a><a href="#croissant" class="cat-pill" data-target="croissant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15c2-6 6-9 9-9s7 3 9 9c-2-1-3-1-4.5 0-1-1-2.2-1.2-3.2-.5-.8-.7-2.2-.7-3 .5-1-.7-2.5-.5-3.5.5C5.5 14 4.7 14 3 15z"/></svg><span>كرواسان + كعك</span></a><a href="#soiree" class="cat-pill" data-target="soiree"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/><rect x="13.5" y="13.5" width="7" height="7" rx="2"/></svg><span>سواريه</span></a><a href="#pizza" class="cat-pill" data-target="pizza"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21L4 6.5C8.5 3 15.5 3 20 6.5L12 21z"/><circle cx="10.5" cy="9" r="1"/><circle cx="14.2" cy="11" r="1"/><circle cx="11.5" cy="14" r="1"/></svg><span>بيتزا</span></a><a href="#beverages" class="cat-pill" data-target="beverages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8h10l-1.2 11a1.5 1.5 0 01-1.5 1.3H9.7a1.5 1.5 0 01-1.5-1.3L7 8z"/><path d="M6 8h12"/><path d="M13 8l1.5-5H17"/></svg><span>مشروبات</span></a></div>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero__decor" aria-hidden="true">
+    <span class="leaf" style="--x:6%;--y:22%;--s:30px;--r:-24deg;--c:#71b248;--d:7s;--t:0s"></span>
+    <span class="leaf" style="--x:92%;--y:30%;--s:26px;--r:70deg;--c:#f2a024;--d:6.5s;--t:-1s"></span>
+    <span class="leaf" style="--x:80%;--y:78%;--s:22px;--r:-40deg;--c:#176d3b;--d:8s;--t:-3s"></span>
+  </div>
+  <div class="hero__inner">
+    <span class="hero__eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h11v10H3zM14 9h4l3 3v4h-7"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg> توصيل أونلاين</span>
+    <h1 class="hero__title">اطلب من <span>نكهة خاصة</span></h1>
+    <p class="hero__sub">اختر أصنافك، أضفها إلى السلة، وأتمم طلبك مباشرة عبر واتساب. 74 صنفاً في 6 أقسام.</p>
+    <ul class="hero__chips">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-7.5-7-12a7 7 0 1114 0c0 4.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg> الكورة · الحارة الخاصة</li>
+      <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg> تأكيد الطلب عبر واتساب</li>
+    </ul>
+    <a href="#breakfast" class="hero__cta">تصفح المنيو <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+  </div>
+</section>
+
+<main id="menu">
+
+  <section class="menu-category" id="breakfast">
+    <div class="menu-category__inner">
+      <div class="menu-category__head">
+        <span class="menu-category__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11h12v3a6 6 0 01-6 6h0a6 6 0 01-6-6v-3z"/><path d="M17 12.5h1.5a2.2 2.2 0 010 4.4H16.5"/><path d="M4 21h14"/><path d="M8 3c-1.2 1.4 1.2 2.2 0 3.6M12 3c-1.2 1.4 1.2 2.2 0 3.6"/></svg></span>
+        <div>
+          <h2>ترويقة لبنانية</h2>
+          <p class="menu-category__en">Lebanese Breakfast · 11 صنف</p>
+        </div>
+      </div>
+      
+      <div class="item-grid">
+        <article class="item-card" data-id="breakfast-01" data-name="حمص مدقوق" data-price="400000" style="--i:1">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/breakfast-01.jpg" alt="حمص مدقوق" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">حمص مدقوق</h4>
+            <div class="item-card__bottom"><span class="item-card__price">400,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="breakfast-02" data-name="حمص حب بطحينة" data-price="400000" style="--i:2">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/breakfast-02.jpg" alt="حمص حب بطحينة" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">حمص حب بطحينة</h4>
+            <div class="item-card__bottom"><span class="item-card__price">400,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="breakfast-03" data-name="حمص مع لحمة" data-price="700000" style="--i:3">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/breakfast-03.jpg" alt="حمص مع لحمة" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">حمص مع لحمة</h4>
+            <div class="item-card__bottom"><span class="item-card__price">700,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="breakfast-04" data-name="فول بحامض" data-price="400000" style="--i:4">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/breakfast-04.jpg" alt="فول بحامض" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">فول بحامض</h4>
+            <div class="item-card__bottom"><span class="item-card__price">400,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="breakfast-05" data-name="فول بطحينة" data-price="450000" style="--i:5">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/breakfast-05.jpg" alt="فول بطحينة" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">فول بطحينة</h4>
+            <div class="item-card__bottom"><span class="item-card__price">450,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="breakfast-06" data-name="فتة" data-price="450000" style="--i:6">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/breakfast-06.jpg" alt="فتة" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">فتة</h4>
+            <div class="item-card__bottom"><span class="item-card__price">450,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="breakfast-07" data-name="فتة مع لحمة" data-price="850000" style="--i:7">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/breakfast-07.jpg" alt="فتة مع لحمة" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">فتة مع لحمة</h4>
+            <div class="item-card__bottom"><span class="item-card__price">850,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="breakfast-08" data-name="ماليزية" data-price="450000" style="--i:8">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/breakfast-08.jpg" alt="ماليزية" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">ماليزية</h4>
+            <div class="item-card__bottom"><span class="item-card__price">450,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="breakfast-09" data-name="بيض و قاورما" data-price="600000" style="--i:9">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/breakfast-09.jpg" alt="بيض و قاورما" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">بيض و قاورما</h4>
+            <div class="item-card__bottom"><span class="item-card__price">600,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="breakfast-10" data-name="شكشوكة" data-price="400000" style="--i:10">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/breakfast-10.jpg" alt="شكشوكة" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">شكشوكة</h4>
+            <div class="item-card__bottom"><span class="item-card__price">400,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="breakfast-11" data-name="صفيحة" data-price="150000" style="--i:11">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/breakfast-11.jpg" alt="صفيحة" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">صفيحة</h4>
+            <div class="item-card__bottom"><span class="item-card__price">150,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-category" id="manakish">
+    <div class="menu-category__inner">
+      <div class="menu-category__head">
+        <span class="menu-category__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="5"/><path d="M12 7.5v9M7.5 12h9"/></svg></span>
+        <div>
+          <h2>مناقيش</h2>
+          <p class="menu-category__en">Manakish · 26 صنف</p>
+        </div>
+      </div>
+      
+      <div class="item-grid">
+        <article class="item-card" data-id="manakish-01" data-name="زعتر بلدي" data-price="70000" style="--i:1">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/manakish-01.jpg" alt="زعتر بلدي" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">زعتر بلدي</h4>
+            <div class="item-card__bottom"><span class="item-card__price">70,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="manakish-02" data-name="زعتر حلبي" data-price="70000" style="--i:2">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/manakish-02.jpg" alt="زعتر حلبي" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">زعتر حلبي</h4>
+            <div class="item-card__bottom"><span class="item-card__price">70,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="manakish-03" data-name="زعتر مع خضرة" data-price="130000" style="--i:3">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/manakish-03.jpg" alt="زعتر مع خضرة" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">زعتر مع خضرة</h4>
+            <div class="item-card__bottom"><span class="item-card__price">130,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="manakish-04" data-name="دوبلكس جبنة و زعتر" data-price="300000" style="--i:4">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/manakish-04.jpg" alt="دوبلكس جبنة و زعتر" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">دوبلكس جبنة و زعتر</h4>
+            <div class="item-card__bottom"><span class="item-card__price">300,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="manakish-05" data-name="دوبلكس لحمة و جبنة" data-price="460000" style="--i:5">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/manakish-05.jpg" alt="دوبلكس لحمة و جبنة" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">دوبلكس لحمة و جبنة</h4>
+            <div class="item-card__bottom"><span class="item-card__price">460,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="manakish-06" data-name="تركية" data-price="200000" style="--i:6">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/manakish-06.jpg" alt="تركية" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">تركية</h4>
+            <div class="item-card__bottom"><span class="item-card__price">200,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="manakish-07" data-name="أريشة" data-price="200000" style="--i:7">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/manakish-07.jpg" alt="أريشة" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">أريشة</h4>
+            <div class="item-card__bottom"><span class="item-card__price">200,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="manakish-08" data-name="لبنة خضار + مرتديل" data-price="250000" style="--i:8">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/manakish-08.jpg" alt="لبنة خضار + مرتديل" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">لبنة خضار + مرتديل</h4>
+            <div class="item-card__bottom"><span class="item-card__price">250,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="manakish-09" data-name="لبنة خضار" data-price="200000" style="--i:9">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/manakish-09.jpg" alt="لبنة خضار" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">لبنة خضار</h4>
+            <div class="item-card__bottom"><span class="item-card__price">200,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="manakish-10" data-name="لحمة" data-price="230000" style="--i:10">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/manakish-10.jpg" alt="لحمة" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">لحمة</h4>
+            <div class="item-card__bottom"><span class="item-card__price">230,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="manakish-11" data-name="لحمة و جبنة" data-price="300000" style="--i:11">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/manakish-11.jpg" alt="لحمة و جبنة" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">لحمة و جبنة</h4>
+            <div class="item-card__bottom"><span class="item-card__price">300,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="manakish-12" data-name="جبنة قشقوان" data-price="280000" style="--i:12">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/manakish-12.jpg" alt="جبنة قشقوان" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">جبنة قشقوان</h4>
+            <div class="item-card__bottom"><span class="item-card__price">280,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="manakish-13" data-name="مشروحة جبنة" data-price="460000" style="--i:13">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/manakish-13.jpg" alt="مشروحة جبنة" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">مشروحة جبنة</h4>
+            <div class="item-card__bottom"><span class="item-card__price">460,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="manakish-14" data-name="جبنة" data-price="230000" style="--i:14">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/manakish-14.jpg" alt="جبنة" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">جبنة</h4>
+            <div class="item-card__bottom"><span class="item-card__price">230,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="manakish-15" data-name="جبنة و ذرة" data-price="250000" style="--i:15">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/manakish-15.jpg" alt="جبنة و ذرة" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">جبنة و ذرة</h4>
+            <div class="item-card__bottom"><span class="item-card__price">250,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="manakish-16" data-name="جبنة و خضار" data-price="300000" style="--i:16">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/manakish-16.jpg" alt="جبنة و خضار" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">جبنة و خضار</h4>
+            <div class="item-card__bottom"><span class="item-card__price">300,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="manakish-17" data-name="جبنة و مرتديل" data-price="320000" style="--i:17">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/manakish-17.jpg" alt="جبنة و مرتديل" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">جبنة و مرتديل</h4>
+            <div class="item-card__bottom"><span class="item-card__price">320,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="manakish-18" data-name="جبنة و سجق" data-price="320000" style="--i:18">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/manakish-18.jpg" alt="جبنة و سجق" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">جبنة و سجق</h4>
+            <div class="item-card__bottom"><span class="item-card__price">320,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="manakish-19" data-name="جبنة و حبش" data-price="320000" style="--i:19">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/manakish-19.jpg" alt="جبنة و حبش" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">جبنة و حبش</h4>
+            <div class="item-card__bottom"><span class="item-card__price">320,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="manakish-20" data-name="جبنة و بييروني" data-price="350000" style="--i:20">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/manakish-20.jpg" alt="جبنة و بييروني" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">جبنة و بييروني</h4>
+            <div class="item-card__bottom"><span class="item-card__price">350,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="manakish-21" data-name="سلق" data-price="120000" style="--i:21">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/manakish-21.jpg" alt="سلق" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">سلق</h4>
+            <div class="item-card__bottom"><span class="item-card__price">120,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="manakish-22" data-name="عجة بيض + أطراف جبنة" data-price="450000" style="--i:22">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/manakish-22.jpg" alt="عجة بيض + أطراف جبنة" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">عجة بيض + أطراف جبنة</h4>
+            <div class="item-card__bottom"><span class="item-card__price">450,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="manakish-23" data-name="عجة بيض + حبش" data-price="500000" style="--i:23">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/manakish-23.jpg" alt="عجة بيض + حبش" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">عجة بيض + حبش</h4>
+            <div class="item-card__bottom"><span class="item-card__price">500,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="manakish-24" data-name="عجة بيض + سجق" data-price="500000" style="--i:24">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/manakish-24.jpg" alt="عجة بيض + سجق" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">عجة بيض + سجق</h4>
+            <div class="item-card__bottom"><span class="item-card__price">500,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="manakish-25" data-name="سابمارين" data-price="400000" style="--i:25">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/manakish-25.jpg" alt="سابمارين" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">سابمارين</h4>
+            <div class="item-card__bottom"><span class="item-card__price">400,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="manakish-26" data-name="شوكوبا" data-price="350000" style="--i:26">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/manakish-26.jpg" alt="شوكوبا" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">شوكوبا</h4>
+            <div class="item-card__bottom"><span class="item-card__price">350,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-category" id="croissant">
+    <div class="menu-category__inner">
+      <div class="menu-category__head">
+        <span class="menu-category__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15c2-6 6-9 9-9s7 3 9 9c-2-1-3-1-4.5 0-1-1-2.2-1.2-3.2-.5-.8-.7-2.2-.7-3 .5-1-.7-2.5-.5-3.5.5C5.5 14 4.7 14 3 15z"/></svg></span>
+        <div>
+          <h2>كرواسان + كعك</h2>
+          <p class="menu-category__en">Croissant &amp; Kaak · 10 أصناف</p>
+        </div>
+      </div>
+      
+      <div class="item-grid">
+        <article class="item-card" data-id="croissant-01" data-name="كرواسان جبنة" data-price="120000" style="--i:1">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/croissant-01.jpg" alt="كرواسان جبنة" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">كرواسان جبنة</h4>
+            <div class="item-card__bottom"><span class="item-card__price">120,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="croissant-02" data-name="كرواسان زعتر" data-price="120000" style="--i:2">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/croissant-02.jpg" alt="كرواسان زعتر" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">كرواسان زعتر</h4>
+            <div class="item-card__bottom"><span class="item-card__price">120,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="croissant-03" data-name="كرواسان شوكولا" data-price="120000" style="--i:3">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/croissant-03.jpg" alt="كرواسان شوكولا" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">كرواسان شوكولا</h4>
+            <div class="item-card__bottom"><span class="item-card__price">120,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="croissant-04" data-name="كعك جبنة" data-price="280000" style="--i:4">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/croissant-04.jpg" alt="كعك جبنة" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">كعك جبنة</h4>
+            <div class="item-card__bottom"><span class="item-card__price">280,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="croissant-05" data-name="كعك جبنة + ذرة" data-price="300000" style="--i:5">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/croissant-05.jpg" alt="كعك جبنة + ذرة" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">كعك جبنة + ذرة</h4>
+            <div class="item-card__bottom"><span class="item-card__price">300,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="croissant-06" data-name="كعك جبنة + خضار" data-price="320000" style="--i:6">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/croissant-06.jpg" alt="كعك جبنة + خضار" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">كعك جبنة + خضار</h4>
+            <div class="item-card__bottom"><span class="item-card__price">320,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="croissant-07" data-name="كعك جبنة + حبش" data-price="350000" style="--i:7">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/croissant-07.jpg" alt="كعك جبنة + حبش" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">كعك جبنة + حبش</h4>
+            <div class="item-card__bottom"><span class="item-card__price">350,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="croissant-08" data-name="كعك جبنة + سجق" data-price="350000" style="--i:8">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/croissant-08.jpg" alt="كعك جبنة + سجق" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">كعك جبنة + سجق</h4>
+            <div class="item-card__bottom"><span class="item-card__price">350,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="croissant-09" data-name="كعك جبنة + بييروني" data-price="350000" style="--i:9">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/croissant-09.jpg" alt="كعك جبنة + بييروني" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">كعك جبنة + بييروني</h4>
+            <div class="item-card__bottom"><span class="item-card__price">350,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="croissant-10" data-name="تارت أناناس" data-price="250000" style="--i:10">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/croissant-10.jpg" alt="تارت أناناس" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">تارت أناناس</h4>
+            <div class="item-card__bottom"><span class="item-card__price">250,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-category" id="soiree">
+    <div class="menu-category__inner">
+      <div class="menu-category__head">
+        <span class="menu-category__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/><rect x="13.5" y="13.5" width="7" height="7" rx="2"/></svg></span>
+        <div>
+          <h2>سواريه</h2>
+          <p class="menu-category__en">Soirée · 8 أصناف</p>
+        </div>
+      </div>
+      <p class="menu-category__note">الأسعار للدزينة</p>
+      <div class="item-grid">
+        <article class="item-card" data-id="soiree-01" data-name="زعتر" data-price="450000" style="--i:1">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/soiree-01.jpg" alt="زعتر" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">زعتر</h4>
+            <div class="item-card__bottom"><span class="item-card__price">450,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="soiree-02" data-name="جبنة" data-price="600000" style="--i:2">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/soiree-02.jpg" alt="جبنة" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">جبنة</h4>
+            <div class="item-card__bottom"><span class="item-card__price">600,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="soiree-03" data-name="أريشة" data-price="600000" style="--i:3">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/soiree-03.jpg" alt="أريشة" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">أريشة</h4>
+            <div class="item-card__bottom"><span class="item-card__price">600,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="soiree-04" data-name="تركية" data-price="600000" style="--i:4">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/soiree-04.jpg" alt="تركية" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">تركية</h4>
+            <div class="item-card__bottom"><span class="item-card__price">600,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="soiree-05" data-name="بعلبكية" data-price="600000" style="--i:5">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/soiree-05.jpg" alt="بعلبكية" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">بعلبكية</h4>
+            <div class="item-card__bottom"><span class="item-card__price">600,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="soiree-06" data-name="بيتزا" data-price="600000" style="--i:6">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/soiree-06.jpg" alt="بيتزا" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">بيتزا</h4>
+            <div class="item-card__bottom"><span class="item-card__price">600,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="soiree-07" data-name="لحم بعجين قرص كبير" data-price="900000" style="--i:7">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/soiree-07.jpg" alt="لحم بعجين قرص كبير" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">لحم بعجين<small>قرص كبير</small></h4>
+            <div class="item-card__bottom"><span class="item-card__price">900,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="soiree-08" data-name="سلق" data-price="600000" style="--i:8">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/soiree-08.jpg" alt="سلق" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">سلق</h4>
+            <div class="item-card__bottom"><span class="item-card__price">600,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-category" id="pizza">
+    <div class="menu-category__inner">
+      <div class="menu-category__head">
+        <span class="menu-category__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21L4 6.5C8.5 3 15.5 3 20 6.5L12 21z"/><circle cx="10.5" cy="9" r="1"/><circle cx="14.2" cy="11" r="1"/><circle cx="11.5" cy="14" r="1"/></svg></span>
+        <div>
+          <h2>بيتزا</h2>
+          <p class="menu-category__en">Pizza · 8 أصناف</p>
+        </div>
+      </div>
+      <p class="menu-category__note">اختر الحجم المناسب</p>
+      <div class="item-grid">
+        <article class="item-card" data-id="pizza-01" data-name="مارغاريتا" data-price="500000" data-has-sizes="1" style="--i:1">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/pizza-01.jpg" alt="مارغاريتا" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">مارغاريتا</h4>
+            <div class="size-chips" role="group" aria-label="اختر الحجم"><button type="button" class="size-chip is-active" data-size="small" data-label="صغير" data-price="500000" aria-pressed="true">صغير</button><button type="button" class="size-chip" data-size="medium" data-label="وسط" data-price="850000" aria-pressed="false">وسط</button><button type="button" class="size-chip" data-size="large" data-label="كبير" data-price="1200000" aria-pressed="false">كبير</button><button type="button" class="size-chip" data-size="family" data-label="عائلي" data-price="1500000" aria-pressed="false">عائلي</button></div>
+            <div class="item-card__bottom"><span class="item-card__price">500,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="pizza-02" data-name="خضار" data-price="500000" data-has-sizes="1" style="--i:2">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/pizza-02.jpg" alt="خضار" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">خضار</h4>
+            <div class="size-chips" role="group" aria-label="اختر الحجم"><button type="button" class="size-chip is-active" data-size="small" data-label="صغير" data-price="500000" aria-pressed="true">صغير</button><button type="button" class="size-chip" data-size="medium" data-label="وسط" data-price="850000" aria-pressed="false">وسط</button><button type="button" class="size-chip" data-size="large" data-label="كبير" data-price="1200000" aria-pressed="false">كبير</button><button type="button" class="size-chip" data-size="family" data-label="عائلي" data-price="1500000" aria-pressed="false">عائلي</button></div>
+            <div class="item-card__bottom"><span class="item-card__price">500,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="pizza-03" data-name="فور تشيز" data-price="550000" data-has-sizes="1" style="--i:3">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/pizza-03.jpg" alt="فور تشيز" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">فور تشيز</h4>
+            <div class="size-chips" role="group" aria-label="اختر الحجم"><button type="button" class="size-chip is-active" data-size="small" data-label="صغير" data-price="550000" aria-pressed="true">صغير</button><button type="button" class="size-chip" data-size="medium" data-label="وسط" data-price="950000" aria-pressed="false">وسط</button><button type="button" class="size-chip" data-size="large" data-label="كبير" data-price="1400000" aria-pressed="false">كبير</button><button type="button" class="size-chip" data-size="family" data-label="عائلي" data-price="1800000" aria-pressed="false">عائلي</button></div>
+            <div class="item-card__bottom"><span class="item-card__price">550,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="pizza-04" data-name="مرتديل" data-price="550000" data-has-sizes="1" style="--i:4">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/pizza-04.jpg" alt="مرتديل" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">مرتديل</h4>
+            <div class="size-chips" role="group" aria-label="اختر الحجم"><button type="button" class="size-chip is-active" data-size="small" data-label="صغير" data-price="550000" aria-pressed="true">صغير</button><button type="button" class="size-chip" data-size="medium" data-label="وسط" data-price="950000" aria-pressed="false">وسط</button><button type="button" class="size-chip" data-size="large" data-label="كبير" data-price="1400000" aria-pressed="false">كبير</button><button type="button" class="size-chip" data-size="family" data-label="عائلي" data-price="1800000" aria-pressed="false">عائلي</button></div>
+            <div class="item-card__bottom"><span class="item-card__price">550,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="pizza-05" data-name="سجق" data-price="550000" data-has-sizes="1" style="--i:5">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/pizza-05.jpg" alt="سجق" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">سجق</h4>
+            <div class="size-chips" role="group" aria-label="اختر الحجم"><button type="button" class="size-chip is-active" data-size="small" data-label="صغير" data-price="550000" aria-pressed="true">صغير</button><button type="button" class="size-chip" data-size="medium" data-label="وسط" data-price="950000" aria-pressed="false">وسط</button><button type="button" class="size-chip" data-size="large" data-label="كبير" data-price="1400000" aria-pressed="false">كبير</button><button type="button" class="size-chip" data-size="family" data-label="عائلي" data-price="1800000" aria-pressed="false">عائلي</button></div>
+            <div class="item-card__bottom"><span class="item-card__price">550,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="pizza-06" data-name="بييروني" data-price="550000" data-has-sizes="1" style="--i:6">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/pizza-06.jpg" alt="بييروني" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">بييروني</h4>
+            <div class="size-chips" role="group" aria-label="اختر الحجم"><button type="button" class="size-chip is-active" data-size="small" data-label="صغير" data-price="550000" aria-pressed="true">صغير</button><button type="button" class="size-chip" data-size="medium" data-label="وسط" data-price="950000" aria-pressed="false">وسط</button><button type="button" class="size-chip" data-size="large" data-label="كبير" data-price="1400000" aria-pressed="false">كبير</button><button type="button" class="size-chip" data-size="family" data-label="عائلي" data-price="1800000" aria-pressed="false">عائلي</button></div>
+            <div class="item-card__bottom"><span class="item-card__price">550,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="pizza-07" data-name="حبش" data-price="550000" data-has-sizes="1" style="--i:7">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/pizza-07.jpg" alt="حبش" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">حبش</h4>
+            <div class="size-chips" role="group" aria-label="اختر الحجم"><button type="button" class="size-chip is-active" data-size="small" data-label="صغير" data-price="550000" aria-pressed="true">صغير</button><button type="button" class="size-chip" data-size="medium" data-label="وسط" data-price="950000" aria-pressed="false">وسط</button><button type="button" class="size-chip" data-size="large" data-label="كبير" data-price="1400000" aria-pressed="false">كبير</button><button type="button" class="size-chip" data-size="family" data-label="عائلي" data-price="1800000" aria-pressed="false">عائلي</button></div>
+            <div class="item-card__bottom"><span class="item-card__price">550,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="pizza-08" data-name="سلامي" data-price="550000" data-has-sizes="1" style="--i:8">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/pizza-08.jpg" alt="سلامي" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">سلامي</h4>
+            <div class="size-chips" role="group" aria-label="اختر الحجم"><button type="button" class="size-chip is-active" data-size="small" data-label="صغير" data-price="550000" aria-pressed="true">صغير</button><button type="button" class="size-chip" data-size="medium" data-label="وسط" data-price="950000" aria-pressed="false">وسط</button><button type="button" class="size-chip" data-size="large" data-label="كبير" data-price="1400000" aria-pressed="false">كبير</button><button type="button" class="size-chip" data-size="family" data-label="عائلي" data-price="1800000" aria-pressed="false">عائلي</button></div>
+            <div class="item-card__bottom"><span class="item-card__price">550,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-category" id="beverages">
+    <div class="menu-category__inner">
+      <div class="menu-category__head">
+        <span class="menu-category__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8h10l-1.2 11a1.5 1.5 0 01-1.5 1.3H9.7a1.5 1.5 0 01-1.5-1.3L7 8z"/><path d="M6 8h12"/><path d="M13 8l1.5-5H17"/></svg></span>
+        <div>
+          <h2>مشروبات</h2>
+          <p class="menu-category__en">Beverages · 11 صنف</p>
+        </div>
+      </div>
+      
+      <div class="item-grid">
+        <article class="item-card" data-id="beverages-01" data-name="مشروبات غازية ٢٥٠ مل" data-price="50000" style="--i:1">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/beverages-01.jpg" alt="مشروبات غازية ٢٥٠ مل" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">مشروبات غازية<small>٢٥٠ مل</small></h4>
+            <div class="item-card__bottom"><span class="item-card__price">50,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="beverages-02" data-name="مشروبات غازية ٣٣٠ مل" data-price="100000" style="--i:2">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/beverages-02.jpg" alt="مشروبات غازية ٣٣٠ مل" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">مشروبات غازية<small>٣٣٠ مل</small></h4>
+            <div class="item-card__bottom"><span class="item-card__price">100,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="beverages-03" data-name="مشروبات غازية ١.٢٥ لتر" data-price="150000" style="--i:3">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/beverages-03.jpg" alt="مشروبات غازية ١.٢٥ لتر" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">مشروبات غازية<small>١.٢٥ لتر</small></h4>
+            <div class="item-card__bottom"><span class="item-card__price">150,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="beverages-04" data-name="مشروبات غازية ٢.٢٠ لتر" data-price="160000" style="--i:4">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/beverages-04.jpg" alt="مشروبات غازية ٢.٢٠ لتر" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">مشروبات غازية<small>٢.٢٠ لتر</small></h4>
+            <div class="item-card__bottom"><span class="item-card__price">160,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="beverages-05" data-name="مستر جوسي" data-price="30000" style="--i:5">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/beverages-05.jpg" alt="مستر جوسي" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">مستر جوسي</h4>
+            <div class="item-card__bottom"><span class="item-card__price">30,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="beverages-06" data-name="Top Juice" data-price="30000" style="--i:6">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/beverages-06.jpg" alt="Top Juice" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">Top Juice</h4>
+            <div class="item-card__bottom"><span class="item-card__price">30,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="beverages-07" data-name="عيران صغير" data-price="100000" style="--i:7">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/beverages-07.jpg" alt="عيران صغير" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">عيران صغير</h4>
+            <div class="item-card__bottom"><span class="item-card__price">100,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="beverages-08" data-name="عيران كبير" data-price="220000" style="--i:8">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/beverages-08.jpg" alt="عيران كبير" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">عيران كبير</h4>
+            <div class="item-card__bottom"><span class="item-card__price">220,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="beverages-09" data-name="مياه صغير" data-price="30000" style="--i:9">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/beverages-09.jpg" alt="مياه صغير" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">مياه صغير</h4>
+            <div class="item-card__bottom"><span class="item-card__price">30,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="beverages-10" data-name="مياه كبير" data-price="40000" style="--i:10">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/beverages-10.jpg" alt="مياه كبير" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">مياه كبير</h4>
+            <div class="item-card__bottom"><span class="item-card__price">40,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+        <article class="item-card" data-id="beverages-11" data-name="شاي" data-price="25000" style="--i:11">
+          <div class="item-card__photo"><img class="item-card__ph" src="assets/logo.svg" alt="" loading="lazy" decoding="async"><img class="item-card__real" src="assets/items/beverages-11.jpg" alt="شاي" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <div class="item-card__body">
+            <h4 class="item-card__name">شاي</h4>
+            <div class="item-card__bottom"><span class="item-card__price">25,000<span class="cur"> ل.ل</span></span><div class="qty-stepper"><button type="button" class="qty-btn" data-action="minus" aria-label="إنقاص الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="qty-value">1</span><button type="button" class="qty-btn" data-action="plus" aria-label="زيادة الكمية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+            <button type="button" class="add-btn" data-action="add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>أضف إلى السلة</span></button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="no-results" id="noResults" hidden>
+    <span class="no-results__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></span>
+    <h3>لم نجد هذا الصنف</h3>
+    <p>جرّب كلمة أخرى أو امسح البحث لعرض كل الأصناف.</p>
+    <button type="button" id="noResultsReset">إظهار كل الأصناف</button>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <img class="footer__logo" src="assets/logo.svg" alt="نكهة خاصة">
+    <a class="footer__phone" href="https://wa.me/96181425150" target="_blank" rel="noopener" dir="ltr">+961 81 425 150</a>
+    <div class="footer__social">
+      <a href="https://instagram.com/nakhakhasa" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+      <a href="https://facebook.com/nakhakhasa" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+      <a href="https://tiktok.com/@nakhakhasa" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005.8 20.1a6.34 6.34 0 0010.86-4.43V9a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1.84-.43z"/></svg></a>
+      <a href="https://wa.me/96181425150" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+    </div>
+    <p class="footer__copy">© <span id="year">2026</span> نكهة خاصة. جميع الحقوق محفوظة.</p>
+    <div class="footer__credits">
+      <span>Structured by <a href="https://www.colartdigitalmarketingagency.com" target="_blank" rel="noopener">Colart Digital Marketing Agency</a></span>
+      <span class="footer__sep" aria-hidden="true">·</span>
+      <span>Hosted by <a href="https://menus.colartdigitalmarketingagency.com" target="_blank" rel="noopener">Menus by Colart</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- Basket drawer -->
+<div class="basket-overlay" id="basketOverlay"></div>
+<aside class="basket-drawer" id="basketDrawer" aria-label="سلتك" aria-hidden="true">
+  <div class="basket-drawer__head">
+    <h3>سلتك</h3>
+    <button type="button" class="basket-drawer__close" id="basketClose" aria-label="أغلق السلة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="basket-drawer__body" id="basketBody">
+    <div class="basket-empty" id="basketEmpty">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9h14l-1.4 9.2a2 2 0 01-2 1.8H8.4a2 2 0 01-2-1.8L5 9z"/><path d="M9 9l3-5 3 5"/></svg>
+      <p>سلتك فارغة</p>
+      <span>أضف بعض الأصناف لتبدأ طلبك</span>
+    </div>
+    <ul class="basket-lines" id="basketLines"></ul>
+  </div>
+  <div class="basket-drawer__foot" id="basketFoot">
+    <div class="delivery-address" id="deliveryAddressWrap">
+      <h4 class="delivery-address__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-7.5-7-12a7 7 0 1114 0c0 4.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg> عنوان التوصيل</h4>
+      <div class="delivery-address__grid">
+        <label class="delivery-field delivery-field--full"><span>الإسم <i>*</i></span><input type="text" id="addrName" placeholder="الإسم الكامل" autocomplete="name"></label>
+        <label class="delivery-field"><span>المنطقة <i>*</i></span><input type="text" id="addrArea" placeholder="المنطقة"></label>
+        <label class="delivery-field"><span>الشارع <i>*</i></span><input type="text" id="addrStreet" placeholder="الشارع"></label>
+        <label class="delivery-field"><span>البناية <i>*</i></span><input type="text" id="addrBuilding" placeholder="البناية"></label>
+        <label class="delivery-field"><span>الطابق <i>*</i></span><input type="text" id="addrFloor" placeholder="الطابق"></label>
+        <label class="delivery-field delivery-field--full"><span>ملاحظات لعامل التوصيل</span><textarea id="addrNotes" rows="2" placeholder="ملاحظات لعامل التوصيل..."></textarea></label>
+      </div>
+    </div>
+    <div class="basket-total"><span>المجموع</span><strong id="basketSubtotal">0 ل.ل</strong></div>
+    <p class="basket-note">هذا السعر لا يشمل سعر خدمة التوصيل</p>
+    <button type="button" class="checkout-btn" id="checkoutBtn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg> أرسل الطلب عبر واتساب</button>
+    <button type="button" class="clear-btn" id="clearBtn">إفراغ السلة</button>
+  </div>
+</aside>
+
+<!-- Floating basket bar -->
+<button type="button" class="basket-fab" id="basketFab" aria-label="افتح السلة">
+  <span class="basket-fab__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9h14l-1.4 9.2a2 2 0 01-2 1.8H8.4a2 2 0 01-2-1.8L5 9z"/><path d="M9 9l3-5 3 5"/></svg><b id="basketFabCount">0</b></span>
+  <span class="basket-fab__label">عرض السلة</span>
+  <span class="basket-fab__total" id="basketFabTotal">0 ل.ل</span>
+</button>
+
+<!-- Confirm before WhatsApp -->
+<div class="thankyou-overlay" id="thankyouOverlay"></div>
+<div class="thankyou-modal" id="thankyouModal" role="dialog" aria-label="تأكيد الطلب" aria-hidden="true">
+  <button type="button" class="thankyou-modal__close" id="thankyouClose" aria-label="أغلق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <img class="thankyou-modal__logo" src="assets/logo.svg" alt="">
+  <h3>شكراً لاختياركم نكهة خاصة</h3>
+  <p>طلبك جاهز. اضغط للمتابعة وإرساله عبر واتساب، وسنؤكد معك الطلب وسعر التوصيل.</p>
+  <button type="button" class="checkout-btn" id="proceedWhatsAppBtn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg> متابعة إلى واتساب</button>
+  <button type="button" class="thankyou-modal__cancel" id="thankyouCancel">متابعة التسوق</button>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

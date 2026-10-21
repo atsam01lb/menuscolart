@@ -41,6 +41,16 @@ const MENUS_ITEMS = [
     accent: "#8cb43c"
   },
   {
+    slug: "nakhakhasadelivery",
+    name: "Nakha Khasa Delivery",
+    nameAr: "نكهة خاصة توصيل",
+    category: "Delivery",
+    href: "/nakhakhasadelivery/",
+    logo: "assets/img/nakhakhasadelivery-logo.png",
+    bg: "#ffffff",
+    accent: "#176d3b"
+  },
+  {
     slug: "chefahmadrestaurant",
     name: "Chef Ahmad Restaurant",
     nameAr: "",
