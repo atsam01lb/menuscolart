@@ -1142,14 +1142,11 @@
     <p class="cats__sub">اختر القسم لتصفّح الأصناف والأسعار</p>
   </div>
   <div class="cats__grid" id="catsGrid">
-      <a class="cat-card cat-card--soon" href="#breakfast" style="--i:0">
-        <span class="cat-card__badge">قريباً</span>
-        <div class="cat-card__art" aria-hidden="true">
-          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 28h34v8a14 14 0 01-14 14h-6a14 14 0 01-14-14v-8z"/><path d="M46 31h4a5 5 0 010 10h-5"/><path d="M8 56h42"/><path d="M22 8c-3 3 3 5 0 9M31 8c-3 3 3 5 0 9M40 8c-3 3 3 5 0 9"/></svg>
-        </div>
+      <a class="cat-card" href="#breakfast" style="--i:0">
+        <img class="cat-card__img" src="assets/cards/breakfast.jpg" alt="" loading="lazy" decoding="async" />
         <div class="cat-card__body">
           <h3 class="cat-card__title">ترويقة لبنانية<em>Lebanese Breakfast</em></h3>
-          <p class="cat-card__meta">حمص · فول · فتة …</p>
+          <p class="cat-card__meta">11 صنف</p>
         </div>
         <span class="cat-card__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l-7 7 7 7"/></svg></span>
       </a>
@@ -1196,9 +1193,11 @@
   </div>
 </section>
 
-<!-- ============ BREAKFAST (coming soon) ============ -->
-<section class="menu-section menu-section--plain" id="breakfast">
-  <div class="menu-section__bg"></div>
+<!-- ============ LEBANESE BREAKFAST ============ -->
+<section class="menu-section" id="breakfast">
+  <div class="menu-section__bg">
+    <img src="assets/breakfast.jpg" alt="" loading="lazy" decoding="async" />
+  </div>
   <div class="menu-section__inner">
     <div class="back-row"><a href="#categories" class="back-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 5l7 7-7 7"/></svg>العودة إلى الأقسام</a></div>
     <div class="section-head reveal">
@@ -1211,12 +1210,19 @@
     </div>
 
     <div class="menu-panel reveal">
-      <div class="soon">
-        <svg class="soon__icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 28h34v8a14 14 0 01-14 14h-6a14 14 0 01-14-14v-8z"/><path d="M46 31h4a5 5 0 010 10h-5"/><path d="M8 56h42"/><path d="M22 8c-3 3 3 5 0 9M31 8c-3 3 3 5 0 9M40 8c-3 3 3 5 0 9"/></svg>
-        <h3>قريباً</h3>
-        <p>قائمة الترويقة اللبنانية قيد التحضير وستتوفر هنا قريباً. للاستفسار عن الأصناف المتوفرة يمكنكم التواصل معنا عبر واتساب.</p>
-        <a href="https://wa.me/96181425150" target="_blank" rel="noopener" class="btn btn--primary">اسأل عبر واتساب</a>
-      </div>
+      <ul class="menu-list">
+        <li class="menu-list__item"><span class="menu-list__name">حمص مدقوق</span><span class="menu-list__price">400,000<span class="menu-list__price-currency">ل.ل</span></span></li>
+        <li class="menu-list__item"><span class="menu-list__name">حمص حب بطحينة</span><span class="menu-list__price">400,000<span class="menu-list__price-currency">ل.ل</span></span></li>
+        <li class="menu-list__item"><span class="menu-list__name">حمص مع لحمة</span><span class="menu-list__price">700,000<span class="menu-list__price-currency">ل.ل</span></span></li>
+        <li class="menu-list__item"><span class="menu-list__name">فول بحامض</span><span class="menu-list__price">400,000<span class="menu-list__price-currency">ل.ل</span></span></li>
+        <li class="menu-list__item"><span class="menu-list__name">فول بطحينة</span><span class="menu-list__price">450,000<span class="menu-list__price-currency">ل.ل</span></span></li>
+        <li class="menu-list__item"><span class="menu-list__name">فتة</span><span class="menu-list__price">450,000<span class="menu-list__price-currency">ل.ل</span></span></li>
+        <li class="menu-list__item"><span class="menu-list__name">فتة مع لحمة</span><span class="menu-list__price">850,000<span class="menu-list__price-currency">ل.ل</span></span></li>
+        <li class="menu-list__item"><span class="menu-list__name">ماليزية</span><span class="menu-list__price">450,000<span class="menu-list__price-currency">ل.ل</span></span></li>
+        <li class="menu-list__item"><span class="menu-list__name">بيض و قاورما</span><span class="menu-list__price">600,000<span class="menu-list__price-currency">ل.ل</span></span></li>
+        <li class="menu-list__item"><span class="menu-list__name">شكشوكة</span><span class="menu-list__price">400,000<span class="menu-list__price-currency">ل.ل</span></span></li>
+        <li class="menu-list__item"><span class="menu-list__name">صفيحة</span><span class="menu-list__price">150,000<span class="menu-list__price-currency">ل.ل</span></span></li>
+      </ul>
     </div>
     <div class="back-row back-row--bottom"><a href="#categories" class="back-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 5l7 7-7 7"/></svg>العودة إلى الأقسام</a></div>
   </div>
