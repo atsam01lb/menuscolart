@@ -6,6 +6,16 @@
 <title>نكهة خاصة - Nakha Khasa</title>
 <meta name="description" content="مخبز نكهة خاصة — مناقيش، كرواسان، كعك، سواريه، بيتزا. الكورة - الحارة الخاصة." />
 
+<script>
+  /* category view state: <html data-cat="..."> is set before first paint so there is no flash */
+  (function(){
+    var d=document.documentElement; d.classList.add('js');
+    var ids=['breakfast','manakish','croissant','soiree','pizza','beverages'];
+    var h=(location.hash||'').slice(1);
+    if(ids.indexOf(h)>-1) d.setAttribute('data-cat',h);
+  })();
+</script>
+
 <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -798,6 +808,252 @@
     transform: translateY(0);
   }
 
+  /* ============ CATEGORY CARDS (home) + CATEGORY VIEW ============ */
+  .cats{
+    padding: 96px 28px 120px;
+    max-width: 1240px;
+    margin: 0 auto;
+    position: relative;
+    scroll-margin-top: 64px;
+  }
+  .cats__head{text-align:center; margin-bottom: 52px}
+  .cats__eyebrow{
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-family: var(--font-display-en);
+    font-style: italic;
+    font-size: 15px;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--red-500);
+  }
+  .cats__eyebrow::before, .cats__eyebrow::after{
+    content:'';
+    width: 40px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--red-500));
+  }
+  .cats__eyebrow::after{background: linear-gradient(90deg, var(--red-500), transparent)}
+  .cats__title{
+    font-family: var(--font-display);
+    font-size: clamp(40px, 6vw, 68px);
+    font-weight: 700;
+    line-height: 1.15;
+    margin: 14px 0 10px;
+    color: var(--ink);
+  }
+  .cats__title em{font-style: italic; color: var(--green-600); font-weight: 400}
+  .cats__sub{color: var(--ink-mute); font-size: 16px}
+
+  .cats__grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  .cat-card{
+    position: relative;
+    display: block;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    isolation: isolate;
+    background: var(--bg-soft);
+    box-shadow: var(--shadow-soft);
+    transition: transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .cat-card:hover{transform: translateY(-6px); box-shadow: var(--shadow-deep)}
+  .cat-card:active{transform: translateY(-2px) scale(.99)}
+  .cat-card:focus-visible{outline: 3px solid var(--green-500); outline-offset: 3px}
+  .cat-card__img{
+    position: absolute; inset: 0; z-index: -2;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 1.1s cubic-bezier(.16,1,.3,1);
+  }
+  .cat-card:hover .cat-card__img{transform: scale(1.07)}
+  .cat-card::after{
+    content:'';
+    position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(180deg, rgba(28,31,29,0) 36%, rgba(28,31,29,.55) 66%, rgba(28,31,29,.92) 100%);
+  }
+  .cat-card__body{
+    position: absolute;
+    inset-inline: 0; bottom: 0;
+    padding: 26px 24px;
+    padding-inline-end: 84px;
+    color: #fff;
+  }
+  .cat-card__title{
+    font-family: var(--font-display);
+    font-size: clamp(26px, 2.6vw, 34px);
+    font-weight: 700;
+    line-height: 1.15;
+    text-shadow: 0 2px 10px rgba(0,0,0,.4);
+  }
+  .cat-card__title em{
+    display: block;
+    font-family: var(--font-display-en);
+    font-style: italic;
+    font-weight: 400;
+    font-size: .46em;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    opacity: .88;
+    margin-top: 6px;
+  }
+  .cat-card__meta{font-size: 13px; color: rgba(255,255,255,.84); margin-top: 8px}
+  .cat-card__go{
+    position: absolute;
+    bottom: 26px; inset-inline-end: 22px;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--red-500);
+    color: #fff;
+    display: grid; place-items: center;
+    box-shadow: 0 10px 22px -8px var(--red-shadow);
+    transition: transform .3s ease, background .3s ease;
+  }
+  .cat-card__go svg{width: 20px; height: 20px}
+  .cat-card:hover .cat-card__go{background: var(--green-500); transform: translateX(-4px)}
+
+  /* "coming soon" card (no photo yet) */
+  .cat-card--soon{background: linear-gradient(160deg, var(--green-50) 0%, var(--bg-soft) 58%, var(--red-50) 100%)}
+  .cat-card--soon::after{background: none}
+  .cat-card__art{
+    position: absolute; inset: 0 0 34% 0;
+    display: grid; place-items: center;
+    color: var(--green-600);
+  }
+  .cat-card__art::before{
+    content:'';
+    position: absolute;
+    width: 62%; aspect-ratio: 1;
+    border-radius: 50%;
+    border: 1.5px dashed rgba(57,178,74,.45);
+  }
+  .cat-card__art svg{width: 34%; height: auto; position: relative}
+  .cat-card--soon .cat-card__body{color: var(--ink)}
+  .cat-card--soon .cat-card__title{text-shadow: none}
+  .cat-card--soon .cat-card__meta{color: var(--ink-mute)}
+  .cat-card__badge{
+    position: absolute;
+    top: 16px; inset-inline-start: 16px;
+    padding: 5px 14px;
+    border-radius: var(--radius-pill);
+    background: var(--red-500);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .04em;
+  }
+
+  /* entrance (only with JS on; cards are plain and visible otherwise) */
+  .js .cats__grid .cat-card{opacity: 0; transform: translateY(26px)}
+  .js .cats__grid.is-in .cat-card{opacity: 1; transform: none; animation: cardIn .85s cubic-bezier(.16,1,.3,1) backwards; animation-delay: calc(var(--i) * 80ms)}
+  @keyframes cardIn{from{opacity:0; transform: translateY(26px)}to{opacity:1; transform: none}}
+
+  /* view switching: only one category is shown at a time */
+  .js .menu-section{display: none}
+  html.js[data-cat="breakfast"] #breakfast,
+  html.js[data-cat="manakish"] #manakish,
+  html.js[data-cat="croissant"] #croissant,
+  html.js[data-cat="soiree"] #soiree,
+  html.js[data-cat="pizza"] #pizza,
+  html.js[data-cat="beverages"] #beverages{
+    display: block;
+    padding-top: 56px;
+    animation: viewIn .5s ease both;
+  }
+  html.js[data-cat] .hero,
+  html.js[data-cat] .cats{display: none}
+  @keyframes viewIn{from{opacity:0}to{opacity:1}}
+
+  .back-row{display: flex; justify-content: flex-start; margin-bottom: 30px}
+  .back-row--bottom{justify-content: center; margin: 40px 0 0}
+  .back-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 22px;
+    border-radius: var(--radius-pill);
+    background: rgba(255,255,255,.94);
+    color: var(--ink);
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: 0 12px 26px -12px rgba(0,0,0,.45);
+    transition: transform .25s ease, color .25s ease, background .25s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .back-btn svg{width: 18px; height: 18px; transition: transform .25s ease}
+  .back-btn:hover{background: #fff; color: var(--red-600)}
+  .back-btn:hover svg{transform: translateX(3px)}
+
+  /* compact back button in the sticky nav (phones/tablets, while inside a category) */
+  .nav__back{
+    display: none;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--hairline-strong);
+    background: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .nav__back svg{width: 16px; height: 16px}
+
+  /* breakfast placeholder */
+  .menu-section--plain .menu-section__bg{
+    background: radial-gradient(ellipse at 30% 15%, #3c5a42 0%, #202b22 58%, #1c1f1d 100%);
+  }
+  .soon{text-align: center; padding: 20px 6px 8px; color: #fff}
+  .soon__icon{width: 76px; height: 76px; color: #b8f0c0; margin: 0 auto 18px}
+  .soon h3{
+    font-family: var(--font-display);
+    font-size: clamp(30px, 5vw, 40px);
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 10px rgba(0,0,0,.45);
+  }
+  .soon p{
+    max-width: 440px;
+    margin: 0 auto 28px;
+    color: rgba(255,255,255,.86);
+    line-height: 1.9;
+    text-shadow: 0 1px 3px rgba(0,0,0,.4);
+  }
+
+  @media (max-width: 960px){
+    .cats{padding: 72px 22px 90px}
+    .cats__head{margin-bottom: 40px}
+    .cats__grid{gap: 16px}
+    html.js[data-cat] .nav__back{display: inline-flex}
+    .back-row:not(.back-row--bottom){display: none}
+    html.js[data-cat="breakfast"] #breakfast,
+    html.js[data-cat="manakish"] #manakish,
+    html.js[data-cat="croissant"] #croissant,
+    html.js[data-cat="soiree"] #soiree,
+    html.js[data-cat="pizza"] #pizza,
+    html.js[data-cat="beverages"] #beverages{padding-top: 40px}
+  }
+  @media (max-width: 700px){
+    .cats__grid{grid-template-columns: repeat(2, 1fr); gap: 14px}
+    .cat-card{aspect-ratio: 3 / 4.1}
+    .cat-card__body{padding: 16px 14px}
+    .cat-card__title{font-size: 22px}
+    .cat-card__meta{font-size: 12px; margin-top: 6px}
+    .cat-card__go{top: 12px; bottom: auto; inset-inline-end: 12px; width: 34px; height: 34px}
+    .cat-card__go svg{width: 16px; height: 16px}
+    .cat-card__badge{top: 12px; inset-inline-start: 12px; font-size: 11px; padding: 4px 11px}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .js .cats__grid .cat-card{opacity: 1; transform: none; animation: none}
+    .cat-card, .cat-card__img, .cat-card__go, .back-btn svg{transition: none}
+    html.js[data-cat] .menu-section{animation: none}
+  }
+
   /* ============ RESPONSIVE ============ */
   @media (max-width: 960px){
     .nav__links{display:none}
@@ -836,7 +1092,9 @@
       <img src="assets/logo.svg" alt="نكهة خاصة" />
       <span class="nav__brand-text">نكهة خاصة</span>
     </a>
+    <a href="#categories" class="nav__back" aria-label="العودة إلى الأقسام"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 5l7 7-7 7"/></svg>العودة للأقسام</a>
     <ul class="nav__links">
+      <li><a href="#breakfast">ترويقة لبنانية</a></li>
       <li><a href="#manakish">مناقيش</a></li>
       <li><a href="#croissant">كرواسان وكعك</a></li>
       <li><a href="#soiree">سواريه</a></li>
@@ -864,7 +1122,7 @@
       مناقيش، كرواسان، كعك، وبيتزا طازجة كل يوم من الفرن إلى مائدتكم. نكهة محلية بشغف خاص.
     </p>
     <div class="hero__actions">
-      <a href="#manakish" class="btn btn--primary">
+      <a href="#categories" class="btn btn--primary">
         تصفّح القائمة
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l-7 7 7 7"/></svg>
       </a>
@@ -876,12 +1134,101 @@
   <div class="hero__scroll" aria-hidden="true"></div>
 </section>
 
+<!-- ============ CATEGORIES (home) ============ -->
+<section class="cats" id="categories">
+  <div class="cats__head">
+    <div class="cats__eyebrow">Our Menu</div>
+    <h2 class="cats__title">قائمة <em>الطعام</em></h2>
+    <p class="cats__sub">اختر القسم لتصفّح الأصناف والأسعار</p>
+  </div>
+  <div class="cats__grid" id="catsGrid">
+      <a class="cat-card cat-card--soon" href="#breakfast" style="--i:0">
+        <span class="cat-card__badge">قريباً</span>
+        <div class="cat-card__art" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 28h34v8a14 14 0 01-14 14h-6a14 14 0 01-14-14v-8z"/><path d="M46 31h4a5 5 0 010 10h-5"/><path d="M8 56h42"/><path d="M22 8c-3 3 3 5 0 9M31 8c-3 3 3 5 0 9M40 8c-3 3 3 5 0 9"/></svg>
+        </div>
+        <div class="cat-card__body">
+          <h3 class="cat-card__title">ترويقة لبنانية<em>Lebanese Breakfast</em></h3>
+          <p class="cat-card__meta">حمص · فول · فتة …</p>
+        </div>
+        <span class="cat-card__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l-7 7 7 7"/></svg></span>
+      </a>
+      <a class="cat-card" href="#manakish" style="--i:1">
+        <img class="cat-card__img" src="assets/cards/manakish.jpg" alt="" loading="lazy" decoding="async" />
+        <div class="cat-card__body">
+          <h3 class="cat-card__title">مناقيش<em>Manakish</em></h3>
+          <p class="cat-card__meta">26 صنف</p>
+        </div>
+        <span class="cat-card__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l-7 7 7 7"/></svg></span>
+      </a>
+      <a class="cat-card" href="#croissant" style="--i:2">
+        <img class="cat-card__img" src="assets/cards/croissants.jpg" alt="" loading="lazy" decoding="async" />
+        <div class="cat-card__body">
+          <h3 class="cat-card__title">كرواسان + كعك<em>Croissant & Kaak</em></h3>
+          <p class="cat-card__meta">10 أصناف</p>
+        </div>
+        <span class="cat-card__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l-7 7 7 7"/></svg></span>
+      </a>
+      <a class="cat-card" href="#soiree" style="--i:3">
+        <img class="cat-card__img" src="assets/cards/soiree.jpg" alt="" loading="lazy" decoding="async" />
+        <div class="cat-card__body">
+          <h3 class="cat-card__title">سواريه<em>Soirée · Dozen</em></h3>
+          <p class="cat-card__meta">8 أصناف</p>
+        </div>
+        <span class="cat-card__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l-7 7 7 7"/></svg></span>
+      </a>
+      <a class="cat-card" href="#pizza" style="--i:4">
+        <img class="cat-card__img" src="assets/cards/pizza.jpg" alt="" loading="lazy" decoding="async" />
+        <div class="cat-card__body">
+          <h3 class="cat-card__title">بيتزا<em>Pizza</em></h3>
+          <p class="cat-card__meta">8 أصناف · 4 أحجام</p>
+        </div>
+        <span class="cat-card__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l-7 7 7 7"/></svg></span>
+      </a>
+      <a class="cat-card" href="#beverages" style="--i:5">
+        <img class="cat-card__img" src="assets/cards/beverages.jpg" alt="" loading="lazy" decoding="async" />
+        <div class="cat-card__body">
+          <h3 class="cat-card__title">مشروبات<em>Beverages</em></h3>
+          <p class="cat-card__meta">11 صنف</p>
+        </div>
+        <span class="cat-card__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l-7 7 7 7"/></svg></span>
+      </a>
+  </div>
+</section>
+
+<!-- ============ BREAKFAST (coming soon) ============ -->
+<section class="menu-section menu-section--plain" id="breakfast">
+  <div class="menu-section__bg"></div>
+  <div class="menu-section__inner">
+    <div class="back-row"><a href="#categories" class="back-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 5l7 7-7 7"/></svg>العودة إلى الأقسام</a></div>
+    <div class="section-head reveal">
+      <div class="section-head__rule"></div>
+      <h2 class="section-head__title">
+        ترويقة لبنانية
+        <em>Lebanese Breakfast</em>
+      </h2>
+      <div class="section-head__rule"></div>
+    </div>
+
+    <div class="menu-panel reveal">
+      <div class="soon">
+        <svg class="soon__icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 28h34v8a14 14 0 01-14 14h-6a14 14 0 01-14-14v-8z"/><path d="M46 31h4a5 5 0 010 10h-5"/><path d="M8 56h42"/><path d="M22 8c-3 3 3 5 0 9M31 8c-3 3 3 5 0 9M40 8c-3 3 3 5 0 9"/></svg>
+        <h3>قريباً</h3>
+        <p>قائمة الترويقة اللبنانية قيد التحضير وستتوفر هنا قريباً. للاستفسار عن الأصناف المتوفرة يمكنكم التواصل معنا عبر واتساب.</p>
+        <a href="https://wa.me/96181425150" target="_blank" rel="noopener" class="btn btn--primary">اسأل عبر واتساب</a>
+      </div>
+    </div>
+    <div class="back-row back-row--bottom"><a href="#categories" class="back-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 5l7 7-7 7"/></svg>العودة إلى الأقسام</a></div>
+  </div>
+</section>
+
 <!-- ============ MANAKISH ============ -->
 <section class="menu-section" id="manakish">
   <div class="menu-section__bg">
-    <img src="assets/manakish.jpg" alt="" />
+    <img src="assets/manakish.jpg" alt="" loading="lazy" decoding="async" />
   </div>
   <div class="menu-section__inner">
+    <div class="back-row"><a href="#categories" class="back-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 5l7 7-7 7"/></svg>العودة إلى الأقسام</a></div>
     <div class="section-head reveal">
       <div class="section-head__rule"></div>
       <h2 class="section-head__title">
@@ -922,15 +1269,17 @@
 
       </ul>
     </div>
+    <div class="back-row back-row--bottom"><a href="#categories" class="back-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 5l7 7-7 7"/></svg>العودة إلى الأقسام</a></div>
   </div>
 </section>
 
 <!-- ============ CROISSANT + KAAK ============ -->
 <section class="menu-section" id="croissant">
   <div class="menu-section__bg">
-    <img src="assets/croissants.jpg" alt="" />
+    <img src="assets/croissants.jpg" alt="" loading="lazy" decoding="async" />
   </div>
   <div class="menu-section__inner">
+    <div class="back-row"><a href="#categories" class="back-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 5l7 7-7 7"/></svg>العودة إلى الأقسام</a></div>
     <div class="section-head reveal">
       <div class="section-head__rule"></div>
       <h2 class="section-head__title">
@@ -954,15 +1303,17 @@
         <li class="menu-list__item"><span class="menu-list__name">تارت أناناس</span><span class="menu-list__price">250,000<span class="menu-list__price-currency">ل.ل</span></span></li>
       </ul>
     </div>
+    <div class="back-row back-row--bottom"><a href="#categories" class="back-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 5l7 7-7 7"/></svg>العودة إلى الأقسام</a></div>
   </div>
 </section>
 
 <!-- ============ SOIRÉE ============ -->
 <section class="menu-section" id="soiree">
   <div class="menu-section__bg">
-    <img src="assets/soiree.png" alt="" />
+    <img src="assets/soiree.png" alt="" loading="lazy" decoding="async" />
   </div>
   <div class="menu-section__inner">
+    <div class="back-row"><a href="#categories" class="back-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 5l7 7-7 7"/></svg>العودة إلى الأقسام</a></div>
     <div class="section-head reveal">
       <div class="section-head__rule"></div>
       <h2 class="section-head__title">
@@ -984,15 +1335,17 @@
         <li class="menu-list__item"><span class="menu-list__name">سلق</span><span class="menu-list__price">600,000<span class="menu-list__price-currency">ل.ل</span></span></li>
       </ul>
     </div>
+    <div class="back-row back-row--bottom"><a href="#categories" class="back-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 5l7 7-7 7"/></svg>العودة إلى الأقسام</a></div>
   </div>
 </section>
 
 <!-- ============ PIZZA ============ -->
 <section class="menu-section" id="pizza">
   <div class="menu-section__bg">
-    <img src="assets/pizza.jpg" alt="" />
+    <img src="assets/pizza.jpg" alt="" loading="lazy" decoding="async" />
   </div>
   <div class="menu-section__inner" style="max-width: 900px">
+    <div class="back-row"><a href="#categories" class="back-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 5l7 7-7 7"/></svg>العودة إلى الأقسام</a></div>
     <div class="section-head reveal">
       <div class="section-head__rule"></div>
       <h2 class="section-head__title">
@@ -1028,15 +1381,17 @@
       </div>
     </div>
     <p style="text-align:center;margin-top:22px;font-family:var(--font-display-en);font-style:italic;color:#fff;letter-spacing:.1em;font-size:14px;text-shadow:0 2px 8px rgba(0,0,0,.4);opacity:.9">All prices in Lebanese Pounds (ل.ل)</p>
+    <div class="back-row back-row--bottom"><a href="#categories" class="back-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 5l7 7-7 7"/></svg>العودة إلى الأقسام</a></div>
   </div>
 </section>
 
 <!-- ============ BEVERAGES ============ -->
 <section class="menu-section" id="beverages">
   <div class="menu-section__bg">
-    <img src="assets/beverages.jpg" alt="" />
+    <img src="assets/beverages.jpg" alt="" loading="lazy" decoding="async" />
   </div>
   <div class="menu-section__inner">
+    <div class="back-row"><a href="#categories" class="back-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 5l7 7-7 7"/></svg>العودة إلى الأقسام</a></div>
     <div class="section-head reveal">
       <div class="section-head__rule"></div>
       <h2 class="section-head__title">
@@ -1061,6 +1416,7 @@
         <li class="menu-list__item"><span class="menu-list__name">شاي</span><span class="menu-list__price">25,000<span class="menu-list__price-currency">ل.ل</span></span></li>
       </ul>
     </div>
+    <div class="back-row back-row--bottom"><a href="#categories" class="back-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 5l7 7-7 7"/></svg>العودة إلى الأقسام</a></div>
   </div>
 </section>
 
@@ -1144,6 +1500,48 @@
     });
   },{ threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+<script>
+  // Category navigation: home shows the category cards, a card opens that category only.
+  // State lives in the URL hash (#manakish ...), so the phone's back button and shared links work.
+  (function(){
+    var root = document.documentElement;
+    var ids = ['breakfast','manakish','croissant','soiree','pizza','beverages'];
+    var savedY = 0;
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+    function jump(y){ window.scrollTo({ top: y, left: 0, behavior: 'instant' }); }
+
+    function apply(){
+      var h = location.hash.slice(1);
+      var prev = root.getAttribute('data-cat');
+      if (ids.indexOf(h) > -1){
+        if (h === prev) return;
+        if (!prev) savedY = window.pageYOffset;
+        root.setAttribute('data-cat', h);
+        jump(0);
+      } else if (h === '' || h === 'categories'){
+        if (!prev) return;
+        root.removeAttribute('data-cat');
+        if (savedY > 0) jump(savedY);
+        else { var c = document.getElementById('categories'); if (c) jump(c.getBoundingClientRect().top + window.pageYOffset - 64); }
+      }
+      /* any other hash (e.g. #contact) leaves the current view alone */
+    }
+    window.addEventListener('hashchange', apply);
+
+    // category cards fade in when the grid scrolls into view
+    var grid = document.getElementById('catsGrid');
+    if (grid){
+      if ('IntersectionObserver' in window){
+        var gio = new IntersectionObserver(function(es){
+          es.forEach(function(e){ if (e.isIntersecting){ grid.classList.add('is-in'); gio.disconnect(); } });
+        }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
+        gio.observe(grid);
+      } else { grid.classList.add('is-in'); }
+    }
+  })();
 </script>
 
 </body>
