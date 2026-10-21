@@ -164,108 +164,6 @@
   .nav__cta svg{width:16px;height:16px;fill:currentColor}
   .nav__burger{display:none}
 
-  /* ============ HERO ============ */
-  .hero{
-    position: relative;
-    min-height: 92vh;
-    display: grid;
-    place-items: center;
-    overflow: hidden;
-    isolation: isolate;
-  }
-  .hero__bg{
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-  }
-  .hero__bg img{
-    width:100%;
-    height:100%;
-    object-fit: cover;
-    object-position: center;
-    filter: contrast(1.02) saturate(1.05);
-  }
-  .hero__bg::after{
-    content:'';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse at 50% 60%, rgba(250,246,239,.15) 0%, rgba(250,246,239,.7) 70%, var(--bg-deep) 100%),
-      linear-gradient(180deg, rgba(250,246,239,.5) 0%, rgba(250,246,239,.2) 30%, rgba(250,246,239,.96) 100%);
-  }
-  .hero__content{
-    text-align: center;
-    padding: 80px 28px;
-    z-index: 1;
-    max-width: 900px;
-  }
-  .hero__eyebrow{
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-    font-family: var(--font-display-en);
-    font-style: italic;
-    font-size: 16px;
-    letter-spacing: .25em;
-    text-transform: uppercase;
-    color: var(--red-500);
-    margin-bottom: 28px;
-    opacity: 0;
-    animation: fadeUp .9s .15s ease forwards;
-  }
-  .hero__eyebrow::before, .hero__eyebrow::after{
-    content:'';
-    width: 40px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--red-500));
-  }
-  .hero__eyebrow::after{
-    background: linear-gradient(90deg, var(--red-500), transparent);
-  }
-  .hero__title{
-    font-family: var(--font-display);
-    font-size: clamp(56px, 11vw, 148px);
-    font-weight: 700;
-    line-height: .95;
-    letter-spacing: -.01em;
-    color: var(--ink);
-    margin-bottom: 12px;
-    opacity: 0;
-    animation: fadeUp 1.1s .3s ease forwards;
-    text-shadow: 0 2px 12px rgba(255,255,255,.4);
-  }
-  .hero__title em{
-    font-style: italic;
-    color: var(--green-600);
-    font-weight: 400;
-  }
-  .hero__subtitle{
-    font-family: var(--font-display-en);
-    font-style: italic;
-    font-size: clamp(20px, 3vw, 32px);
-    color: var(--ink-mute);
-    letter-spacing: .15em;
-    margin-bottom: 40px;
-    opacity: 0;
-    animation: fadeUp 1.1s .45s ease forwards;
-  }
-  .hero__tagline{
-    font-size: 17px;
-    color: var(--ink-soft);
-    max-width: 560px;
-    margin: 0 auto 44px;
-    line-height: 1.8;
-    opacity: 0;
-    animation: fadeUp 1.1s .6s ease forwards;
-  }
-  .hero__actions{
-    display: flex;
-    gap: 14px;
-    justify-content: center;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeUp 1.1s .75s ease forwards;
-  }
   .btn{
     display: inline-flex;
     align-items: center;
@@ -301,34 +199,6 @@
   @keyframes fadeUp{
     from{opacity:0;transform:translateY(20px)}
     to{opacity:1;transform:translateY(0)}
-  }
-
-  .hero__scroll{
-    position: absolute;
-    bottom: 28px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 28px;
-    height: 44px;
-    border: 1.5px solid var(--green-500);
-    border-radius: 20px;
-    opacity: .6;
-  }
-  .hero__scroll::before{
-    content:'';
-    position: absolute;
-    top: 8px;
-    left: 50%;
-    width: 3px;
-    height: 8px;
-    background: var(--green-500);
-    border-radius: 2px;
-    transform: translateX(-50%);
-    animation: scrollBob 1.8s ease infinite;
-  }
-  @keyframes scrollBob{
-    0%,100%{transform:translateX(-50%) translateY(0);opacity:1}
-    50%{transform:translateX(-50%) translateY(12px);opacity:.2}
   }
 
   /* ============ SECTIONS ============ */
@@ -808,6 +678,108 @@
     transform: translateY(0);
   }
 
+  /* ============ HERO (logo-led, compact) ============ */
+  .sr-only{position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0}
+  .hero{
+    position: relative;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    isolation: isolate;
+    padding: 84px 24px 90px;
+    background:
+      radial-gradient(ellipse 62% 58% at 50% 36%, #ffffff 0%, rgba(255,255,255,0) 72%),
+      linear-gradient(180deg, #f1f6ec 0%, var(--bg-deep) 100%);
+  }
+  .hero__decor{position: absolute; inset: 0; z-index: -1; pointer-events: none}
+  .hero::after{content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 110px; background: linear-gradient(180deg, rgba(250,246,239,0), var(--bg-deep)); z-index: -1; pointer-events: none}
+  .hero__blob{position: absolute; border-radius: 50%; filter: blur(64px); opacity: .6}
+  .hero__blob--g{width: 420px; height: 420px; background: #c3e5b8; top: -140px; left: -90px; animation: drift 15s ease-in-out infinite}
+  .hero__blob--o{width: 380px; height: 380px; background: #ffe1ad; bottom: -150px; right: -70px; animation: drift 18s ease-in-out infinite reverse}
+  @keyframes drift{0%,100%{transform: translate(0,0)}50%{transform: translate(34px,26px)}}
+  .leaf{
+    position: absolute;
+    left: var(--x); top: var(--y);
+    width: var(--s); height: var(--s);
+    background: var(--c);
+    border-radius: 0 100% 0 100%;
+    transform: rotate(var(--r));
+    opacity: .92;
+    animation: leafFloat var(--d) ease-in-out var(--t) infinite;
+  }
+  .leaf::after{
+    content: '';
+    position: absolute; left: 14%; top: 50%;
+    width: 72%; height: 2px; border-radius: 2px;
+    background: rgba(255,255,255,.7);
+    transform: rotate(45deg);
+  }
+  .dotf{position: absolute; left: var(--x); top: var(--y); width: var(--s); height: var(--s); border-radius: 50%; background: var(--c); opacity: .75; animation: leafFloat var(--d) ease-in-out var(--t) infinite}
+  @keyframes leafFloat{
+    0%,100%{transform: translateY(0) rotate(var(--r, 0deg))}
+    50%{transform: translateY(-16px) rotate(calc(var(--r, 0deg) + 14deg))}
+  }
+  .hero__content{position: relative; z-index: 1; text-align: center; max-width: 720px; width: 100%}
+  .hero__mark{position: relative; width: clamp(240px, 50vw, 350px); margin: 0 auto 42px}
+  .hero__logo{
+    position: relative; z-index: 2;
+    display: block;
+    width: 100%; height: auto;
+    filter: drop-shadow(0 20px 26px rgba(23,109,59,.16));
+    animation: logoIn 1.2s cubic-bezier(.16,1,.3,1) both, logoFloat 6.5s ease-in-out 1.3s infinite;
+  }
+  @keyframes logoIn{from{opacity: 0; transform: scale(.86) translateY(18px)}to{opacity: 1; transform: none}}
+  @keyframes logoFloat{0%,100%{transform: translateY(0)}50%{transform: translateY(-8px)}}
+  .hero__ring{
+    position: absolute; left: 50%; top: 50%;
+    width: 118%; aspect-ratio: 1; margin: -59% 0 0 -59%;
+    border-radius: 50%;
+    border: 1.5px dashed rgba(23,109,59,.3);
+    animation: spin 70s linear infinite;
+  }
+  .hero__ring--2{width: 134%; margin: -67% 0 0 -67%; border: 1.5px dotted rgba(242,160,36,.6); animation-duration: 100s; animation-direction: reverse}
+  @keyframes spin{to{transform: rotate(360deg)}}
+  .hero__tagline{
+    font-size: 17px;
+    color: var(--ink-soft);
+    max-width: 520px;
+    margin: 0 auto 30px;
+    line-height: 1.9;
+    opacity: 0;
+    animation: fadeUp 1s .55s ease forwards;
+  }
+  .hero__actions{
+    display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 1s .75s ease forwards;
+  }
+  .hero__place{
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 28px;
+    padding: 8px 18px;
+    border-radius: var(--radius-pill);
+    background: #fff;
+    border: 1px solid var(--hairline);
+    box-shadow: 0 10px 22px -14px rgba(28,31,29,.35);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    opacity: 0;
+    animation: fadeUp 1s .95s ease forwards;
+  }
+  .hero__place svg{width: 16px; height: 16px; color: var(--red-500)}
+  @media (max-width: 700px){
+    .hero{padding: 56px 20px 70px}
+    .leaf--lo{display: none}
+    .hero__tagline{font-size: 16px}
+    .hero__blob--g{width: 300px; height: 300px}
+    .hero__blob--o{width: 280px; height: 280px}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero__blob, .leaf, .dotf, .hero__ring, .hero__logo{animation: none}
+    .hero__tagline, .hero__actions, .hero__place{animation: none; opacity: 1}
+  }
+
   /* ============ CATEGORY HOME (bento tiles) + CATEGORY VIEW ============ */
   :root{--orange: #f2a024; --green-ink: #176d3b}
   .cats{
@@ -1084,12 +1056,10 @@
     .pizza-wrap{padding: 18px; border-radius: 14px}
     .pizza-table th, .pizza-table td{padding: 12px 8px; font-size: 14px}
     .pizza-table td:first-child{font-size: 15px}
-    .hero__content{padding: 60px 20px}
     .menu-list__name{font-size: 17px}
     .menu-list__price{font-size: 16px}
   }
   @media (max-width: 520px){
-    .hero__eyebrow{font-size: 13px}
     .nav__inner{padding: 12px 20px}
     .nav__brand-text{display:none}
     .fab-whatsapp{width: 54px; height: 54px; bottom:18px; inset-inline-end:18px}
@@ -1125,28 +1095,41 @@
 </nav>
 
 <!-- ============ HERO ============ -->
-<section class="hero">
-  <div class="hero__bg">
-    <img src="assets/hero.png" alt="Bakery hero" />
+<section class="hero" id="top">
+  <div class="hero__decor" aria-hidden="true">
+    <span class="hero__blob hero__blob--g"></span>
+    <span class="hero__blob hero__blob--o"></span>
+    <span class="leaf" style="--x:7%;--y:16%;--s:34px;--r:-24deg;--c:#71b248;--d:7s;--t:0s"></span>
+    <span class="leaf leaf--lo" style="--x:15%;--y:62%;--s:22px;--r:30deg;--c:#176d3b;--d:8s;--t:-2s"></span>
+    <span class="leaf" style="--x:90%;--y:20%;--s:30px;--r:70deg;--c:#f2a024;--d:6.5s;--t:-1s"></span>
+    <span class="leaf leaf--lo" style="--x:82%;--y:68%;--s:38px;--r:-40deg;--c:#71b248;--d:9s;--t:-3s"></span>
+    <span class="leaf" style="--x:46%;--y:8%;--s:18px;--r:15deg;--c:#f2a024;--d:7.5s;--t:-4s"></span>
+    <span class="dotf" style="--x:24%;--y:30%;--s:9px;--c:#e82327;--d:6s;--t:-1s"></span>
+    <span class="dotf" style="--x:74%;--y:42%;--s:11px;--c:#f2a024;--d:7s;--t:-2s"></span>
+    <span class="dotf leaf--lo" style="--x:60%;--y:84%;--s:8px;--c:#e82327;--d:5.5s;--t:-3s"></span>
+    <span class="dotf leaf--lo" style="--x:10%;--y:84%;--s:10px;--c:#71b248;--d:6.5s;--t:-0.5s"></span>
   </div>
   <div class="hero__content">
-    <div class="hero__eyebrow">Authentic Lebanese Bakery</div>
-    <h1 class="hero__title">نكهة <em>خاصة</em></h1>
-    <p class="hero__subtitle">Nakha Khasa</p>
+    <h1 class="sr-only">نكهة خاصة - Nakha Khasa</h1>
+    <div class="hero__mark">
+      <span class="hero__ring" aria-hidden="true"></span>
+      <span class="hero__ring hero__ring--2" aria-hidden="true"></span>
+      <img class="hero__logo" src="assets/logo.svg" alt="نكهة خاصة - Nakha Khasa" />
+    </div>
     <p class="hero__tagline">
       مناقيش، كرواسان، كعك، وبيتزا طازجة كل يوم من الفرن إلى مائدتكم. نكهة محلية بشغف خاص.
     </p>
     <div class="hero__actions">
       <a href="#categories" class="btn btn--primary">
         تصفّح القائمة
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l-7 7 7 7"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l-7 7 7 7"/></svg>
       </a>
       <a href="https://wa.me/96181425150" target="_blank" rel="noopener" class="btn btn--ghost">
         اطلب الآن
       </a>
     </div>
+    <p class="hero__place"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-7.5-7-12a7 7 0 1114 0c0 4.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>الكورة · الحارة الخاصة</p>
   </div>
-  <div class="hero__scroll" aria-hidden="true"></div>
 </section>
 
 <!-- ============ CATEGORIES (home) ============ -->
