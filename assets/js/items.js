@@ -18,6 +18,10 @@
    accent: brand-palette color used for the card's own UI accents
    (hover ring, node dots, hero connector lines) — unrelated to
    the logo artwork.
+
+   status: optional. "construction" shows an "Under Construction"
+   badge on the card (the link still works). Remove the line when
+   the menu is ready.
 =========================================================== */
 const MENUS_ITEMS = [
   {
@@ -48,7 +52,8 @@ const MENUS_ITEMS = [
     href: "/nakhakhasadelivery/",
     logo: "assets/img/nakhakhasadelivery-logo.png",
     bg: "#ffffff",
-    accent: "#176d3b"
+    accent: "#176d3b",
+    status: "construction"
   },
   {
     slug: "chefahmadrestaurant",
@@ -128,6 +133,17 @@ const MENUS_ITEMS = [
     href: "/alnoor/",
     logo: "assets/img/alnoor-logo.png",
     bg: "#000000",
-    accent: "#a51d21"
+    accent: "#a51d21",
+    status: "construction"
+  },
+  {
+    slug: "almallahbakeries",
+    name: "Al Mallah Bakeries",
+    nameAr: "",
+    category: "Bakery",
+    href: "/almallahbakeries/",
+    logo: "assets/img/almallahbakeries-logo.png",
+    bg: "#ffffff",
+    accent: "#a4202d"
   }
 ];
