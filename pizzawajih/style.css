@@ -145,8 +145,11 @@ h1{display:flex;flex-direction:column;align-items:center;gap:0;font-weight:800;l
 /* ---------- footer + dock ---------- */
 .foot{text-align:center;padding:44px 20px 10px;color:var(--mut);font-size:14px}
 .foot p+p{margin-top:4px}
-.foot .credit{margin-top:14px;font-family:var(--en);font-size:11.5px;opacity:.7}
-.foot .credit a{text-decoration:underline;text-underline-offset:2px}
+.foot .credit{margin-top:18px;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px 14px;font-family:var(--en);font-size:13px;color:rgba(217,185,163,.6)}
+.foot .credit a{color:var(--cream);border-bottom:1px solid rgba(255,244,230,.35);padding-bottom:1px;transition:border-color .2s,color .2s}
+.foot .credit a:hover{border-color:var(--red2);color:#fff}
+.foot .credit .dot{font-style:normal;opacity:.7}
+@media (max-width:520px){.foot .credit .dot{display:none}.foot .credit span{flex-basis:100%}}
 .dock{
   position:fixed;left:50%;bottom:max(14px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:30;
   display:flex;gap:10px;width:min(calc(100% - 28px),460px);padding:8px;border-radius:999px;
