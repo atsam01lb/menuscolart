@@ -78,19 +78,36 @@
 </footer>
 
 <script src="assets/js/items.js"></script>
-<!-- Teddy card (temporary: move this object into assets/js/items.js, then delete this block) -->
+<!-- New cards (temporary: move these objects into assets/js/items.js, then delete this block) -->
 <script>
-MENUS_ITEMS.push({
-  slug: "teddy",
-  name: "Teddy",
-  nameAr: "",
-  category: "Café",
-  href: "/teddy/",
-  logo: "assets/img/teddy-logo.png",
-  bg: "#3a5350",
-  accent: "#ee3423",
-  status: "soon"
-});
+(function () {
+  var extra = [
+    {
+      slug: "teddy",
+      name: "Teddy",
+      nameAr: "",
+      category: "Café",
+      href: "/teddy/",
+      logo: "assets/img/teddy-logo.png",
+      bg: "#3a5350",
+      accent: "#ee3423",
+      status: "soon"
+    },
+    {
+      slug: "pizzawajih",
+      name: "Pizza Wajih",
+      nameAr: "بيتزا وجيه",
+      category: "Pizza",
+      href: "/pizzawajih/",
+      logo: "assets/img/pizzawajih-logo.png",
+      bg: "#3b1a11",
+      accent: "#ee3426"
+    }
+  ];
+  extra.forEach(function (it) {
+    if (!MENUS_ITEMS.some(function (x) { return x.slug === it.slug; })) MENUS_ITEMS.push(it);
+  });
+})();
 </script>
 <script src="assets/js/menus.js"></script>
 </body>
