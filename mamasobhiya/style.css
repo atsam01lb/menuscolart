@@ -26,11 +26,21 @@ ul{list-style:none}
   position:fixed;inset:0;z-index:-1;
   background:
     radial-gradient(70% 45% at 50% 0%,rgba(169,29,34,.10),rgba(169,29,34,0) 70%),
-    radial-gradient(rgba(169,29,34,.07) 1.4px,transparent 1.7px) 0 0/24px 24px,
-    var(--cream);
+    radial-gradient(rgba(169,29,34,.07) 1.4px,transparent 1.7px) 0 0/24px 24px;
   animation:drift 40s linear infinite;
 }
-@keyframes drift{to{background-position:0 0,24px 24px,0 0}}
+@keyframes drift{to{background-position:0 0,24px 24px}}
+
+/* ---------- background photo of home-cooked dishes (fixed layer) ---------- */
+.photo{
+  position:fixed;inset:0;z-index:-2;
+  background:
+    linear-gradient(180deg,rgba(251,244,234,.84) 0%,rgba(251,244,234,.90) 60%,rgba(251,244,234,.94) 100%),
+    url("https://images.pexels.com/photos/19156005/pexels-photo-19156005.jpeg?auto=compress&cs=tinysrgb&w=1400") center/cover no-repeat,
+    var(--cream);
+  animation:photozoom 30s ease-in-out infinite alternate;
+}
+@keyframes photozoom{from{transform:scale(1)}to{transform:scale(1.06)}}
 
 /* ---------- splash ---------- */
 .splash{
