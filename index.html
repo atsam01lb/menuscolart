@@ -78,7 +78,7 @@
 </footer>
 
 <script src="assets/js/items.js"></script>
-<!-- New cards (temporary: move these objects into assets/js/items.js, then delete this block) -->
+<!-- Card changes (temporary: apply these in assets/js/items.js, then delete this block) -->
 <script>
 (function () {
   var extra = [
@@ -122,11 +122,26 @@
       logo: "assets/img/mazaq-logo.png",
       bg: "#5d2886",
       accent: "#c90d83"
+    },
+    {
+      slug: "alamir",
+      name: "Al Amir",
+      nameAr: "",
+      category: "Restaurant",
+      href: "/alamir/",
+      logo: "assets/img/alamir-logo.png",
+      bg: "#8b1024",
+      accent: "#141010"
     }
   ];
   extra.forEach(function (it) {
     if (!MENUS_ITEMS.some(function (x) { return x.slug === it.slug; })) MENUS_ITEMS.push(it);
   });
+  // Al Mallah Bakeries removed from the directory
+  for (var i = MENUS_ITEMS.length - 1; i >= 0; i--) {
+    var m = MENUS_ITEMS[i];
+    if (m.slug === "almallahbakeries" || /almallah/i.test(m.href || "")) MENUS_ITEMS.splice(i, 1);
+  }
 })();
 </script>
 <script src="assets/js/menus.js"></script>
